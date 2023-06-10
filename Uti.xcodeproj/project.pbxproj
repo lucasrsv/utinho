@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		1012CC492A34E4DD00099FF7 /* UtiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1012CC482A34E4DD00099FF7 /* UtiApp.swift */; };
-		1012CC4B2A34E4DD00099FF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1012CC4A2A34E4DD00099FF7 /* ContentView.swift */; };
 		1012CC4D2A34E4E000099FF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1012CC4C2A34E4E000099FF7 /* Assets.xcassets */; };
 		1012CC502A34E4E000099FF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1012CC4F2A34E4E000099FF7 /* Preview Assets.xcassets */; };
 		1012CC522A34E4E000099FF7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1012CC512A34E4E000099FF7 /* Persistence.swift */; };
 		1012CC552A34E4E000099FF7 /* Uti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1012CC532A34E4E000099FF7 /* Uti.xcdatamodeld */; };
+		EBA1DF172A34F8D9001D9AE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1DF162A34F8D9001D9AE0 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1012CC452A34E4DD00099FF7 /* Uti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1012CC482A34E4DD00099FF7 /* UtiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiApp.swift; sourceTree = "<group>"; };
-		1012CC4A2A34E4DD00099FF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1012CC4C2A34E4E000099FF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1012CC4F2A34E4E000099FF7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1012CC512A34E4E000099FF7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		1012CC542A34E4E000099FF7 /* Uti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Uti.xcdatamodel; sourceTree = "<group>"; };
+		EBA1DF162A34F8D9001D9AE0 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,6 @@
 				1012CC5C2A34E54300099FF7 /* View */,
 				1012CC5B2A34E53800099FF7 /* Model */,
 				1012CC482A34E4DD00099FF7 /* UtiApp.swift */,
-				1012CC4A2A34E4DD00099FF7 /* ContentView.swift */,
 				1012CC4C2A34E4E000099FF7 /* Assets.xcassets */,
 				1012CC512A34E4E000099FF7 /* Persistence.swift */,
 				1012CC532A34E4E000099FF7 /* Uti.xcdatamodeld */,
@@ -87,6 +86,7 @@
 		1012CC5C2A34E54300099FF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EBA1DF162A34F8D9001D9AE0 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1012CC522A34E4E000099FF7 /* Persistence.swift in Sources */,
-				1012CC4B2A34E4DD00099FF7 /* ContentView.swift in Sources */,
+				EBA1DF172A34F8D9001D9AE0 /* ContentView.swift in Sources */,
 				1012CC552A34E4E000099FF7 /* Uti.xcdatamodeld in Sources */,
 				1012CC492A34E4DD00099FF7 /* UtiApp.swift in Sources */,
 			);
