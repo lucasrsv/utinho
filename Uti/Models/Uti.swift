@@ -9,10 +9,13 @@ import Foundation
 
 struct Uti {
     var currentCycleDay: Int
+    var phase: Phase
+    var state: State
     var leisure: Int
     var health: Int
     var nutrition: Int
     var blood: Int
+    var items: [Item]
 }
 
 enum State {

@@ -13,6 +13,10 @@
 		EBAEA6242A37540B004BF7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBAEA6232A37540B004BF7E9 /* Preview Assets.xcassets */; };
 		EBAEA62F2A3756B0004BF7E9 /* Uti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA62E2A3756B0004BF7E9 /* Uti.swift */; };
 		EBAEA6312A375806004BF7E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA6302A375806004BF7E9 /* Item.swift */; };
+		EBAEA6352A38B531004BF7E9 /* UtiStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA6342A38B531004BF7E9 /* UtiStore.swift */; };
+		EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA6362A38BA59004BF7E9 /* ViewModel.swift */; };
+		EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA6382A38BA60004BF7E9 /* View.swift */; };
+		EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA63A2A38BA68004BF7E9 /* Component.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,10 @@
 		EBAEA6232A37540B004BF7E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EBAEA62E2A3756B0004BF7E9 /* Uti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uti.swift; sourceTree = "<group>"; };
 		EBAEA6302A375806004BF7E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		EBAEA6342A38B531004BF7E9 /* UtiStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiStore.swift; sourceTree = "<group>"; };
+		EBAEA6362A38BA59004BF7E9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EBAEA6382A38BA60004BF7E9 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		EBAEA63A2A38BA68004BF7E9 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +63,9 @@
 		EBAEA61B2A37540A004BF7E9 /* Uti */ = {
 			isa = PBXGroup;
 			children = (
-				EBAEA62D2A375472004BF7E9 /* Model */,
-				EBAEA62C2A375466004BF7E9 /* ViewModel */,
-				EBAEA62B2A37545F004BF7E9 /* View */,
+				EBAEA62D2A375472004BF7E9 /* Models */,
+				EBAEA62C2A375466004BF7E9 /* ViewModels */,
+				EBAEA62B2A37545F004BF7E9 /* Views */,
 				EBAEA62A2A375441004BF7E9 /* Components */,
 				EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */,
 				EBAEA61E2A37540A004BF7E9 /* ContentView.swift */,
@@ -78,31 +86,35 @@
 		EBAEA62A2A375441004BF7E9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EBAEA63A2A38BA68004BF7E9 /* Component.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		EBAEA62B2A37545F004BF7E9 /* View */ = {
+		EBAEA62B2A37545F004BF7E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EBAEA6382A38BA60004BF7E9 /* View.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		EBAEA62C2A375466004BF7E9 /* ViewModel */ = {
+		EBAEA62C2A375466004BF7E9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				EBAEA6362A38BA59004BF7E9 /* ViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		EBAEA62D2A375472004BF7E9 /* Model */ = {
+		EBAEA62D2A375472004BF7E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				EBAEA62E2A3756B0004BF7E9 /* Uti.swift */,
 				EBAEA6302A375806004BF7E9 /* Item.swift */,
+				EBAEA6342A38B531004BF7E9 /* UtiStore.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +190,10 @@
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
 				EBAEA62F2A3756B0004BF7E9 /* Uti.swift in Sources */,
+				EBAEA6352A38B531004BF7E9 /* UtiStore.swift in Sources */,
+				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
+				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
+				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
 				EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
