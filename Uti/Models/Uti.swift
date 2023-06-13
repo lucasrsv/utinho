@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Uti {
+struct Uti: Codable {
     var currentCycleDay: Int
     var phase: Phase
     var state: State
@@ -16,9 +17,14 @@ struct Uti {
     var nutrition: Int
     var blood: Int
     var items: [Item]
+    
+    enum CodingKeys: String, CodingKey {
+        case currentCycleDay = "current_cycle_day"
+        case phase, state, leisure, health, nutrition, blood, items
+    }
 }
 
-enum State {
+enum State: Codable {
     case pissed
     case homely
     case sassy
@@ -29,7 +35,7 @@ enum State {
     case sleepy
 }
 
-enum Phase {
+enum Phase: Codable {
     case menstrual
     case folicular
     case fertile

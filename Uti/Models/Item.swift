@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Item {
+struct Item: Codable {
     var name: String
     var type: Category
     var iconPath: String
@@ -16,7 +16,7 @@ struct Item {
     var effect: [Phase: Int]
 }
 
-enum Category {
+enum Category: Codable {
     case leisure
     case health
     case nutrition
