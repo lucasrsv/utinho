@@ -15,5 +15,5 @@ extension Image {
 struct Images {
     let healthIcon = Image("Health Icon")
     let foodIcon = Image("Food Icon")
-    let partyIcon = Image ("PartyIcon")
+    let partyIcon = Image ("Party Icon")
 }
