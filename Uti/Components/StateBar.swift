@@ -11,7 +11,7 @@ import SwiftUI
 struct StateBar: View {
     
     @Binding var uti: Uti
-    var image: Image
+    var category: Category
     
     var body: some View {
         ZStack (alignment: .leading){
@@ -24,9 +24,21 @@ struct StateBar: View {
                 .foregroundColor(uti.health < 40 ? .color.darkLightBlue : .color.lightBlue)
                       
             HStack {
-                image
+                defineIcon(category: category)
             }.frame(width: 63.0, height: 28.0)
         }
         
+    }
+    
+    func defineIcon (category: Category) -> Image{
+        switch category {
+        case .health:
+            return .images.healthIcon
+            
+        case .leisure:
+            return .images.partyIcon
+        case .nutrition:
+            return .images.foodIcon
+        }
     }
 }

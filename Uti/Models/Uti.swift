@@ -11,7 +11,7 @@ import SwiftUI
 struct Uti: Codable {
     var currentCycleDay: Int
     var phase: Phase
-    var state: State
+    var state: UtiState
     var leisure: Int
     var health: Int
     var nutrition: Int
@@ -24,7 +24,7 @@ struct Uti: Codable {
     }
 }
 
-enum State: Codable {
+enum UtiState: Codable {
     case pissed
     case homely
     case sassy

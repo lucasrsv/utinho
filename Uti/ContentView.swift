@@ -12,9 +12,9 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            StateBar(uti: $uti, image: .images.healthIcon)
-            StateBar(uti: $uti, image: .images.foodIcon)
-            StateBar(uti: $uti, image: .images.partyIcon)
+            StateBar(uti: $uti, category: .health)
+            StateBar(uti: $uti, category: .nutrition)
+            StateBar(uti: $uti, category: .leisure)
             Button("aumentar saude", action: increaseUtiHealth)
             Button ("diminuir saude", action: decreaseHealth)
         }
