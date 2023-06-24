@@ -14,31 +14,37 @@ class TimerManager: ObservableObject {
     
     private var timer: Timer?
     
-    func startTimer() {
+    private func startTimer() {
         var timeInterval: TimeInterval
         if (lastLaunchTimestamp != 0.0) {
             let timeSpentSinceLastLaunch = Date().timeIntervalSince1970 - lastLaunchTimestamp
-            timeInterval = (timeSpentSinceLastLaunch < 3600) ? 3600 - timeSpentSinceLastLaunch : timeSpentSinceLastLaunch - 3600
+            if (timeSpentSinceLastLaunch > 3600) {
+                let hoursSpentSinceLastLaunch = Int(floor(timeSpentSinceLastLaunch/3600))
+                updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
+                timeInterval =  timeSpentSinceLastLaunch.truncatingRemainder(dividingBy: 3600)
+            } else {
+                timeInterval = 3600 - timeSpentSinceLastLaunch
+            }
             timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { [weak self] _ in
-                self?.onTimerFire()
                 timeInterval = TimeInterval(3600)
+                self?.updateUtiStatistics(hoursSpent: 1)
                 self?.timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self]
                     _ in
-                    self?.onTimerFire()
+                    self?.updateUtiStatistics(hoursSpent: 1)
                 }
             }
         } else {
             timeInterval = TimeInterval(3600)
             timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
-                self?.onTimerFire()
+                self?.updateUtiStatistics(hoursSpent: 1)
             }
         }
     }
     
-    func onTimerFire() {
-        utiStore.uti.health = utiStore.uti.blood - 2
-        utiStore.uti.leisure = utiStore.uti.blood - 3
-        utiStore.uti.nutrition = utiStore.uti.blood - 5
+    private func updateUtiStatistics(hoursSpent: Int) {
+        utiStore.uti.health = utiStore.uti.blood - (2 * hoursSpent)
+        utiStore.uti.leisure = utiStore.uti.blood - (3 * hoursSpent)
+        utiStore.uti.nutrition = utiStore.uti.blood - (5 * hoursSpent)
     }
     
 }
