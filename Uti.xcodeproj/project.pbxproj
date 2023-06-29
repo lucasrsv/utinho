@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CCCA42A49D11500BD9330 /* UtiView.swift */; };
 		5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC32A390889008F21E5 /* StateBar.swift */; };
 		5B2FFDC72A39098A008F21E5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC62A39098A008F21E5 /* Colors.swift */; };
 		5B2FFDC92A390993008F21E5 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC82A390993008F21E5 /* Images.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B1CCCA42A49D11500BD9330 /* UtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiView.swift; sourceTree = "<group>"; };
 		5B2FFDC32A390889008F21E5 /* StateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBar.swift; sourceTree = "<group>"; };
 		5B2FFDC62A39098A008F21E5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5B2FFDC82A390993008F21E5 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				EBAEA6382A38BA60004BF7E9 /* View.swift */,
+				5B1CCCA42A49D11500BD9330 /* UtiView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
+				5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */,
 				5B2FFDC72A39098A008F21E5 /* Colors.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
 				5B2FFDC92A390993008F21E5 /* Images.swift in Sources */,

@@ -35,7 +35,7 @@ enum UtiState: Codable {
     case sleepy
 }
 
-enum Phase: Codable {
+enum Phase: Codable, CaseIterable {
     case menstrual
     case folicular
     case fertile
