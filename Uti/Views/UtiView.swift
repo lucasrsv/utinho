@@ -23,16 +23,24 @@ struct UtiView: View {
                 .frame(width: 345, height: 110)
                 .background(.white)
                 .cornerRadius(20.0)
-            Image(changeImage(phase: uti.phase))
-                .resizable()
-                .scaledToFit()
-                .frame(width: 330, height: 330)
-                .foregroundColor(.accentColor)
-                .offset(y: bouncing ? 30 : -30)
-                .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
-                .onAppear {
-                    self.bouncing.toggle()
-                }
+            VStack{
+                Image(changeImage(phase: uti.phase))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 330, height: 330)
+                    .foregroundColor(.accentColor)
+                    .offset(y: bouncing ? 30 : -30)
+                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                    .onAppear {
+                        self.bouncing.toggle()
+                    }
+                Ellipse()
+                    .foregroundColor(.color.strongRed)
+                    .blur(radius: 20)
+                    .frame(width: 150, height: 40)
+                    .scaleEffect(bouncing ? 0.7: 1.0)
+                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+            }
         }
     }
     

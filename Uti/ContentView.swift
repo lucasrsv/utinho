@@ -19,7 +19,6 @@ struct ContentView: View {
                         StateBar(uti: $uti, category: .nutrition)
                         StateBar(uti: $uti, category: .leisure)
                     }
-                    Spacer()
                 }
                 Button("aumentar saude", action: increaseUtiHealth)
                 Button ("diminuir saude", action: decreaseHealth)
