@@ -34,6 +34,7 @@ struct UtiView: View {
                     .onAppear {
                         self.bouncing.toggle()
                     }
+            
                 Ellipse()
                     .foregroundColor(.color.strongRed)
                     .blur(radius: 20)
