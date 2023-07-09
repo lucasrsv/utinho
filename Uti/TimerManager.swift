@@ -27,7 +27,8 @@ class TimerManager: ObservableObject {
             
             if (timeSpentSinceLastLaunch > 3600) {
                 let hoursSpentSinceLastLaunch = Int(floor(timeSpentSinceLastLaunch/3600))
-                updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
+                utiStore.updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
+                utiStore.updateUtiState()
                 timeInterval =  timeSpentSinceLastLaunch.truncatingRemainder(dividingBy: 3600)
             } else {
                 timeInterval = 3600 - timeSpentSinceLastLaunch
@@ -35,16 +36,19 @@ class TimerManager: ObservableObject {
             
             statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { [weak self] _ in
                 timeInterval = TimeInterval(3600)
-                self?.updateUtiStatistics(hoursSpent: 1)
+                self?.utiStore.updateUtiStatistics(hoursSpent: 1)
+                self?.utiStore.updateUtiState()
                 self?.statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self]
                     _ in
-                    self?.updateUtiStatistics(hoursSpent: 1)
+                    self?.utiStore.updateUtiStatistics(hoursSpent: 1)
+                    self?.utiStore.updateUtiState()
                 }
             }
         } else {
             timeInterval = TimeInterval(3600)
             statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
-                self?.updateUtiStatistics(hoursSpent: 1)
+                self?.utiStore.updateUtiStatistics(hoursSpent: 1)
+                self?.utiStore.updateUtiState()
             }
         }
     }
@@ -52,44 +56,29 @@ class TimerManager: ObservableObject {
     private func startStateTimer() {
         let currentDate = Date()
         let calendar = Calendar.current
-        let nextMidnight = calendar.startOfDay(for: currentDate) + (24 * 3600)
+        let nextMidnight = calendar.startOfDay(for: currentDate) + (4 * 3600)
         let timeInterval = nextMidnight.timeIntervalSince(currentDate)
         
         if let lastLaunchDate = getDate(from: lastLaunchTimestamp) {
             let elapsedTime = calendar.dateComponents([.hour], from: lastLaunchDate, to: currentDate)
-            if (elapsedTime.hour != nil && elapsedTime.hour! >= 24) {
-                updateUtiState(elapsedTimeH: elapsedTime.hour!)
+            if (elapsedTime.hour != nil && elapsedTime.hour! >= 4) {
+                utiStore.updateUtiPhase(elapsedTimeH: elapsedTime.hour!)
+                utiStore.updateUtiState()
             }
             stateTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { [weak self] _ in
-                self?.updateUtiState(elapsedTimeH: 24)
-                self?.stateTimer = Timer.scheduledTimer(withTimeInterval: (24*3600), repeats: false) { [weak self] _ in
-                    self?.updateUtiState(elapsedTimeH: 24)
+                self?.utiStore.updateUtiPhase(elapsedTimeH: 4)
+                self?.utiStore.updateUtiState()
+                self?.stateTimer = Timer.scheduledTimer(withTimeInterval: (4*3600), repeats: false) { [weak self] _ in
+                    self?.utiStore.updateUtiPhase(elapsedTimeH: 4)
+                    self?.utiStore.updateUtiState()
                 }
             }
         } else {
-            stateTimer = Timer.scheduledTimer(withTimeInterval: (24*3600), repeats: false) { [weak self] _ in
-                self?.updateUtiState(elapsedTimeH: 24)
+            stateTimer = Timer.scheduledTimer(withTimeInterval: (4*3600), repeats: false) { [weak self] _ in
+                self?.utiStore.updateUtiPhase(elapsedTimeH: 4)
+                self?.utiStore.updateUtiState()
             }
         }
-    }
-    
-    private func updateUtiState(elapsedTimeH: Int) {
-        utiStore.uti.currentCycleDay = (utiStore.uti.currentCycleDay < 28) ? utiStore.uti.currentCycleDay + elapsedTimeH/24 : 1 + (elapsedTimeH/24 - 1)
-        if (utiStore.uti.currentCycleDay <= 5) {
-            utiStore.uti.phase = .menstrual
-        } else if (utiStore.uti.currentCycleDay >= 6 && utiStore.uti.currentCycleDay <= 11) {
-            utiStore.uti.phase = .folicular
-        } else if (utiStore.uti.currentCycleDay >= 12 && utiStore.uti.currentCycleDay <= 16) {
-            utiStore.uti.phase = .fertile
-        } else {
-            utiStore.uti.phase = .luteal
-        }
-    }
-    
-    private func updateUtiStatistics(hoursSpent: Int) {
-        utiStore.uti.health = utiStore.uti.blood - (2 * hoursSpent)
-        utiStore.uti.leisure = utiStore.uti.blood - (3 * hoursSpent)
-        utiStore.uti.nutrition = utiStore.uti.blood - (5 * hoursSpent)
     }
     
     private func getDate(from timestamp: TimeInterval) -> Date? {

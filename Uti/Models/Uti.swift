@@ -12,25 +12,33 @@ struct Uti: Codable {
     var currentCycleDay: Int
     var phase: Phase
     var state: State
+    var illness: Illness
     var leisure: Int
     var health: Int
     var nutrition: Int
+    var energy: Int
     var blood: Int
     var items: [Item]
-    
+
     enum CodingKeys: String, CodingKey {
         case currentCycleDay = "current_cycle_day"
-        case phase, state, leisure, health, nutrition, blood, items
+        case phase, state, leisure, health, nutrition, blood, items, illness, energy
     }
 }
 
 enum State: Codable {
     case pissed
-    case homely
-    case sassy
+    case pissedHappy
+    case homelyHappy
+    case homelySad
+    case sassyGlass
+    case sassyTattoo
     case bodybuilder
-    case normal
+    case happy
+    case sad
     case sick
+    case sickHpv
+    case sickEndometriosis
     case hungry
     case sleepy
 }
@@ -41,4 +49,10 @@ enum Phase: Codable {
     case fertile
     case luteal
     case pms
+}
+
+enum Illness: Codable {
+    case no
+    case hpv
+    case endometrios
 }
