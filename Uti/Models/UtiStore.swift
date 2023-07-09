@@ -201,8 +201,11 @@ class UtiStore: ObservableObject {
             uti.nutrition = uti.nutrition + 10
             uti.leisure = uti.leisure + 10
         case .contraceptive:
-            // TODO: add health at the first day of the period
-            uti.health = uti.health
+            if (uti.currentCycleDay == 1) {
+                uti.health = uti.health + 20
+            } else {
+                uti.health = uti.health - 10
+            }
         case .pill:
             // TODO: add health at the first time its being used in the month
             uti.health = uti.health
