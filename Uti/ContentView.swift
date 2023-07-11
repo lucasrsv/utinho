@@ -13,13 +13,48 @@ struct ContentView: View {
 
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            VStack {
+                HStack {
+                    VStack {
+                        StateBar(uti: $uti, category: .health)
+                        StateBar(uti: $uti, category: .nutrition)
+                        StateBar(uti: $uti, category: .leisure)
+                    }
+                    Spacer()
+                }
+                Button("aumentar saude", action: increaseUtiHealth)
+                Button ("diminuir saude", action: decreaseHealth)
+                Button ("trocar estado do uti", action: changePhase)
+                UtiView(uti: uti)
+            }
         }
-        .padding()
+        .background(
+            Image("standard_background")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height) //to be altered
+        )
+    }
+    func changePhase(){
+        uti.phase = Phase.allCases.randomElement()!
+        print (uti.phase)
+    }
+    func increaseUtiHealth () {
+        if (uti.health + 10 > 100){
+            uti.health = 100
+        }
+        else {
+            uti.health += 10
+        }
+    }
+    func decreaseHealth () {
+        if (uti.health - 10 < 0){
+            uti.health = 0
+        }
+        else {
+            uti.health -= 10
+        }
     }
 }
 

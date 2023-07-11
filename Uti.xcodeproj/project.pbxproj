@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CCCA42A49D11500BD9330 /* UtiView.swift */; };
+		5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC32A390889008F21E5 /* StateBar.swift */; };
+		5B2FFDC72A39098A008F21E5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC62A39098A008F21E5 /* Colors.swift */; };
+		5B2FFDC92A390993008F21E5 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC82A390993008F21E5 /* Images.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */; };
 		EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61E2A37540A004BF7E9 /* ContentView.swift */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B1CCCA42A49D11500BD9330 /* UtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiView.swift; sourceTree = "<group>"; };
+		5B2FFDC32A390889008F21E5 /* StateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBar.swift; sourceTree = "<group>"; };
+		5B2FFDC62A39098A008F21E5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5B2FFDC82A390993008F21E5 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EBAEA6192A37540A004BF7E9 /* Uti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiApp.swift; sourceTree = "<group>"; };
@@ -46,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2FFDC52A390976008F21E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FFDC62A39098A008F21E5 /* Colors.swift */,
+				5B2FFDC82A390993008F21E5 /* Images.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		EBAEA6102A37540A004BF7E9 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +82,7 @@
 		EBAEA61B2A37540A004BF7E9 /* Uti */ = {
 			isa = PBXGroup;
 			children = (
+				5B2FFDC52A390976008F21E5 /* Extensions */,
 				EBAEA62D2A375472004BF7E9 /* Models */,
 				EBAEA62C2A375466004BF7E9 /* ViewModels */,
 				EBAEA62B2A37545F004BF7E9 /* Views */,
@@ -90,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				EBAEA63A2A38BA68004BF7E9 /* Component.swift */,
+				5B2FFDC32A390889008F21E5 /* StateBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -98,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				EBAEA6382A38BA60004BF7E9 /* View.swift */,
+				5B1CCCA42A49D11500BD9330 /* UtiView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,8 +211,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
+				5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */,
+				5B2FFDC72A39098A008F21E5 /* Colors.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
+				5B2FFDC92A390993008F21E5 /* Images.swift in Sources */,
 				EBAEA62F2A3756B0004BF7E9 /* Uti.swift in Sources */,
+				5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */,
 				EBAEA6352A38B531004BF7E9 /* UtiStore.swift in Sources */,
 				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
