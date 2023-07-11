@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */; };
 		EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61E2A37540A004BF7E9 /* ContentView.swift */; };
 		EBAEA6212A37540B004BF7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBAEA6202A37540B004BF7E9 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EBAEA6192A37540A004BF7E9 /* Uti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiApp.swift; sourceTree = "<group>"; };
 		EBAEA61E2A37540A004BF7E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				EBAEA62C2A375466004BF7E9 /* ViewModels */,
 				EBAEA62B2A37545F004BF7E9 /* Views */,
 				EBAEA62A2A375441004BF7E9 /* Components */,
+				EB3AA1382A3F408900110B11 /* TimerManager.swift */,
 				EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */,
 				EBAEA61E2A37540A004BF7E9 /* ContentView.swift */,
 				EBAEA6202A37540B004BF7E9 /* Assets.xcassets */,
@@ -193,6 +196,7 @@
 				EBAEA6352A38B531004BF7E9 /* UtiStore.swift in Sources */,
 				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
+				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
 				EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */,
 			);
