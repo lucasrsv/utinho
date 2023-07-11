@@ -9,14 +9,15 @@ import SwiftUI
 
 @main
 struct UtiApp: App {
-    @StateObject private var store = UtiStore()
+    @StateObject private var utiStore = UtiStore()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(uti: $store.uti)
+            ContentView()
+                .environmentObject(utiStore)
                 .task {
                     do {
-                        try await store.load()
+                        try await utiStore.load()
                     } catch {
                         fatalError(error.localizedDescription)
                     }
