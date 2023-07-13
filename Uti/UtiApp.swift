@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct UtiApp: App {
     @StateObject private var utiStore = UtiStore()
+    @AppStorage("IsFirstTime") var isFirstTime = true
     
     var body: some Scene {
         WindowGroup {
@@ -17,6 +18,10 @@ struct UtiApp: App {
                 .environmentObject(utiStore)
                 .task {
                     do {
+                        if (isFirstTime) {
+                            try await utiStore.save(uti: utiStore.uti)
+                            isFirstTime = false
+                        }
                         try await utiStore.load()
                     } catch {
                         fatalError(error.localizedDescription)

@@ -9,13 +9,14 @@ import Foundation
 import SwiftUI
 
 class TimerManager: ObservableObject {
-    @AppStorage("LastLaunchTimestamp") var lastLaunchTimestamp: TimeInterval = 0.0
-    @EnvironmentObject private var utiStore: UtiStore
+    @AppStorage("LastLaunchTimestamp") var lastLaunchTimestamp: TimeInterval = Date().timeIntervalSince1970
+    private var utiStore: UtiStore?
     
     private var statisticsTimer: Timer?
     private var stateTimer: Timer?
     
-    init() {
+    func setup(utiStore: UtiStore) {
+        self.utiStore = utiStore
         startStatisticsTimer()
         startStateTimer()
     }
@@ -27,8 +28,9 @@ class TimerManager: ObservableObject {
             
             if (timeSpentSinceLastLaunch > 3600) {
                 let hoursSpentSinceLastLaunch = Int(floor(timeSpentSinceLastLaunch/3600))
-                utiStore.updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
-                utiStore.updateUtiState()
+                utiStore?.updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
+                utiStore?.updateUtiState()
+                print("tinha timer spent since last launch e atualizou state")
                 timeInterval =  timeSpentSinceLastLaunch.truncatingRemainder(dividingBy: 3600)
             } else {
                 timeInterval = 3600 - timeSpentSinceLastLaunch
@@ -36,19 +38,21 @@ class TimerManager: ObservableObject {
             
             statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { [weak self] _ in
                 timeInterval = TimeInterval(3600)
-                self?.utiStore.updateUtiStatistics(hoursSpent: 1)
-                self?.utiStore.updateUtiState()
+                self?.utiStore?.updateUtiStatistics(hoursSpent: 1)
+                self?.utiStore?.updateUtiState()
                 self?.statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self]
                     _ in
-                    self?.utiStore.updateUtiStatistics(hoursSpent: 1)
-                    self?.utiStore.updateUtiState()
+                    self?.utiStore?.updateUtiStatistics(hoursSpent: 1)
+                    self?.utiStore?.updateUtiState()
+                    print("entrou no statistics timer 1")
                 }
             }
         } else {
             timeInterval = TimeInterval(3600)
             statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
-                self?.utiStore.updateUtiStatistics(hoursSpent: 1)
-                self?.utiStore.updateUtiState()
+                self?.utiStore?.updateUtiStatistics(hoursSpent: 1)
+                self?.utiStore?.updateUtiState()
+                print("entrou no statistics timer 2")
             }
         }
     }
@@ -56,27 +60,33 @@ class TimerManager: ObservableObject {
     private func startStateTimer() {
         let currentDate = Date()
         let calendar = Calendar.current
-        let nextMidnight = calendar.startOfDay(for: currentDate) + (4 * 3600)
+        let nextMidnight = currentDate + (4 * 3600)
         let timeInterval = nextMidnight.timeIntervalSince(currentDate)
         
         if let lastLaunchDate = getDate(from: lastLaunchTimestamp) {
+            print(lastLaunchTimestamp)
             let elapsedTime = calendar.dateComponents([.hour], from: lastLaunchDate, to: currentDate)
+            print(elapsedTime.hour!)
             if (elapsedTime.hour != nil && elapsedTime.hour! >= 4) {
-                utiStore.updateUtiPhase(elapsedTimeH: elapsedTime.hour!)
-                utiStore.updateUtiState()
+                utiStore?.updateUtiPhase(elapsedTimeH: elapsedTime.hour!)
+                utiStore?.updateUtiState()
+                print("entrou no state timer 1")
             }
             stateTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { [weak self] _ in
-                self?.utiStore.updateUtiPhase(elapsedTimeH: 4)
-                self?.utiStore.updateUtiState()
+                self?.utiStore?.updateUtiPhase(elapsedTimeH: 4)
+                self?.utiStore?.updateUtiState()
+                print("entrou no state timer 2")
                 self?.stateTimer = Timer.scheduledTimer(withTimeInterval: (4*3600), repeats: false) { [weak self] _ in
-                    self?.utiStore.updateUtiPhase(elapsedTimeH: 4)
-                    self?.utiStore.updateUtiState()
+                    self?.utiStore?.updateUtiPhase(elapsedTimeH: 4)
+                    self?.utiStore?.updateUtiState()
+                    print("entrou no state timer 3")
                 }
             }
         } else {
             stateTimer = Timer.scheduledTimer(withTimeInterval: (4*3600), repeats: false) { [weak self] _ in
-                self?.utiStore.updateUtiPhase(elapsedTimeH: 4)
-                self?.utiStore.updateUtiState()
+                self?.utiStore?.updateUtiPhase(elapsedTimeH: 4)
+                self?.utiStore?.updateUtiState()
+                print("entrou no state timer 4")
             }
         }
     }

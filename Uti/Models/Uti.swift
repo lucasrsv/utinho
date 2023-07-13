@@ -26,7 +26,7 @@ struct Uti: Codable {
     }
 }
 
-enum UtiState: Codable {
+enum UtiState: Codable, CaseIterable {
     case pissed
     case pissedHappy
     case homelyHappy
@@ -51,7 +51,7 @@ enum Phase: Codable, CaseIterable {
     case pms
 }
 
-enum Illness: Codable {
+enum Illness: Codable, CaseIterable {
     case no
     case hpv
     case endometrios

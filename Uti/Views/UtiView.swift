@@ -15,7 +15,7 @@ struct UtiView: View {
     var body: some View {
         VStack {
             VStack {
-                Text(changeText(phase: uti.phase))
+                Text("aa")
                     .bold()
                     .foregroundColor(.color.darkRed)
             }

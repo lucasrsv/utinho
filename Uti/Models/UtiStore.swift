@@ -18,11 +18,19 @@ class UtiStore: ObservableObject {
     
     func load() async throws {
         let task = Task<Uti, Error> {
-            let fileURL = try Self.fileURL()
-            let data = try Data(contentsOf: fileURL)
-            let uti = try JSONDecoder().decode(Uti.self, from: data)
-            return uti
-        }
+               let fileURL = try Self.fileURL()
+               let data = try Data(contentsOf: fileURL)
+               print("Data:", data) // Debugging statement
+               let decoder = JSONDecoder()
+               do {
+                   let uti = try decoder.decode(Uti.self, from: data)
+                   print("Decoded Uti:", uti) // Debugging statement
+                   return uti
+               } catch {
+                   print("Decoding error:", error) // Debugging statement
+                   throw error
+               }
+           }
         let uti = try await task.value
         DispatchQueue.main.async {
             self.uti = uti
@@ -38,8 +46,8 @@ class UtiStore: ObservableObject {
         _ = try await task.value
     }
     
-    func updateUtiPhase(elapsedTimeH: Int) {
-        uti.currentCycleDay = (uti.currentCycleDay < 28) ? uti.currentCycleDay + elapsedTimeH/24 : 1 + (elapsedTimeH/24 - 1)
+    func updateUtiPhase(elapsedTimeH: Int) { // 4 hours equals 1 day
+        uti.currentCycleDay = (uti.currentCycleDay < 28) ? uti.currentCycleDay + elapsedTimeH/4 : 1 + (elapsedTimeH/4 - 1)
         if (uti.currentCycleDay <= 5) {
             uti.phase = .menstrual
         } else if (uti.currentCycleDay >= 6 && uti.currentCycleDay <= 11) {
@@ -49,12 +57,14 @@ class UtiStore: ObservableObject {
         } else {
             uti.phase = .luteal
         }
+        print(uti.phase)
     }
     
     func updateUtiStatistics(hoursSpent: Int) {
-        uti.health = uti.blood - (2 * hoursSpent)
-        uti.leisure = uti.blood - (3 * hoursSpent)
-        uti.nutrition = uti.blood - (5 * hoursSpent)
+        uti.health = uti.health - (2 * hoursSpent)
+        uti.leisure = uti.leisure - (3 * hoursSpent)
+        uti.nutrition = uti.nutrition - (5 * hoursSpent)
+        print(uti.health)
     }
     
     func updateUtiState() {
@@ -89,6 +99,7 @@ class UtiStore: ObservableObject {
                 uti.state = .pissedHappy
             }
         }
+        print(uti.state)
     }
     
     func giveUtiItem(item: Item) {
