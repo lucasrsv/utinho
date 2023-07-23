@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 struct StateBar: View {
-    
-    @Binding var uti: Uti
+    let uti: Uti
     var category: Category
     
     var body: some View {
