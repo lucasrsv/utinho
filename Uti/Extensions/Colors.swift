@@ -17,4 +17,5 @@ struct Colors {
     let darkLightBlue = Color("Dark Light Blue")
     let bege = Color("Bege")
     let darkRed = Color ("Dark Red")
+    let strongRed = Color ("Strong Red")
 }
