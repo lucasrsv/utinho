@@ -11,6 +11,9 @@
 		5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC32A390889008F21E5 /* StateBar.swift */; };
 		5B2FFDC72A39098A008F21E5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC62A39098A008F21E5 /* Colors.swift */; };
 		5B2FFDC92A390993008F21E5 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC82A390993008F21E5 /* Images.swift */; };
+		9404FDA82A7839240000B7BD /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA72A7839240000B7BD /* ItemView.swift */; };
+		9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */; };
+		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */; };
 		EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61E2A37540A004BF7E9 /* ContentView.swift */; };
@@ -29,6 +32,9 @@
 		5B2FFDC32A390889008F21E5 /* StateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBar.swift; sourceTree = "<group>"; };
 		5B2FFDC62A39098A008F21E5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5B2FFDC82A390993008F21E5 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		9404FDA72A7839240000B7BD /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitView.swift; sourceTree = "<group>"; };
+		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EBAEA6192A37540A004BF7E9 /* Uti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiApp.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			children = (
 				EBAEA63A2A38BA68004BF7E9 /* Component.swift */,
 				5B2FFDC32A390889008F21E5 /* StateBar.swift */,
+				9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -118,6 +125,8 @@
 			children = (
 				EBAEA6382A38BA60004BF7E9 /* View.swift */,
 				5B1CCCA42A49D11500BD9330 /* UtiView.swift */,
+				9404FDA72A7839240000B7BD /* ItemView.swift */,
+				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +221,7 @@
 			files = (
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
 				5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */,
+				9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */,
 				5B2FFDC72A39098A008F21E5 /* Colors.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
 				5B2FFDC92A390993008F21E5 /* Images.swift in Sources */,
@@ -219,8 +229,10 @@
 				5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */,
 				EBAEA6352A38B531004BF7E9 /* UtiStore.swift in Sources */,
 				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
+				9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
+				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
 				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
 				EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */,
 			);

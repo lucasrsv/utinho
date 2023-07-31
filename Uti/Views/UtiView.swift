@@ -10,6 +10,7 @@ import SwiftUI
 
 struct UtiView: View {
     @State private var bouncing = true
+    @State var showingSheet = false
     let uti: Uti
     
     var body: some View {
@@ -23,6 +24,18 @@ struct UtiView: View {
                 .frame(width: 345, height: 110)
                 .background(.white)
                 .cornerRadius(20.0)
+            
+            Button("Kit de sobrevivencia uterina"){
+                showingSheet.toggle()
+            }
+            .buttonStyle(.borderedProminent)
+            .sheet(isPresented: $showingSheet) {
+                VStack{
+                    SurvivalKitView()
+                }
+                .presentationDetents([.fraction(0.35)])
+            }
+            
             Image(changeImage(phase: uti.phase))
                 .resizable()
                 .scaledToFit()
@@ -33,6 +46,10 @@ struct UtiView: View {
                 .onAppear {
                     self.bouncing.toggle()
                 }
+            
+            
+               
+          
         }
     }
     
