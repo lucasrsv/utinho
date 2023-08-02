@@ -15,7 +15,7 @@ struct UtiView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("aa")
+                Text(changeText(phase:uti.phase))
                     .bold()
                     .foregroundColor(.color.darkRed)
             }
@@ -24,7 +24,7 @@ struct UtiView: View {
                 .background(.white)
                 .cornerRadius(20.0)
             VStack{
-                Image(changeImage(phase: uti.phase))
+                Image(changeImage(state: uti.state))
                     .resizable()
                     .scaledToFit()
                     .frame(width: 330, height: 330)
@@ -34,7 +34,6 @@ struct UtiView: View {
                     .onAppear {
                         self.bouncing.toggle()
                     }
-            
                 Ellipse()
                     .foregroundColor(.color.strongRed)
                     .blur(radius: 20)
@@ -52,7 +51,7 @@ struct UtiView: View {
         case .menstrual:
             text = "Não to afim de sair hoje..."
         case .folicular:
-            text = "Ô abestado é pra cliclar ali ó, ta vendo não?"
+            text = "Ô abestado é pra clicar ali ó, ta vendo não?"
         case .fertile:
             text = "Qual o sextou de hoje?"
         case .luteal:
@@ -64,22 +63,13 @@ struct UtiView: View {
         return text
     }
     
-    func changeImage(phase: Phase) -> String {
-        var image: String
-        
-        switch phase {
-        case .menstrual:
-            image = "CASEIRO_TRISTE"
-        case .folicular:
-            image = "FELIZ"
-        case .fertile:
-            image = "SAIDINHO_OCULOS"
-        case .luteal:
-            image = "BODYBUILDER"
-        case .pms:
-            image = "PUTO"
-        }
-        
-        return image
+    func changeImage(state: UtiState) -> String {
+        return state.rawValue
+    }
+}
+
+struct UtiView_Previews: PreviewProvider {
+    static var previews: some View {
+        UtiView(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []))
     }
 }

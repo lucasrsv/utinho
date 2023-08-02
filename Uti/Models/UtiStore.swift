@@ -19,6 +19,7 @@ class UtiStore: ObservableObject {
     func load() async throws {
         let task = Task<Uti, Error> {
                let fileURL = try Self.fileURL()
+            print(fileURL)
                let data = try Data(contentsOf: fileURL)
                print("Data:", data) // Debugging statement
                let decoder = JSONDecoder()
@@ -69,7 +70,7 @@ class UtiStore: ObservableObject {
     
     func updateUtiState() {
         if (uti.illness != .no) {
-            uti.state = .sick
+            uti.state = .sickHpv
         } else if (uti.phase == .menstrual) {
             if (uti.health > 80) {
                 uti.state = .homelyHappy

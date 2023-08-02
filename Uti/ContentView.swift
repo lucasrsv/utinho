@@ -12,61 +12,47 @@ struct ContentView: View {
     @StateObject private var timerManager: TimerManager = TimerManager()
     
     var body: some View {
-        ZStack {
+        HStack {
             VStack {
-                HStack {
-                    VStack {
-                        StateBar(uti: utiStore.uti, category: .health)
-                        StateBar(uti: utiStore.uti, category: .nutrition)
-                        StateBar(uti: utiStore.uti, category: .leisure)
+                VStack(alignment: .leading) {
+                    HStack {
+                        ZStack {
+                            VStack() {
+                                PhaseCycleCircle(uti: utiStore.uti)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            VStack {
+                                StateBar(uti: utiStore.uti, category: .health)
+                                StateBar(uti: utiStore.uti, category: .nutrition)
+                                StateBar(uti: utiStore.uti, category: .leisure)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
-                    Spacer()
-                    PhaseCycleCircle(uti: utiStore.uti)
-
-                    //TO BE REPLACED BY SLEEP BUTTON
+                    .padding(.bottom, 32)
                 }
-                .padding([.trailing, .leading] , 22)
-                Button("aumentar saude", action: increaseUtiHealth)
-                Button ("diminuir saude", action: decreaseHealth)
-                Button ("trocar estado do uti", action: changePhase)
                 UtiView(uti: utiStore.uti)
             }
         }
-        .onAppear {
-            timerManager.setup(utiStore: utiStore)
-        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .padding(.all, 20)
         .background(
             Image("standard_background")
                 .resizable()
-                .edgesIgnoringSafeArea(.all)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height) //to be altered
+                .ignoresSafeArea()
         )
-    }
-    
-    func changePhase(){
-        utiStore.uti.phase = Phase.allCases.randomElement()!
-        print (utiStore.uti.phase)
-    }
-    func increaseUtiHealth () {
-        if (utiStore.uti.health + 10 > 100){
-            utiStore.uti.health = 100
-        }
-        else {
-            utiStore.uti.health += 10
-        }
-    }
-    func decreaseHealth () {
-        if (utiStore.uti.health - 10 < 0){
-            utiStore.uti.health = 0
-        }
-        else {
-            utiStore.uti.health -= 10
-        }
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static func getUtiStore() -> UtiStore {
+        let utiStore: UtiStore = UtiStore()
+        utiStore.uti = Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: [])
+        return utiStore
+    }
+    
+    static var previews: some View {
+        ContentView()
+            .environmentObject(getUtiStore())
+    }
+}
