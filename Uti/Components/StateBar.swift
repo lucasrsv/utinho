@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 struct StateBar: View {
-    
-    @Binding var uti: Uti
+    let uti: Uti
     var category: Category
     
     var body: some View {
@@ -38,5 +37,11 @@ struct StateBar: View {
         case .nutrition:
             return .images.foodIcon
         }
+    }
+}
+    
+struct StateBar_Previews: PreviewProvider {
+    static var previews: some View {
+        StateBar(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []), category: .health)
     }
 }

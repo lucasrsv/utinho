@@ -16,12 +16,16 @@ struct ContentView: View {
             VStack {
                 HStack {
                     VStack {
-                        StateBar(uti: $utiStore.uti, category: .health)
-                        StateBar(uti: $utiStore.uti, category: .nutrition)
-                        StateBar(uti: $utiStore.uti, category: .leisure)
+                        StateBar(uti: utiStore.uti, category: .health)
+                        StateBar(uti: utiStore.uti, category: .nutrition)
+                        StateBar(uti: utiStore.uti, category: .leisure)
                     }
                     Spacer()
+                    PhaseCycleCircle(uti: utiStore.uti)
+
+                    //TO BE REPLACED BY SLEEP BUTTON
                 }
+                .padding([.trailing, .leading] , 22)
                 Button("aumentar saude", action: increaseUtiHealth)
                 Button ("diminuir saude", action: decreaseHealth)
                 Button ("trocar estado do uti", action: changePhase)
