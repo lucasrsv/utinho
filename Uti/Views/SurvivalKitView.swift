@@ -8,33 +8,30 @@
 import SwiftUI
 
 struct SurvivalKitView: View {
+    @State private var selectedButton = "health"
+    
     var body: some View {
         
         VStack{
             HStack{
-                SurvivalKitButton(icon: "cross.fill", title: "health")
-                SurvivalKitButton(icon: "fork.knife", title: "nutrition")
-                SurvivalKitButton(icon: "party.popper.fill", title: "fun")
-                
+                SurvivalKitButton(icon: "cross.fill", title: "health", selectedButton: $selectedButton)
+                SurvivalKitButton(icon: "fork.knife", title: "nutrition", selectedButton: $selectedButton)
+                SurvivalKitButton(icon: "party.popper.fill", title: "fun", selectedButton: $selectedButton)
             }
             
-            HStack{
-                ItemView()
-                ItemView()
-                ItemView()
-                
+            VStack {
+                ForEach(0..<2) { rowIndex in
+                    HStack {
+                        ForEach(0..<4) { _ in
+                            ItemView()
+                        }
+                    }
+                }
             }
             
             
         }
-        
-                
       
     }
 }
 
-struct SurvivalKitView_Previews: PreviewProvider {
-    static var previews: some View {
-        SurvivalKitView()
-    }
-}

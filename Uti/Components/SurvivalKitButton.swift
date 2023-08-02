@@ -11,41 +11,36 @@ struct SurvivalKitButton: View {
     
     let icon: String
     let title: String
-    @State var isSelected = false
+    @Binding var selectedButton: String
     
     var body: some View {
         
         HStack{
             
             Button(action: {
-                isSelected.toggle()
-                print("Rounded Button")
+                selectedButton = title
+                print("Button touched")
             }, label: {
                 HStack{
                     Image(systemName: icon)
-                        .foregroundColor(isSelected ? .white : .color.darkRed)
+                        .font(.system(size: 16))
+                        .foregroundColor(selectedButton == title ? .white : .color.darkRed)
                     Text(title)
-                        .foregroundColor(isSelected ? .white : .color.darkRed)
+                        .font(.system(size: 14))
+                        .foregroundColor(selectedButton == title ? .white : .color.darkRed)
                 }
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(isSelected ? .color.darkRed : .white)
+                        .frame(width: 100, height: 35)
+                        .foregroundColor(selectedButton == title ? .color.darkRed : .white)
+                        
                         
                 )
             })
             
-            
-            
-            
-            
-            
+         
         }
     }
     
-    struct SurvivalKitButton_Previews: PreviewProvider {
-        static var previews: some View {
-            SurvivalKitButton(icon: "cross.fill", title: "health")
-        }
-    }
 }

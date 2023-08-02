@@ -16,7 +16,7 @@ struct ItemView: View {
                .foregroundColor(Color.gray.opacity(0.3))
            
            Image(systemName: "heart.fill")
-                .foregroundColor(.color.darkLightBlue)
+                .foregroundColor(.color.darkRed)
                 .font(.system(size: 28))
            
            ZStack(alignment: .bottomTrailing){
@@ -32,7 +32,7 @@ struct ItemView: View {
                            
                    RoundedRectangle(cornerRadius: 7.0, style: .continuous)
                        .frame(width: 30, height: 30)
-                       .foregroundColor(.color.bege)
+                       .foregroundColor(.white)
                    
                    
                    HStack{
