@@ -39,3 +39,9 @@ struct StateBar: View {
         }
     }
 }
+    
+struct StateBar_Previews: PreviewProvider {
+    static var previews: some View {
+        StateBar(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []), category: .health)
+    }
+}
