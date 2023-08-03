@@ -15,10 +15,7 @@ struct PhaseCycleCircle: View {
         VStack (spacing: 12) {
             ZStack {
                 Circle()
-                    .stroke(
-                        Color.color.bege.opacity(0.42),
-                        lineWidth: 12
-                    )
+                    .strokeBorder(Color.color.bege.opacity(0.42), lineWidth: 12)
                     .frame(width: 84, height: 84)
                 Circle()
                     .trim(from: 0, to: (CGFloat(uti.currentCycleDay)/28))
@@ -28,13 +25,13 @@ struct PhaseCycleCircle: View {
                             lineWidth: 12
                         )
                     )
+                    .padding(6)
                     .frame(width: 84, height: 84)
                     .rotationEffect(.degrees(-90))
                 Text("\(uti.currentCycleDay)/28")
                     .foregroundColor(.white)
                     .font(.system(size: 14, weight: .semibold))
             }
-            .padding(.bottom, 12)
             Text(phaseText())
                 .foregroundColor(.white)
                 .font(.system(size: 14, weight: .semibold))

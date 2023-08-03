@@ -14,17 +14,17 @@ struct StateBar: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 8.13, style: .continuous)
-                .frame(width: 63.0, height: 28.0)
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .frame(width: 64.0, height: 28.0)
                 .foregroundColor(.color.bege).opacity(0.42)
             
-            RoundedRectangle(cornerRadius: 8.13, style: .continuous)
-                .frame(width: (CGFloat(uti.health)/100) * 63.0, height: 28.0)
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .frame(width: (CGFloat(uti.health)/100) * 64.0, height: 28.0)
                 .foregroundColor(uti.health < 40 ? .color.darkLightBlue : .color.lightBlue)
             
             HStack {
                 defineIcon(category: category)
-            }.frame(width: 63.0, height: 28.0)
+            }.frame(width: 64.0, height: 28.0)
         }
     }
     
