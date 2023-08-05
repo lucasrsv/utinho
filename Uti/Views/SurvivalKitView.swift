@@ -8,30 +8,42 @@
 import SwiftUI
 
 struct SurvivalKitView: View {
-    @State private var selectedButton = "health"
+    @State private var currentCategory = Category.health
+    @State private var filteredItems: [Item]
     
+    init() {
+        _filteredItems = State(initialValue: Item.getItems(category: .health))
+    }
+
     var body: some View {
-        
-        VStack{
-            HStack{
-                SurvivalKitButton(icon: "cross.fill", title: "health", selectedButton: $selectedButton)
-                SurvivalKitButton(icon: "fork.knife", title: "nutrition", selectedButton: $selectedButton)
-                SurvivalKitButton(icon: "party.popper.fill", title: "fun", selectedButton: $selectedButton)
+        VStack {
+            Text("Kit de Sobrevivência Uterina")
+                .font(.system(size: 16))
+                .fontWeight(.bold)
+            
+            HStack {
+                SurvivalKitButton(category: Category.health, currentCategory: $currentCategory)
+                SurvivalKitButton(category: Category.nutrition, currentCategory: $currentCategory)
+                SurvivalKitButton(category: Category.leisure, currentCategory: $currentCategory)
             }
             
-            VStack {
-                ForEach(0..<2) { rowIndex in
-                    HStack {
-                        ForEach(0..<4) { _ in
-                            ItemView()
-                        }
-                    }
+            LazyHGrid(rows: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                ForEach(filteredItems) { item in
+                    ItemView(item: item)
                 }
             }
-            
+            .padding(.horizontal, 16)
             
         }
-      
+        .onChange(of: currentCategory) { newCategory in
+            filteredItems = Item.getItems(category: newCategory)
+        }
     }
 }
+
+
+
+
+
+
 

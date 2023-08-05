@@ -207,7 +207,7 @@ class UtiStore: ObservableObject {
         case .avocado:
             uti.health = uti.health + 5
             uti.nutrition = uti.nutrition + 10
-        case .xuxi:
+        case .sushi:
             uti.health = uti.health + 5
             uti.nutrition = uti.nutrition + 10
             uti.leisure = uti.leisure + 10
@@ -240,6 +240,69 @@ class UtiStore: ObservableObject {
                 uti.health = uti.health + 10
             }
         case .absorbentPanties:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
+            // TODO: ajeitar a partir daqui pq eu so copiei e colei
+        case .poll:
+            switch (uti.phase) {
+            case .menstrual:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .folicular:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .fertile:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .luteal:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .pms:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            }
+        case .party:
+            switch (uti.phase) {
+            case .menstrual:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .folicular:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .fertile:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .luteal:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .pms:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            }
+        case .wine:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
+        case .bike:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
+        case .water:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
+        case .tea:
             if (uti.phase == .menstrual) {
                 uti.health = uti.health + 10
             }

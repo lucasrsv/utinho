@@ -6,55 +6,57 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ItemView: View {
+    
+    @State private var isSelected = false
+    let item: Item
+    
     var body: some View {
         ZStack{
-                   
-           Circle()
-               .frame(width: 65, height: 65)
-               .foregroundColor(Color.gray.opacity(0.3))
-           
-           Image(systemName: "heart.fill")
+            
+            Circle()
+                .frame(width: 65, height: 65)
+                .foregroundColor(isSelected ? .color.darkRed : Color.gray.opacity(0.3))
+            
+            Image(item.iconPath)
+                .frame(width: 28, height: 28)
                 .foregroundColor(.color.darkRed)
-                .font(.system(size: 28))
-           
-           ZStack(alignment: .bottomTrailing){
-               RoundedRectangle(cornerRadius: 1)
-                   .frame(width: 79, height:83)
-                   .foregroundColor(Color.gray.opacity(0))
-               
-               Circle()
-                   .frame(width: 65, height: 65)
-                   .foregroundColor(Color.gray.opacity(0))
-               
-               ZStack(alignment: .center){
-                           
-                   RoundedRectangle(cornerRadius: 7.0, style: .continuous)
-                       .frame(width: 30, height: 30)
-                       .foregroundColor(.white)
-                   
-                   
-                   HStack{
-                       Text("1")
-                           .foregroundColor(.color.darkRed)
-                           .font(.system(size: 12))
-                       Image(systemName: "drop.fill")
-                           .foregroundColor(.color.darkRed)
-                           .font(.system(size: 12))
-                   }
+                .onTapGesture{
+                    isSelected.toggle()
+                    print("Clicou no item: \(item.name)")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+                        isSelected = false
+                    }
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 }
-               
-
-           }
-           
-       }
-        
-    }
-}
-
-struct ItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemView()
+            
+            ZStack(alignment: .bottomTrailing){
+                RoundedRectangle(cornerRadius: 1)
+                    .frame(width: 79, height:83)
+                    .foregroundColor(Color.gray.opacity(0))
+                
+                Circle()
+                    .frame(width: 65, height: 65)
+                    .foregroundColor(Color.gray.opacity(0))
+                
+                ZStack(alignment: .center){
+                    
+                    RoundedRectangle(cornerRadius: 7.0, style: .continuous)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
+                    
+                    HStack{
+                        Text("1")
+                            .foregroundColor(.color.darkRed)
+                            .font(.system(size: 12))
+                        Image(systemName: "drop.fill")
+                            .foregroundColor(.color.darkRed)
+                            .font(.system(size: 12))
+                    }
+                }
+            }
+        }
     }
 }

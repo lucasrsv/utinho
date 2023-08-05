@@ -6,41 +6,60 @@
 //
 
 import SwiftUI
-
 struct SurvivalKitButton: View {
     
-    let icon: String
-    let title: String
-    @Binding var selectedButton: String
+    let category: Category
+    @Binding var currentCategory: Category
     
     var body: some View {
-        
         HStack{
-            
             Button(action: {
-                selectedButton = title
+                currentCategory = category
                 print("Button touched")
             }, label: {
-                HStack{
-                    Image(systemName: icon)
-                        .font(.system(size: 16))
-                        .foregroundColor(selectedButton == title ? .white : .color.darkRed)
-                    Text(title)
-                        .font(.system(size: 14))
-                        .foregroundColor(selectedButton == title ? .white : .color.darkRed)
+                ZStack {
+                    // button border
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(currentCategory == category ? .clear : .color.darkRed, lineWidth: 2)
+                    // button background
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundColor(currentCategory == category ? .color.darkRed : .white)
+                    
+                    HStack {
+                        getIcon()
+                            .font(.system(size: 16))
+                            .foregroundColor(currentCategory == category ? .white : .color.darkRed)
+                        getTitle()
+                            .font(.system(size: 14))
+                            .foregroundColor(currentCategory == category ? .white : .color.darkRed)
+                    }
                 }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(width: 100, height: 35)
-                        .foregroundColor(selectedButton == title ? .color.darkRed : .white)
-                        
-                        
-                )
+                .frame(width: 100, height: 36)
             })
-            
-         
+        }
+    }
+    
+    func getIcon() -> Image {
+        switch category {
+        case .leisure:
+            return Image(systemName: "party.popper.fill")
+        case .health:
+            return Image(systemName: "cross.fill")
+        case .nutrition:
+            return Image(systemName: "fork.knife")
+        }
+    }
+    
+    func getTitle() -> Text {
+        switch category {
+        case .leisure:
+            return Text("leisure")
+        case .health:
+            return Text("health")
+        case .nutrition:
+            return Text("nutrition")
         }
     }
     
 }
+

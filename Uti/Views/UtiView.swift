@@ -21,9 +21,9 @@ struct UtiView: View {
                     .foregroundColor(.color.darkRed)
             }
             .padding(.horizontal, 4.0)
-                .frame(width: 345, height: 110)
-                .background(.white)
-                .cornerRadius(20.0)
+            .frame(width: 345, height: 110)
+            .background(.white)
+            .cornerRadius(20.0)
             
             Button("Kit de sobrevivencia uterina"){
                 showingSheet.toggle()
@@ -35,7 +35,6 @@ struct UtiView: View {
                 }
                 .presentationDetents([.fraction(0.35)])
             }
-            
             Image(changeImage(phase: uti.phase))
                 .resizable()
                 .scaledToFit()
@@ -46,10 +45,6 @@ struct UtiView: View {
                 .onAppear {
                     self.bouncing.toggle()
                 }
-            
-            
-               
-          
         }
     }
     
