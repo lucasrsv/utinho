@@ -30,7 +30,8 @@ struct SurvivalKitButton: View {
                             .font(.system(size: 16))
                             .foregroundColor(currentCategory == category ? .white : .color.darkRed)
                         getTitle()
-                            .font(.system(size: 14))
+                            .font(.system(size: 16))
+                            .fontWeight(.medium)
                             .foregroundColor(currentCategory == category ? .white : .color.darkRed)
                     }
                 }

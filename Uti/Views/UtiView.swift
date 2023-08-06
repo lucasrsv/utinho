@@ -25,16 +25,6 @@ struct UtiView: View {
             .background(.white)
             .cornerRadius(20.0)
             
-            Button("Kit de sobrevivencia uterina"){
-                showingSheet.toggle()
-            }
-            .buttonStyle(.borderedProminent)
-            .sheet(isPresented: $showingSheet) {
-                VStack{
-                    SurvivalKitView()
-                }
-                .presentationDetents([.fraction(0.35)])
-            }
             Image(changeImage(phase: uti.phase))
                 .resizable()
                 .scaledToFit()
@@ -45,6 +35,25 @@ struct UtiView: View {
                 .onAppear {
                     self.bouncing.toggle()
                 }
+            
+            Button("Kit de Sobrevivência Uterina"){
+                showingSheet.toggle()
+            }
+            .buttonStyle(.borderedProminent)
+            .accentColor(.white)
+            .foregroundColor(Color.color.darkRed)
+            .fontWeight(.medium)
+            .sheet(isPresented: $showingSheet) {
+                VStack{
+                    SurvivalKitView()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // Ocupa todo o espaço disponível
+                .edgesIgnoringSafeArea(.all)
+                .presentationDetents([.fraction(0.40)])
+                .presentationCornerRadius(32)
+                .presentationBackground(.white)
+                
+            }
         }
     }
     

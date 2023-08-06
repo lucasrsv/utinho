@@ -47,14 +47,18 @@ struct ItemView: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(.white)
                     
-                    HStack{
-                        Text("1")
-                            .foregroundColor(.color.darkRed)
-                            .font(.system(size: 12))
-                        Image(systemName: "drop.fill")
-                            .foregroundColor(.color.darkRed)
-                            .font(.system(size: 12))
-                    }
+                    HStack(spacing: 1) {
+                        //Text("\(item.amount)")
+                        Image(systemName: "infinity")
+                                .foregroundColor(.color.darkRed)
+                                .font(.system(size: 10))
+                                
+                            Image(systemName: "drop.fill")
+                                .foregroundColor(.color.darkRed)
+                                .font(.system(size: 10))
+                        }
+                        .frame(width: 30, height: 30)
+                        .padding(4)
                 }
             }
         }
