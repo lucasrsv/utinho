@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "PUTO_FELIZ.png",
+      "filename" : "pissedHappy.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "PUTO_FELIZ@2x.png",
+      "filename" : "pissedHappy@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "PUTO_FELIZ@3x.png",
+      "filename" : "pissedHappy@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
