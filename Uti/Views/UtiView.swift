@@ -17,17 +17,16 @@ struct UtiView: View {
             VStack {
                 Text(changeText(phase:uti.phase))
                     .bold()
-                    .foregroundColor(.color.darkRed)
+                    .foregroundColor(.darkRed)
             }
             .padding(.horizontal, 4.0)
                 .frame(width: 345, height: 110)
                 .background(.white)
                 .cornerRadius(20.0)
             VStack{
-                Image(changeImage(state: uti.state))
+                Image(changeImage(state: UtiState.sleepy))
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 330, height: 330)
                     .foregroundColor(.accentColor)
                     .offset(y: bouncing ? 30 : -30)
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
@@ -35,7 +34,7 @@ struct UtiView: View {
                         self.bouncing.toggle()
                     }
                 Ellipse()
-                    .foregroundColor(.color.strongRed)
+                    .foregroundColor(.strongRed)
                     .blur(radius: 20)
                     .frame(width: 150, height: 40)
                     .scaleEffect(bouncing ? 0.7: 1.0)
