@@ -13,6 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         HStack {
+            Text("hello")
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
