@@ -15,12 +15,12 @@ struct PhaseCycleCircle: View {
         VStack (spacing: 12) {
             ZStack {
                 Circle()
-                    .strokeBorder(Color.color.bege.opacity(0.42), lineWidth: 12)
+                    .strokeBorder(Color.beige, lineWidth: 12)
                     .frame(width: 84, height: 84)
                 Circle()
                     .trim(from: 0, to: (CGFloat(uti.currentCycleDay)/28))
                     .stroke(
-                        Color.color.lightBlue,
+                        Color.lightBlue,
                         style: StrokeStyle (
                             lineWidth: 12
                         )
