@@ -20,14 +20,12 @@ class UtiStore: ObservableObject {
         let task = Task<Uti, Error> {
                let fileURL = try Self.fileURL()
                let data = try Data(contentsOf: fileURL)
-               print("Data:", data) // Debugging statement
                let decoder = JSONDecoder()
                do {
                    let uti = try decoder.decode(Uti.self, from: data)
-                   print("Decoded Uti:", uti) // Debugging statement
                    return uti
                } catch {
-                   print("Decoding error:", error) // Debugging statement
+                   // TODO: handle this error
                    throw error
                }
            }
@@ -37,13 +35,18 @@ class UtiStore: ObservableObject {
         }
     }
     
-    func save(uti: Uti) async throws {
+    func save() async {
         let task = Task {
             let data = try JSONEncoder().encode(uti)
             let outfile = try Self.fileURL()
             try data.write(to: outfile)
         }
-        _ = try await task.value
+        do {
+            _ = try await task.value
+        } catch {
+            // TODO: handle this error
+        }
+
     }
     
     func updateUtiPhase(elapsedTimeH: Int) { // 4 hours equals 1 day
@@ -57,19 +60,17 @@ class UtiStore: ObservableObject {
         } else {
             uti.phase = .luteal
         }
-        print(uti.phase)
     }
     
     func updateUtiStatistics(hoursSpent: Int) {
         uti.health = uti.health - (2 * hoursSpent)
         uti.leisure = uti.leisure - (3 * hoursSpent)
         uti.nutrition = uti.nutrition - (5 * hoursSpent)
-        print(uti.health)
     }
     
     func updateUtiState() {
         if (uti.illness != .no) {
-            uti.state = .sick
+            uti.state = .sickHpv
         } else if (uti.phase == .menstrual) {
             if (uti.health > 80) {
                 uti.state = .homelyHappy
@@ -99,7 +100,6 @@ class UtiStore: ObservableObject {
                 uti.state = .pissedHappy
             }
         }
-        print(uti.state)
     }
     
     func giveUtiItem(item: Item) {

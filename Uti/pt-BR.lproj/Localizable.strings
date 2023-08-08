@@ -1,0 +1,63 @@
+/* 
+  Localizable.strings
+  Uti
+
+  Created by lrsv on 07/08/23.
+ 
+*/
+
+"dialogue_homelySad_1" = "Melhor ficar em casa...";
+"dialogue_homelySad_2" = "Tô muito afim de sair não  =/";
+"dialogue_homelySad_3" = "Vou ficar em casa e me cuidar!";
+"dialogue_homelySad_4" = "Hoje é casa, comida e cama!";
+"dialogue_homelyHappy_1" = "Hoje eu quero e paz e sossego.";
+"dialogue_homelyHappy_2" = "Hoje eu só quero série, cama e comidinhas.";
+"dialogue_homelyHappy_3" = "Vamo de pipoquinha e maratona hoje?";
+"dialogue_homelyHappy_4" = "Nem me chame pra sair, hoje vou ser feliz em casa!!";
+"dialogue_homelyHappy_5" = "Minha casa é meu reino e hoje é meu dia de reinado.";
+"dialogue_hungry_1" = "O que me faria feliz agora seria um bom prato de comida!";
+"dialogue_hungry_2" = "Tô na minha porque tô com fome.";
+"dialogue_hungry_3" = "Muita fome!";
+"dialogue_hungry_4" = "Eu tô com tanta fome que poderia ser um estômago! ";
+"dialogue_hungry_5" = "Já tá na hora do lanche?";
+"dialogue_hungry_6" = "Garfo e faca são os equipamentos perfeitos pra o meu esporte favorito.";
+"dialogue_hungry_7" = "Sabe que horas são? É hora de comer!";
+"dialogue_sleepy_1" = "Agora é cama!";
+"dialogue_sleepy_2" = "Vou sonhar com os anjinhos *.*";
+"dialogue_sleepy_3" = "Agora é a vez do meu sono de beleza!";
+"dialogue_sleepy_4" = "Hora do soninho da beleza!";
+"dialogue_sleepy_5" = "Direto para os braços de Morfeu!";
+"dialogue_happy_1" = "Hoje é só alegria!";
+"dialogue_happy_2" = "Viva la vida!";
+"dialogue_happy_3" = "Nada melhor que um dia iluminado de felicidade.";
+"dialogue_happy_4" = "Estou tão feliz que perdi a noção do tempo. Que dia é hoje?";
+"dialogue_happy_5" = "Bom dia, família!!!";
+"dialogue_sad_1" = "Hoje eu estou tristinho...";
+"dialogue_sad_2" = "Estou triste, mas vai melhorar!";
+"dialogue_sad_3" = "Tô me sentindo tão xoxo, capenga e pra baixo hoje...";
+"dialogue_sad_4" = "Pipipipipi... hoje estou tão triste...";
+"dialogue_bodybuilder_1" = "Contra o tédio, o melhor é malhar.";
+"dialogue_bodybuilder_2" = "Malhar pra ficar saudável!";
+"dialogue_bodybuilder_3" = "Nada de pensar muito, agora é hora de se mexer!";
+"dialogue_bodybuilder_4" = "Levanta do sofá e vai malhar!";
+"dialogue_bodybuilder_5" = "O de hoje tá pago!";
+"dialogue_bodybuilder_6" = "Olha minhas tromponas!";
+"dialogue_sassyGlass_1" = "Já coloquei os óculos escuros, agora é hora de ir pra festa!";
+"dialogue_sassyGlass_2" = "Agora não tem sol que me pare!";
+"dialogue_sassyGlass_3" = "Com esse óculos fiquei tudo, vamo a cair na farra!";
+"dialogue_sassyGlass_4" = "Tô na área, se derrubar é pênalti!";
+"dialogue_sassyTattoo_1" = "Já fiz minha pintura de guerra, mas eu vou mesmo é pra festa!";
+"dialogue_sassyTattoo_2" = "Hora de espalhar alegria e felicidade com a minha presença!";
+"dialogue_pissed_1" = "Tô quase explodindo, acho melhor ir dormir...";
+"dialogue_pissed_2" = "Olha, melhor tu me deixar dormir antes que eu exploda!";
+"dialogue_pissed_3" = "Perdi o meu bom humor e não tô com paciência de ir procurar";
+"dialogue_pissed_4" = "É melhor eu ficar na minha, sem paciência!";
+"dialogue_pissed_5" = "É melhor eu ficar na minha, antes que saia xingando alguém!";
+"dialogue_pissed_6" = "@!#$!@$$!@!";
+"dialogue_pissed_7" = "Você é grande, mas não é dois, eu sou pequeno, mas não sou metade!";
+"dialogue_pissed_8" = "Ta olhando o quê, ô pastel?! Cara feia pra mim é fome!";
+"dialogue_pissedHappy_1" = "Vou tirar férias e ser feliz.";
+"dialogue_pissedHappy_2" = "Ainda bem que minhas férias tão chegando...";
+"dialogue_pissedHappy_3" = "Sem paciência pra pessoas chatas, eu vou é ser feliz.";
+"dialogue_pissedHappy_4" = "Não testa minha paciência que meu pavio é curto.";
+"dialogue_pissedHappy_5" = "Nada melhor pra fazer senão ser feliz.";

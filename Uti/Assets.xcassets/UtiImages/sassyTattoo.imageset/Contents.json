@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bodybuilder.png",
+      "filename" : "sassyTattoo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bodybuilder@2x.png",
+      "filename" : "sassyTattoo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bodybuilder@3x.png",
+      "filename" : "sassyTattoo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -18,11 +18,11 @@ struct ItemView: View {
             
             Circle()
                 .frame(width: 65, height: 65)
-                .foregroundColor(isSelected ? .color.darkRed : Color.gray.opacity(0.3))
+                .foregroundColor(isSelected ? .darkRed : Color.gray.opacity(0.3))
             
             Image(item.iconPath)
                 .frame(width: 28, height: 28)
-                .foregroundColor(.color.darkRed)
+                .foregroundColor(.darkRed)
                 .onTapGesture{
                     isSelected.toggle()
                     print("Clicou no item: \(item.name)")
@@ -50,11 +50,11 @@ struct ItemView: View {
                     HStack(spacing: 1) {
                         //Text("\(item.amount)")
                         Image(systemName: "infinity")
-                                .foregroundColor(.color.darkRed)
+                                .foregroundColor(.darkRed)
                                 .font(.system(size: 10))
                                 
                             Image(systemName: "drop.fill")
-                                .foregroundColor(.color.darkRed)
+                                .foregroundColor(.darkRed)
                                 .font(.system(size: 10))
                         }
                         .frame(width: 30, height: 30)

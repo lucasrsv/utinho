@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bodybuilder.png",
+      "filename" : "pissedHappy.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bodybuilder@2x.png",
+      "filename" : "pissedHappy@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bodybuilder@3x.png",
+      "filename" : "pissedHappy@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

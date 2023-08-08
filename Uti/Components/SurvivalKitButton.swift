@@ -20,19 +20,19 @@ struct SurvivalKitButton: View {
                 ZStack {
                     // button border
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(currentCategory == category ? .clear : .color.darkRed, lineWidth: 2)
+                        .stroke(currentCategory == category ? .clear : .darkRed, lineWidth: 2)
                     // button background
                     RoundedRectangle(cornerRadius: 12)
-                        .foregroundColor(currentCategory == category ? .color.darkRed : .white)
+                        .foregroundColor(currentCategory == category ? .darkRed : .white)
                     
                     HStack {
                         getIcon()
                             .font(.system(size: 16))
-                            .foregroundColor(currentCategory == category ? .white : .color.darkRed)
+                            .foregroundColor(currentCategory == category ? .white : .darkRed)
                         getTitle()
                             .font(.system(size: 16))
                             .fontWeight(.medium)
-                            .foregroundColor(currentCategory == category ? .white : .color.darkRed)
+                            .foregroundColor(currentCategory == category ? .white : .darkRed)
                     }
                 }
                 .frame(width: 100, height: 36)
