@@ -31,7 +31,8 @@ struct ContentView: View {
                     }
                     .padding(.bottom, 32)
                 }
-                UtiView(uti: utiStore.uti)
+                UtiView()
+                    .environmentObject(utiStore)
             }
         }
         .frame(maxHeight: .infinity, alignment: .top)

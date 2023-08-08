@@ -307,7 +307,6 @@ class UtiStore: ObservableObject {
                 uti.health = uti.health + 10
             }
         }
-        
         // TODO: this shouldn't be needed
         if (uti.health > 100) {
             uti.health = 100
@@ -321,5 +320,7 @@ class UtiStore: ObservableObject {
         if (uti.nutrition > 100) {
             uti.nutrition = 100
         }
+        
+
     }
 }

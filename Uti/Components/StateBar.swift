@@ -19,8 +19,8 @@ struct StateBar: View {
                 .foregroundColor(.beige).opacity(0.42)
             
             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .frame(width: (CGFloat(uti.health)/100) * 64.0, height: 28.0)
-                .foregroundColor(uti.health < 40 ? .blue : .lightBlue)
+                .frame(width: (CGFloat(getCurrentValue())/100) * 64.0, height: 28.0)
+                .foregroundColor(getCurrentValue() < 40 ? .blue : .lightBlue)
             
             HStack {
                 defineIcon(category: category)
@@ -38,10 +38,23 @@ struct StateBar: View {
             return .images.foodIcon
         }
     }
-}
     
-struct StateBar_Previews: PreviewProvider {
-    static var previews: some View {
-        StateBar(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 30, nutrition: 100, energy: 100, blood: 100, items: []), category: .health)
+    func getCurrentValue() -> Int {
+        switch category {
+        case .health:
+            return uti.health
+        case .leisure:
+            return uti.leisure
+        case .nutrition:
+            return uti.nutrition
+        }
     }
 }
+
+    
+    
+//struct StateBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StateBar(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 30, nutrition: 100, energy: 100, blood: 100, items: []), category: .health)
+//    }
+//}

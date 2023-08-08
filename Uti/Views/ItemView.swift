@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct ItemView: View {
-    
+    @EnvironmentObject private var utiStore: UtiStore
     @State private var isSelected = false
     let item: Item
     
@@ -24,6 +24,7 @@ struct ItemView: View {
                 .frame(width: 28, height: 28)
                 .foregroundColor(.darkRed)
                 .onTapGesture{
+                    utiStore.giveUtiItem(item: item)
                     isSelected.toggle()
                     print("Clicou no item: \(item.name)")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {

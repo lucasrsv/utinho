@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 
 struct UtiView: View {
+    @EnvironmentObject private var utiStore: UtiStore
     @State private var bouncing = true
     @State var showingSheet = false
-    let uti: Uti
     
     var body: some View {
         VStack {
             VStack {
-                Text(LocalizedStringKey(getLocalizable(state:uti.state)))
+                Text(LocalizedStringKey(getLocalizable(state:utiStore.uti.state)))
                     .bold()
                     .foregroundColor(.darkRed)
             }
@@ -25,7 +25,7 @@ struct UtiView: View {
             .background(.white)
             .cornerRadius(20.0)
             VStack {
-                Image(changeImage(state: uti.state))
+                Image(changeImage(state: utiStore.uti.state))
                     .resizable()
                     .scaledToFit()
                     .frame(width: 330, height: 330)
@@ -53,6 +53,7 @@ struct UtiView: View {
             .sheet(isPresented: $showingSheet) {
                 VStack{
                     SurvivalKitView()
+                        .environmentObject(utiStore)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ocupa todo o espaço disponível
                 .edgesIgnoringSafeArea(.all)
@@ -101,9 +102,9 @@ struct UtiView: View {
         return state.rawValue
     }
     
-    struct UtiView_Previews: PreviewProvider {
-        static var previews: some View {
-            UtiView(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []))
-        }
-    }
+//    struct UtiView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            UtiView(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []))
+//        }
+//    }
 }
