@@ -20,7 +20,7 @@ struct UtiView: View {
                     .foregroundColor(.darkRed)
             }
             .padding(.horizontal, 4.0)
-            .frame(width: 268, height: 110)
+            .frame(width: 304, height: 110)
             .background(.white)
             .cornerRadius(20.0)
             VStack{
