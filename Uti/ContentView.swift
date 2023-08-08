@@ -34,6 +34,9 @@ struct ContentView: View {
                 UtiView(uti: utiStore.uti)
             }
         }
+        .onAppear {
+            timerManager.setup(utiStore: utiStore)
+        }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding(.all, 20)
         .background(

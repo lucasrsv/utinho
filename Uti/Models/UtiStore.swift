@@ -9,7 +9,13 @@ import Foundation
 import SwiftUI
 
 class UtiStore: ObservableObject {
-    @Published var uti: Uti = Uti(currentCycleDay: 1, phase: .folicular, state: .homelyHappy, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: [])
+    @Published var uti: Uti = Uti(currentCycleDay: 1, phase: .folicular, state: .homelyHappy, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []) {
+        didSet {
+            Task {
+                await save()
+            }
+        }
+    }
     
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
