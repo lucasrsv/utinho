@@ -14,9 +14,6 @@ struct ContentView: View {
     var body: some View {
         HStack {
             VStack {
-                Button("test") {
-                    utiStore.updateUtiStatistics(hoursSpent: 4)
-                }
                 VStack(alignment: .leading) {
                     HStack {
                         ZStack {
