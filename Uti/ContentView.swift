@@ -14,6 +14,9 @@ struct ContentView: View {
     var body: some View {
         HStack {
             VStack {
+                Button("test") {
+                    utiStore.updateUtiStatistics(hoursSpent: 4)
+                }
                 VStack(alignment: .leading) {
                     HStack {
                         ZStack {
@@ -33,6 +36,9 @@ struct ContentView: View {
                 }
                 UtiView(uti: utiStore.uti)
             }
+        }
+        .onAppear {
+            timerManager.setup(utiStore: utiStore)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding(.all, 20)
