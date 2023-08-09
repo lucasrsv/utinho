@@ -59,36 +59,37 @@ extension Item{
         switch category {
         case .leisure:
             return([
-                Item(name: .games, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .book, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .spaDay, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 5, .pms: 10]),
-                Item(name: .poll, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
-                Item(name: .party, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
-                Item(name: .wine, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
                 Item(name: .bike, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
-                Item(name: .netflix, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
+                Item(name: .netflix, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .wine, type: .leisure, iconPath: "wine", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .book, type: .leisure, iconPath: "book", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .spaDay, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 5, .pms: 10]),
+                Item(name: .poll, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .party, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .games, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
             ])
         case .health:
             return([
-                Item(name: .pill, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .condom, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .absorbentPanties, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .collector, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .absorbent, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .contraceptive, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .warmCompress, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .medicineColic, type: .health, iconPath: "Absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10])
+                Item(name: .medicineColic, type: .health, iconPath: "medicineColic", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .condom, type: .health, iconPath: "condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .absorbentPanties, type: .health, iconPath: "absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .collector, type: .health, iconPath: "collector", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .absorbent, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .contraceptive, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .warmCompress, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .pill, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10])
+                
             ])
         case .nutrition:
             return([
-                Item(name: .water, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 10]),
-                Item(name: .tea, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 10]),
-                Item(name: .cupNoodles, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .avocado, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .chocolate, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .banana, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .sushi, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .coffe, type: .nutrition, iconPath: "Condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
+                Item(name: .water, type: .nutrition, iconPath: "water", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 10]),
+                Item(name: .chocolate, type: .nutrition, iconPath: "chocolate", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .banana, type: .nutrition, iconPath: "banana", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .sushi, type: .nutrition, iconPath: "sushi", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .coffe, type: .nutrition, iconPath: "coffee", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .tea, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 10]),
+                Item(name: .cupNoodles, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .avocado, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
             ])
         }
     }

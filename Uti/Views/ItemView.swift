@@ -18,7 +18,7 @@ struct ItemView: View {
             
             Circle()
                 .frame(width: 65, height: 65)
-                .foregroundColor(isSelected ? .darkRed : Color.gray.opacity(0.3))
+                .foregroundColor(isSelected ? .darkRed : Color.gray.opacity(0.15))
             
             Image(item.iconPath)
                 .frame(width: 28, height: 28)

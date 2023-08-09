@@ -21,16 +21,16 @@ struct UtiView: View {
                     .foregroundColor(.darkRed)
             }
             .padding(.horizontal, 4.0)
-            .frame(width: 304, height: 110)
+            .frame(minWidth: 100, idealWidth: 330, maxWidth: 330, minHeight: 100, idealHeight: 110, maxHeight: 110)
             .background(.white)
             .cornerRadius(20.0)
             VStack {
                 Image(changeImage(state: utiStore.uti.state))
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 330, height: 330)
+                    .frame(maxHeight: .infinity)
                     .foregroundColor(.accentColor)
-                    .offset(y: bouncing ? 30 : -30)
+                    .offset(y: bouncing ? 16 : -16)
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
                     .onAppear {
                         self.bouncing.toggle()
@@ -46,9 +46,7 @@ struct UtiView: View {
             Button("Kit de Sobrevivência Uterina") {
                 showingSheet.toggle()
             }
-            .buttonStyle(.borderedProminent)
-            .accentColor(.white)
-            .foregroundColor(.darkRed)
+            .buttonStyle(CustomButtonStyle())
             .fontWeight(.medium)
             .sheet(isPresented: $showingSheet) {
                 VStack{
@@ -57,9 +55,10 @@ struct UtiView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ocupa todo o espaço disponível
                 .edgesIgnoringSafeArea(.all)
-                .presentationDetents([.fraction(0.40)])
+                .presentationDetents([.fraction(0.38)])
                 .presentationCornerRadius(32)
                 .presentationBackground(.white)
+                
             }
         }
     }
@@ -102,9 +101,28 @@ struct UtiView: View {
         return state.rawValue
     }
     
+    struct CustomButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.white, lineWidth: 2) // Borda branca
+                        .background(Color.clear) // Fundo transparente
+                )
+                .foregroundColor(.white)
+                .accentColor(.white)
+        }
+    }
+    
+    
+    
+    
+
 //    struct UtiView_Previews: PreviewProvider {
 //        static var previews: some View {
 //            UtiView(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []))
 //        }
 //    }
 }
+

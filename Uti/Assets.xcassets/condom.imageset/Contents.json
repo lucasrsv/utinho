@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "camisinha1 2.png",
+      "filename" : "condom.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "camisinha1 2@2x.png",
+      "filename" : "condom@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "camisinha1 2@3x.png",
+      "filename" : "condom@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
