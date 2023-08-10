@@ -36,6 +36,7 @@ struct ContentView: View {
             
         }
         .onAppear {
+            print("called timermanag=P")
             timerManager.setup(utiStore: utiStore)
         }
         .frame(maxHeight: .infinity, alignment: .top)

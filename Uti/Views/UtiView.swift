@@ -35,7 +35,9 @@ struct UtiView: View {
                     .offset(y: bouncing ? 16 : -16)
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
                     .onAppear {
-                        self.bouncing.toggle()
+                        withAnimation(nil) {
+                            self.bouncing.toggle()
+                        }
                     }
                 Ellipse()
                     .foregroundColor(.strongRed)
