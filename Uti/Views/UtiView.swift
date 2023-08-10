@@ -12,6 +12,8 @@ struct UtiView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @State private var bouncing = true
     @State var showingSheet = false
+    @State private var sheetHeight: CGFloat = .zero
+    
     
     var body: some View {
         VStack {
@@ -19,16 +21,16 @@ struct UtiView: View {
                 Text(LocalizedStringKey(getLocalizable(state:utiStore.uti.state)))
                     .bold()
                     .foregroundColor(.darkRed)
+                    .padding(.horizontal, 8)
             }
             .padding(.horizontal, 4.0)
-            .frame(minWidth: 100, idealWidth: 330, maxWidth: 330, minHeight: 100, idealHeight: 110, maxHeight: 110)
+            .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
             .background(.white)
             .cornerRadius(20.0)
             VStack {
                 Image(changeImage(state: utiStore.uti.state))
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: .infinity)
                     .foregroundColor(.accentColor)
                     .offset(y: bouncing ? 16 : -16)
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
@@ -42,10 +44,12 @@ struct UtiView: View {
                     .scaleEffect(bouncing ? 0.7: 1.0)
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
             }
-
+            
             Button("Kit de Sobrevivência Uterina") {
                 showingSheet.toggle()
             }
+            .frame(maxHeight: 100)
+            .multilineTextAlignment(.center)
             .buttonStyle(CustomButtonStyle())
             .fontWeight(.medium)
             .sheet(isPresented: $showingSheet) {
@@ -53,12 +57,18 @@ struct UtiView: View {
                     SurvivalKitView()
                         .environmentObject(utiStore)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity) // Ocupa todo o espaço disponível
                 .edgesIgnoringSafeArea(.all)
-                .presentationDetents([.fraction(0.38)])
                 .presentationCornerRadius(32)
                 .presentationBackground(.white)
-                
+                .overlay {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
+                    }
+                }
+                .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
+                    sheetHeight = newHeight
+                }
+                .presentationDetents([.height(sheetHeight)])
             }
         }
     }
@@ -115,14 +125,23 @@ struct UtiView: View {
         }
     }
     
+    struct SheetKitPreferenceKey: PreferenceKey {
+        static var defaultValue: CGFloat = .zero
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+            value = nextValue()
+        }
+    }
     
-    
-    
-
-//    struct UtiView_Previews: PreviewProvider {
-//        static var previews: some View {
-//            UtiView(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []))
-//        }
-//    }
+    struct UtiView_Previews: PreviewProvider {
+        static func getUtiStore() -> UtiStore {
+            let utiStore: UtiStore = UtiStore()
+            utiStore.uti = Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: [])
+            return utiStore
+        }
+        static var previews: some View {
+            UtiView()
+                .environmentObject(getUtiStore())
+        }
+    }
 }
 

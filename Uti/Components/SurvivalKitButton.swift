@@ -15,7 +15,6 @@ struct SurvivalKitButton: View {
         HStack{
             Button(action: {
                 currentCategory = category
-                print("Button touched")
             }, label: {
                 ZStack {
                     // button border
