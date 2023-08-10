@@ -59,10 +59,10 @@ extension Item{
         switch category {
         case .leisure:
             return([
-                Item(name: .bike, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
-                Item(name: .netflix, type: .leisure, iconPath: "Party Icon", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
                 Item(name: .wine, type: .leisure, iconPath: "wine", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
                 Item(name: .book, type: .leisure, iconPath: "book", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .party, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .games, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
                 Item(name: .spaDay, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 5, .pms: 10]),
                 Item(name: .poll, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
                 Item(name: .party, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
