@@ -19,7 +19,7 @@ struct UtiApp: App {
                 .task {
                     do {
                         if (isFirstTime) {
-                            try await utiStore.save()
+                            await utiStore.save()
                             isFirstTime = false
                         }
                         try await utiStore.load()

@@ -11,6 +11,9 @@
 		5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC32A390889008F21E5 /* StateBar.swift */; };
 		5B2FFDC92A390993008F21E5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC82A390993008F21E5 /* Image.swift */; };
 		5BA8EBC72A6DB27200B5B6FA /* PhaseCycleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */; };
+		9404FDA82A7839240000B7BD /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA72A7839240000B7BD /* ItemView.swift */; };
+		9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */; };
+		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EB6CCCB82A8171F700C072FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB6CCCBA2A8171F700C072FE /* Localizable.strings */; };
 		EB98B6D72A7D43560004513A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98B6D62A7D43560004513A /* Color.swift */; };
@@ -35,6 +38,9 @@
 		5B2FFDC32A390889008F21E5 /* StateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBar.swift; sourceTree = "<group>"; };
 		5B2FFDC82A390993008F21E5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseCycleCircle.swift; sourceTree = "<group>"; };
+		9404FDA72A7839240000B7BD /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitView.swift; sourceTree = "<group>"; };
+		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EB6CCCB92A8171F700C072FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EB6CCCBB2A81721500C072FE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -67,13 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B2FFDC52A390976008F21E5 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		EB98B6D42A7D42DE0004513A /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,14 +130,13 @@
 			isa = PBXGroup;
 			children = (
 				EB98B6D42A7D42DE0004513A /* UI */,
-				5B2FFDC52A390976008F21E5 /* Extensions */,
 				EBAEA62D2A375472004BF7E9 /* Models */,
 				EBAEA62C2A375466004BF7E9 /* ViewModels */,
 				EBAEA62B2A37545F004BF7E9 /* Views */,
 				EBAEA62A2A375441004BF7E9 /* Components */,
 				EB3AA1382A3F408900110B11 /* TimerManager.swift */,
-				EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */,
 				EBAEA61E2A37540A004BF7E9 /* ContentView.swift */,
+				EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */,
 				EBAEA6202A37540B004BF7E9 /* Assets.xcassets */,
 				EB6CCCBA2A8171F700C072FE /* Localizable.strings */,
 				EBAEA6222A37540B004BF7E9 /* Preview Content */,
@@ -159,6 +157,7 @@
 			children = (
 				EBAEA63A2A38BA68004BF7E9 /* Component.swift */,
 				5B2FFDC32A390889008F21E5 /* StateBar.swift */,
+				9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */,
 				5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */,
 			);
 			path = Components;
@@ -169,6 +168,8 @@
 			children = (
 				EBAEA6382A38BA60004BF7E9 /* View.swift */,
 				5B1CCCA42A49D11500BD9330 /* UtiView.swift */,
+				9404FDA72A7839240000B7BD /* ItemView.swift */,
+				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +271,7 @@
 				EB98B6DD2A7D64200004513A /* Typography.swift in Sources */,
 				EB98B6D92A7D62E70004513A /* Spacing.swift in Sources */,
 				5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */,
+				9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
 				5B2FFDC92A390993008F21E5 /* Image.swift in Sources */,
 				EBAEA62F2A3756B0004BF7E9 /* Uti.swift in Sources */,
@@ -277,8 +279,10 @@
 				EBAEA6352A38B531004BF7E9 /* UtiStore.swift in Sources */,
 				5BA8EBC72A6DB27200B5B6FA /* PhaseCycleCircle.swift in Sources */,
 				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
+				9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
+				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
 				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
 				EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */,
 			);
@@ -423,7 +427,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Uti/Preview Content\"";
-				DEVELOPMENT_TEAM = 9FWLTGWA8V;
+				DEVELOPMENT_TEAM = 38JDBWN7B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -452,7 +456,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Uti/Preview Content\"";
-				DEVELOPMENT_TEAM = 9FWLTGWA8V;
+				DEVELOPMENT_TEAM = 38JDBWN7B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

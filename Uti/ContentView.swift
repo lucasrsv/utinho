@@ -12,7 +12,7 @@ struct ContentView: View {
     @StateObject private var timerManager: TimerManager = TimerManager()
     
     var body: some View {
-        HStack {
+        
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
@@ -29,10 +29,11 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
-                    .padding(.bottom, 32)
+                    .padding(.bottom, 12)
                 }
-                UtiView(uti: utiStore.uti)
-            }
+                UtiView()
+                    .environmentObject(utiStore)
+            
         }
         .onAppear {
             timerManager.setup(utiStore: utiStore)

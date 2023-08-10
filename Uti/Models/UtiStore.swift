@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class UtiStore: ObservableObject {
-    @Published var uti: Uti = Uti(currentCycleDay: 1, phase: .folicular, state: .homelyHappy, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []) {
+    @Published var uti: Uti = Uti(currentCycleDay: 1, phase: .folicular, state: .homelyHappy, illness: .no, leisure: 50, health: 60, nutrition: 55, energy: 100, blood: 100, items: []) {
         didSet {
             Task {
                 await save()
@@ -24,17 +24,17 @@ class UtiStore: ObservableObject {
     
     func load() async throws {
         let task = Task<Uti, Error> {
-               let fileURL = try Self.fileURL()
-               let data = try Data(contentsOf: fileURL)
-               let decoder = JSONDecoder()
-               do {
-                   let uti = try decoder.decode(Uti.self, from: data)
-                   return uti
-               } catch {
-                   // TODO: handle this error
-                   throw error
-               }
-           }
+            let fileURL = try Self.fileURL()
+            let data = try Data(contentsOf: fileURL)
+            let decoder = JSONDecoder()
+            do {
+                let uti = try decoder.decode(Uti.self, from: data)
+                return uti
+            } catch {
+                // TODO: handle this error
+                throw error
+            }
+        }
         let uti = try await task.value
         DispatchQueue.main.async {
             self.uti = uti
@@ -52,7 +52,7 @@ class UtiStore: ObservableObject {
         } catch {
             // TODO: handle this error
         }
-
+        
     }
     
     func updateUtiPhase(elapsedTimeH: Int) { // 4 hours equals 1 day
@@ -213,7 +213,7 @@ class UtiStore: ObservableObject {
         case .avocado:
             uti.health = uti.health + 5
             uti.nutrition = uti.nutrition + 10
-        case .xuxi:
+        case .sushi:
             uti.health = uti.health + 5
             uti.nutrition = uti.nutrition + 10
             uti.leisure = uti.leisure + 10
@@ -249,20 +249,94 @@ class UtiStore: ObservableObject {
             if (uti.phase == .menstrual) {
                 uti.health = uti.health + 10
             }
+            // TODO: ajeitar a partir daqui pq eu so copiei e colei
+        case .poll:
+            switch (uti.phase) {
+            case .menstrual:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .folicular:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .fertile:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .luteal:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .pms:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            }
+        case .party:
+            switch (uti.phase) {
+            case .menstrual:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .folicular:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .fertile:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .luteal:
+                uti.health = uti.health - 5
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            case .pms:
+                uti.health = uti.health - 10
+                uti.nutrition = uti.nutrition + 10
+                uti.energy = uti.energy + 20
+            }
+        case .wine:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
+        case .bike:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
+        case .water:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
+        case .tea:
+            if (uti.phase == .menstrual) {
+                uti.health = uti.health + 10
+            }
         }
         
         // TODO: this shouldn't be needed
         if (uti.health > 100) {
             uti.health = 100
+        } else if (uti.health < 0) {
+            uti.health = 0
         }
+        
         if (uti.energy > 100) {
             uti.energy = 100
+        } else if (uti.energy < 0) {
+            uti.energy = 0
         }
+        
         if (uti.leisure > 100) {
             uti.leisure = 100
+        } else if (uti.leisure < 0) {
+            uti.leisure = 0
         }
+        
         if (uti.nutrition > 100) {
             uti.nutrition = 100
+        } else if (uti.nutrition < 0) {
+            uti.nutrition = 0
         }
     }
 }

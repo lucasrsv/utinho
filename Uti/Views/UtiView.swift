@@ -9,26 +9,30 @@ import Foundation
 import SwiftUI
 
 struct UtiView: View {
+    @EnvironmentObject private var utiStore: UtiStore
     @State private var bouncing = true
-    let uti: Uti
+    @State var showingSheet = false
+    @State private var sheetHeight: CGFloat = .zero
+    
     
     var body: some View {
         VStack {
             VStack {
-                Text(LocalizedStringKey(getLocalizable(state:uti.state)))
+                Text(LocalizedStringKey(getLocalizable(state:utiStore.uti.state)))
                     .bold()
                     .foregroundColor(.darkRed)
+                    .padding(.horizontal, 8)
             }
             .padding(.horizontal, 4.0)
-            .frame(width: 304, height: 110)
+            .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
             .background(.white)
             .cornerRadius(20.0)
-            VStack{
-                Image(changeImage(state: UtiState.sleepy))
+            VStack {
+                Image(changeImage(state: utiStore.uti.state))
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(.accentColor)
-                    .offset(y: bouncing ? 30 : -30)
+                    .offset(y: bouncing ? 16 : -16)
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
                     .onAppear {
                         self.bouncing.toggle()
@@ -39,6 +43,32 @@ struct UtiView: View {
                     .frame(width: 150, height: 40)
                     .scaleEffect(bouncing ? 0.7: 1.0)
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+            }
+            
+            Button("Kit de Sobrevivência Uterina") {
+                showingSheet.toggle()
+            }
+            .frame(maxHeight: 100)
+            .multilineTextAlignment(.center)
+            .buttonStyle(CustomButtonStyle())
+            .fontWeight(.medium)
+            .sheet(isPresented: $showingSheet) {
+                VStack{
+                    SurvivalKitView()
+                        .environmentObject(utiStore)
+                }
+                .edgesIgnoringSafeArea(.all)
+                .presentationCornerRadius(32)
+                .presentationBackground(.white)
+                .overlay {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
+                    }
+                }
+                .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
+                    sheetHeight = newHeight
+                }
+                .presentationDetents([.height(sheetHeight)])
             }
         }
     }
@@ -81,9 +111,37 @@ struct UtiView: View {
         return state.rawValue
     }
     
+    struct CustomButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.white, lineWidth: 2) // Borda branca
+                        .background(Color.clear) // Fundo transparente
+                )
+                .foregroundColor(.white)
+                .accentColor(.white)
+        }
+    }
+    
+    struct SheetKitPreferenceKey: PreferenceKey {
+        static var defaultValue: CGFloat = .zero
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+            value = nextValue()
+        }
+    }
+    
     struct UtiView_Previews: PreviewProvider {
+        static func getUtiStore() -> UtiStore {
+            let utiStore: UtiStore = UtiStore()
+            utiStore.uti = Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: [])
+            return utiStore
+        }
         static var previews: some View {
-            UtiView(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 100, nutrition: 100, energy: 100, blood: 100, items: []))
+            UtiView()
+                .environmentObject(getUtiStore())
         }
     }
 }
+
