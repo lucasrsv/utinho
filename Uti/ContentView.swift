@@ -35,6 +35,10 @@ struct ContentView: View {
                     .environmentObject(utiStore)
             
         }
+        .onAppear {
+            timerManager.setup(utiStore: utiStore)
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
         .padding(.all, 20)
         .background(
             Image("standard_background")

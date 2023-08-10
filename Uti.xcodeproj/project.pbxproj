@@ -73,13 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B2FFDC52A390976008F21E5 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		EB98B6D42A7D42DE0004513A /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				EB98B6D42A7D42DE0004513A /* UI */,
-				5B2FFDC52A390976008F21E5 /* Extensions */,
 				EBAEA62D2A375472004BF7E9 /* Models */,
 				EBAEA62C2A375466004BF7E9 /* ViewModels */,
 				EBAEA62B2A37545F004BF7E9 /* Views */,

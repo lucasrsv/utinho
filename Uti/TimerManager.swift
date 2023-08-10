@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 class TimerManager: ObservableObject {
-    @AppStorage("LastLaunchTimestamp") private var lastLaunchTimestamp: TimeInterval = Date().timeIntervalSince1970
+    @AppStorage("LastStaticsTimerTickTimestamp") private var lastStaticsTimerTickTimestamp: TimeInterval = Date().timeIntervalSince1970
+    @AppStorage("LastStateTimerTickTimestamp") private var lastStateTimerTickTimestamp: TimeInterval = Date().timeIntervalSince1970
     private var utiStore: UtiStore?
     private var statisticsTimer: Timer?
     private var stateTimer: Timer?
@@ -22,26 +23,28 @@ class TimerManager: ObservableObject {
     
     private func startStatisticsTimer() {
         var timeInterval: TimeInterval
-        if (lastLaunchTimestamp != 0.0) {
-            let timeSpentSinceLastLaunch = Date().timeIntervalSince1970 - lastLaunchTimestamp
+        if (lastStaticsTimerTickTimestamp != 0.0) {
+            let timeSpentSinceLastStaticsTimerTick = Date().timeIntervalSince1970 - lastStaticsTimerTickTimestamp
             
-            if (timeSpentSinceLastLaunch > 3600) {
-                let hoursSpentSinceLastLaunch = Int(floor(timeSpentSinceLastLaunch/3600))
+            if (timeSpentSinceLastStaticsTimerTick > 3600) {
+                let hoursSpentSinceLastLaunch = Int(floor(timeSpentSinceLastStaticsTimerTick/3600))
                 utiStore?.updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
                 utiStore?.updateUtiState()
-                timeInterval =  timeSpentSinceLastLaunch.truncatingRemainder(dividingBy: 3600)
+                timeInterval =  timeSpentSinceLastStaticsTimerTick.truncatingRemainder(dividingBy: 3600)
             } else {
-                timeInterval = 3600 - timeSpentSinceLastLaunch
+                timeInterval = 3600 - timeSpentSinceLastStaticsTimerTick
             }
             
             statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { [weak self] _ in
                 timeInterval = TimeInterval(3600)
                 self?.utiStore?.updateUtiStatistics(hoursSpent: 1)
                 self?.utiStore?.updateUtiState()
+                self?.lastStaticsTimerTickTimestamp = Date().timeIntervalSince1970
                 self?.statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self]
                     _ in
                     self?.utiStore?.updateUtiStatistics(hoursSpent: 1)
                     self?.utiStore?.updateUtiState()
+                    self?.lastStaticsTimerTickTimestamp = Date().timeIntervalSince1970
                 }
             }
         } else {
@@ -49,6 +52,7 @@ class TimerManager: ObservableObject {
             statisticsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
                 self?.utiStore?.updateUtiStatistics(hoursSpent: 1)
                 self?.utiStore?.updateUtiState()
+                self?.lastStaticsTimerTickTimestamp = Date().timeIntervalSince1970
             }
         }
     }
@@ -59,7 +63,7 @@ class TimerManager: ObservableObject {
         let nextMidnight = currentDate + (4 * 3600)
         let timeInterval = nextMidnight.timeIntervalSince(currentDate)
         
-        if let lastLaunchDate = getDate(from: lastLaunchTimestamp) {
+        if let lastLaunchDate = getDate(from: lastStateTimerTickTimestamp) {
             let elapsedTime = calendar.dateComponents([.hour], from: lastLaunchDate, to: currentDate)
             if (elapsedTime.hour != nil && elapsedTime.hour! >= 4) {
                 utiStore?.updateUtiPhase(elapsedTimeH: elapsedTime.hour!)
@@ -68,9 +72,11 @@ class TimerManager: ObservableObject {
             stateTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { [weak self] _ in
                 self?.utiStore?.updateUtiPhase(elapsedTimeH: 4)
                 self?.utiStore?.updateUtiState()
+                self?.lastStateTimerTickTimestamp = Date().timeIntervalSince1970
                 self?.stateTimer = Timer.scheduledTimer(withTimeInterval: (4*3600), repeats: false) { [weak self] _ in
                     self?.utiStore?.updateUtiPhase(elapsedTimeH: 4)
                     self?.utiStore?.updateUtiState()
+                    self?.lastStateTimerTickTimestamp = Date().timeIntervalSince1970
                 }
             }
         } else {
