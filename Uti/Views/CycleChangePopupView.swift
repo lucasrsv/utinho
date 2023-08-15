@@ -1,0 +1,20 @@
+//
+//  CycleChangePopupView.swift
+//  Uti
+//
+//  Created by michellyes on 14/08/23.
+//
+
+import SwiftUI
+
+struct CycleChangePopupView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct CycleChangePopupView_Previews: PreviewProvider {
+    static var previews: some View {
+        CycleChangePopupView()
+    }
+}

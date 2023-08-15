@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PhaseCycleCircle: View {
     let uti: Uti
+    @State private var isPopoverPresented = false
     
     var body: some View {
         VStack (spacing: 12) {
@@ -33,8 +34,15 @@ struct PhaseCycleCircle: View {
                     .font(.system(size: 14, weight: .semibold))
             }
             Text(phaseText())
-                .foregroundColor(.white)
+                .foregroundColor(.darkRed)
                 .font(.system(size: 14, weight: .semibold))
+                .onTapGesture {
+                                isPopoverPresented.toggle()
+                            }
+                            .popover(isPresented: $isPopoverPresented, arrowEdge: .top) {
+                                CycleChangePopupView()
+                                    
+                            }
         }
     }
     
