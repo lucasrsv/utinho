@@ -60,10 +60,7 @@ struct ContentView: View {
             .cornerRadius(12)
             
             if isPopupVisible {
-                ZStack{
-                    Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
                     CycleChangePopupView(isPopupVisible: $isPopupVisible)
-                }
                 
             }
             
