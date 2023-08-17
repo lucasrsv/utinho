@@ -37,7 +37,7 @@ struct CycleChangePopupView: View {
                                 .font(.system(size: Responsive.scale(s: FontSize.h3.rawValue)))
                                 .fontWeight(FontWeight.bold.value)
                         }
-                        //.padding(.top)
+                        .padding(.top, (popupWidth*0.4)/2)
                         Text("Nesse momento o Utinho começa a ter seu tecido descamado (relaxe, não dói muito). Algumas cólicas podem surgir. Tenha cuidado com ele.")
                             .foregroundColor(Color.gray.opacity(0.5))
                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
@@ -62,15 +62,16 @@ struct CycleChangePopupView: View {
                     .cornerRadius(cornerRadius)
                     
                     .overlay {
-                        ZStack {
-                            Circle()
-                                .frame(width: popupWidth*0.4, height: popupWidth*0.4)
-                                .foregroundColor(.white)
-                            Image("blood")
-                                .scaledToFill()
+                        GeometryReader { popupGeometry in
+                            ZStack {
+                                Circle()
+                                    .frame(width: popupWidth*0.4, height: popupWidth*0.4)
+                                    .foregroundColor(.white)
+                                Image("blood")
+                                    .scaledToFill()
+                            }
+                            .position(CGPoint(x: popupGeometry.safeAreaInsets.leading + popupGeometry.size.width/2, y: popupGeometry.safeAreaInsets.top))
                         }
-                        .position(CGPoint(x: geo.size.width * distanceNeeded / 2, y: topInset - 40))
-                        
                     }
                     
                     .onAppear {
