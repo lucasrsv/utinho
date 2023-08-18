@@ -55,3 +55,41 @@ enum Illness: Codable, CaseIterable {
     case hpv
     case endometrios
 }
+
+struct PhaseInfo: Codable {
+    var iconPath: String
+    var previewDescription: String
+    var completeDescription: String
+}
+
+extension Uti {
+    static func getPhase(phase: Phase) -> PhaseInfo {
+        switch phase {
+        case .menstrual:
+            return(PhaseInfo.init(iconPath: "bloodDrop", previewDescription: "At that moment, Uti's tissue begins to peel off (relax, it doesn't hurt too much). Some colic may arise. Be careful with him.", completeDescription: "At that moment, Uti's tissue begins to peel off (relax, it doesn't hurt too much). Some colic may arise. Be careful with him."))
+        case .folicular:
+            return(PhaseInfo.init(iconPath: "follicle", previewDescription: "Momento Body Builder! O Utinho está se preparando para o maior evento de todos (caso o óvulo seja fecundado). Suas camadas estão engrossando.", completeDescription: "Momento Body Builder! O Utinho está se preparando para o maior evento de todos (caso o óvulo seja fecundado). Suas camadas estão engrossando."))
+        case .fertile:
+            return(PhaseInfo.init(iconPath: "ovule", previewDescription: "Alerta! Agora o Utinho está todo saidinho. Após a liberação do óvulo, tome os cuidados para que uma gravidez indesejada não aconteça.", completeDescription: "Alerta! Agora o Utinho está todo saidinho. Após a liberação do óvulo, tome os cuidados para que uma gravidez indesejada não aconteça."))
+        case .luteal:
+            return(PhaseInfo.init(iconPath: "brick", previewDescription: "Está chegando o grande dia. O Utinho está começando a sentir os sinais. Suas camadas grossas estão se preparando para descamar.", completeDescription: "Está chegando o grande dia. O Utinho está começando a sentir os sinais. Suas camadas grossas estão se preparando para descamar."))
+        case .pms:
+            return(PhaseInfo.init(iconPath: "storm", previewDescription: "Agora quem tem que tomar cuidado é você! Com a menstruação chegando, se prepare para inchaços, estresses, irritações e alguns foras.", completeDescription: "Agora quem tem que tomar cuidado é você! Com a menstruação chegando, se prepare para inchaços, estresses, irritações e alguns foras."))
+        }
+    }
+    
+    static func phaseText(phase: Phase) -> String {
+        switch (phase) {
+        case .menstrual:
+            return "FASE MENSTRUAL"
+        case .fertile:
+            return "FASE FÉRTIL"
+        case .folicular:
+            return "FASE FOLICULAR"
+        case .luteal:
+            return "FASE LÚTEA"
+        case .pms:
+            return "TPM"
+        }
+    }
+}

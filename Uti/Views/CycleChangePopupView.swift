@@ -11,12 +11,9 @@ struct CycleChangePopupView: View {
     @Binding var isPopupVisible: Bool
     @State var topInset: CGFloat = 0
     @State var popupWidth: CGFloat = 0
-    @State var bodyText: CGFloat = 0
-    @State var titleText: CGFloat = 0
     @State var padding: CGFloat = 0
     @State var cornerRadius: CGFloat = 0
-    @State var distanceNeeded: CGFloat = 0
-   // var buttonSize: ButtonSize
+    let uti: Uti
     
     var body: some View {
         
@@ -26,35 +23,32 @@ struct CycleChangePopupView: View {
                 HStack(alignment: .center) {
                     VStack(spacing: 16) {
                         VStack {
-//                            Rectangle()
-//                                .frame(width: popupWidth*0.4, height: (popupWidth*0.4)*0.35)
-//                                .background(.blue)
                             Text("Utinho está passando pela")
                                 .foregroundColor(.darkRed)
                                 .font(.system(size: Responsive.scale(s: FontSize.h3.rawValue)))
-                            Text("FASE MENSTRUAL")
+                            Text(Uti.phaseText(phase: uti.phase))
                                 .foregroundColor(.darkRed)
                                 .font(.system(size: Responsive.scale(s: FontSize.h3.rawValue)))
                                 .fontWeight(FontWeight.bold.value)
                         }
-                        .padding(.top, (popupWidth*0.4)/2)
-                        Text("Nesse momento o Utinho começa a ter seu tecido descamado (relaxe, não dói muito). Algumas cólicas podem surgir. Tenha cuidado com ele.")
+                        .padding(.top, (popupWidth*0.4)/4)
+                        Text(Uti.getPhase(phase: uti.phase).previewDescription)
                             .foregroundColor(Color.gray.opacity(0.5))
                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                         
                             .multilineTextAlignment(.center)
                         VStack {
-                           // PopUpButton(buttonSize: )
-                            Button("Ok, tendi!") {
+                            PopUpButton(buttonTitle: "Ok, entendi",
+                                        buttonSize: geo.size.width > 428 ? ButtonSize.large : ButtonSize.small,
+                                        action: {
                                 isPopupVisible = false
                             }
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color.darkRed)
-                            .cornerRadius(12)
-                            Text("saiba mais")
-                                .foregroundColor(.darkRed)
-                                .scaledToFill()
+                            )
+                            Button("saiba mais") {
+                            }
+                            .foregroundColor(.darkRed)
+                            .fontWeight(FontWeight.semibold.value)
+                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                         }
                     }
                     .padding(.all, padding)
@@ -67,8 +61,10 @@ struct CycleChangePopupView: View {
                                 Circle()
                                     .frame(width: popupWidth*0.4, height: popupWidth*0.4)
                                     .foregroundColor(.white)
-                                Image("blood")
-                                    .scaledToFill()
+                                Image(Uti.getPhase(phase: uti.phase).iconPath)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: popupWidth * 0.4 * 0.6, height: popupWidth * 0.4 * 0.6)
                             }
                             .position(CGPoint(x: popupGeometry.safeAreaInsets.leading + popupGeometry.size.width/2, y: popupGeometry.safeAreaInsets.top))
                         }
@@ -78,18 +74,12 @@ struct CycleChangePopupView: View {
                         topInset = geo.safeAreaInsets.top
                         if (geo.size.width > 428) {
                             popupWidth = geo.size.width * 0.5
-                            bodyText = 28
-                            titleText = 36
                             padding = 48
                             cornerRadius = 36
-                            distanceNeeded = 0.50
                         } else {
                             popupWidth = geo.size.width * 0.8
-                            bodyText = 16
-                            titleText = 18
                             padding = 24
                             cornerRadius = 20
-                            distanceNeeded = 0.80
                         }
                     }
                 }
@@ -97,6 +87,7 @@ struct CycleChangePopupView: View {
             }
         }
     }
+    
 }
 
 //    struct CycleChangePopupView_Previews: PreviewProvider {

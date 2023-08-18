@@ -23,6 +23,9 @@ struct ContentView: View {
                                 PhaseCycleCircle(uti: utiStore.uti)
                             }
                             .frame(maxWidth: .infinity, alignment: .center)
+                            .onTapGesture {
+                                isPopupVisible.toggle()
+                            }
                             VStack {
                                 StateBar(uti: utiStore.uti, category: .health)
                                 StateBar(uti: utiStore.uti, category: .nutrition)
@@ -36,38 +39,24 @@ struct ContentView: View {
                 }
                 UtiView()
                     .environmentObject(utiStore)
-
-        }
-        .onAppear {
-            print("called timermanag=P")
-            timerManager.setup(utiStore: utiStore)
-        }
-        .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.all, 20)
-        .background(
-            Image("standard_background")
-                .resizable()
-                .ignoresSafeArea()
-        )
-        
-            
-            Button("Mostrar Popup") {
-                isPopupVisible.toggle()
-            }
-            .padding()
-            .foregroundColor(.darkRed)
-            .background(Color.white)
-            .cornerRadius(12)
-            
-            if isPopupVisible {
-                    CycleChangePopupView(isPopupVisible: $isPopupVisible)
                 
             }
+            .onAppear {
+                print("called timermanag=P")
+                timerManager.setup(utiStore: utiStore)
+            }
+            .frame(maxHeight: .infinity, alignment: .top)
+            .padding(.all, 20)
+            .background(
+                Image("standard_background")
+                    .resizable()
+                    .ignoresSafeArea()
+            )
             
+            if isPopupVisible {
+                CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
+            }
         }
-        
-        
-        
     }
 }
 
