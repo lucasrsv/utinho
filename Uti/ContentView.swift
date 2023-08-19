@@ -56,6 +56,7 @@ struct ContentView: View {
             if isPopupVisible {
                 CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
             }
+            
         }
     }
 }

@@ -13,6 +13,7 @@ struct CycleChangePopupView: View {
     @State var popupWidth: CGFloat = 0
     @State var padding: CGFloat = 0
     @State var cornerRadius: CGFloat = 0
+    @State private var showMoreInfo = false
     let uti: Uti
     
     var body: some View {
@@ -33,10 +34,16 @@ struct CycleChangePopupView: View {
                         }
                         .padding(.top, (popupWidth*0.4)/4)
                         Text(Uti.getPhase(phase: uti.phase).previewDescription)
-                            .foregroundColor(Color.gray.opacity(0.5))
+                            .foregroundColor(Color.gray.opacity(0.8))
                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
-                        
                             .multilineTextAlignment(.center)
+                        
+                        if showMoreInfo {
+                            Text(Uti.getPhase(phase: uti.phase).completeDescription)
+                                .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                .foregroundColor(.darkRed)
+                                .multilineTextAlignment(.center)
+                        }
                         VStack {
                             PopUpButton(buttonTitle: "Ok, entendi",
                                         buttonSize: geo.size.width > 428 ? ButtonSize.large : ButtonSize.small,
@@ -44,11 +51,14 @@ struct CycleChangePopupView: View {
                                 isPopupVisible = false
                             }
                             )
-                            Button("saiba mais") {
+                            if !showMoreInfo {
+                                Button("saiba mais") {
+                                    showMoreInfo.toggle()
+                                }
+                                .foregroundColor(.darkRed)
+                                .fontWeight(FontWeight.semibold.value)
+                                .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                             }
-                            .foregroundColor(.darkRed)
-                            .fontWeight(FontWeight.semibold.value)
-                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                         }
                     }
                     .padding(.all, padding)
@@ -69,7 +79,6 @@ struct CycleChangePopupView: View {
                             .position(CGPoint(x: popupGeometry.safeAreaInsets.leading + popupGeometry.size.width/2, y: popupGeometry.safeAreaInsets.top))
                         }
                     }
-                    
                     .onAppear {
                         topInset = geo.safeAreaInsets.top
                         if (geo.size.width > 428) {
