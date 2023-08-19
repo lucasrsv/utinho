@@ -33,16 +33,27 @@ struct CycleChangePopupView: View {
                                 .fontWeight(FontWeight.bold.value)
                         }
                         .padding(.top, (popupWidth*0.4)/4)
-                        Text(Uti.getPhase(phase: uti.phase).previewDescription)
-                            .foregroundColor(Color.gray.opacity(0.8))
-                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
-                            .multilineTextAlignment(.center)
                         
                         if showMoreInfo {
-                            Text(Uti.getPhase(phase: uti.phase).completeDescription)
+                            ScrollView{
+                                VStack(spacing: 16) {
+                                    Text(Uti.getPhase(phase: uti.phase).previewDescription)
+                                        .foregroundColor(Color.gray.opacity(0.8))
+                                        .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                        .multilineTextAlignment(.center)
+                                    
+                                    Text(Uti.getPhase(phase: uti.phase).completeDescription)
+                                        .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                        .foregroundColor(.darkRed)
+                                        .multilineTextAlignment(.center)
+                                }
+                            }
+                        } else {
+                            Text(Uti.getPhase(phase: uti.phase).previewDescription)
+                                .foregroundColor(Color.gray.opacity(0.8))
                                 .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
-                                .foregroundColor(.darkRed)
                                 .multilineTextAlignment(.center)
+                            
                         }
                         VStack {
                             PopUpButton(buttonTitle: "Ok, entendi",
@@ -93,6 +104,7 @@ struct CycleChangePopupView: View {
                     }
                 }
                 .frame(width: Responsive.scale(s: 300))
+                .frame(maxHeight: geo.size.height * 0.5)
             }
         }
     }
