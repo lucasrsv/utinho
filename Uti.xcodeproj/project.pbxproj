@@ -11,6 +11,8 @@
 		5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC32A390889008F21E5 /* StateBar.swift */; };
 		5B2FFDC92A390993008F21E5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC82A390993008F21E5 /* Image.swift */; };
 		5BA8EBC72A6DB27200B5B6FA /* PhaseCycleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */; };
+		5BF0162C2A8D8AFE0012751E /* FoodRainGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0162B2A8D8AFE0012751E /* FoodRainGame.swift */; };
+		5BF0162E2A8D8C5F0012751E /* FoodRainGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0162D2A8D8C5F0012751E /* FoodRainGameScene.swift */; };
 		9404FDA82A7839240000B7BD /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA72A7839240000B7BD /* ItemView.swift */; };
 		9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */; };
 		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
@@ -38,6 +40,8 @@
 		5B2FFDC32A390889008F21E5 /* StateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBar.swift; sourceTree = "<group>"; };
 		5B2FFDC82A390993008F21E5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseCycleCircle.swift; sourceTree = "<group>"; };
+		5BF0162B2A8D8AFE0012751E /* FoodRainGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRainGame.swift; sourceTree = "<group>"; };
+		5BF0162D2A8D8C5F0012751E /* FoodRainGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRainGameScene.swift; sourceTree = "<group>"; };
 		9404FDA72A7839240000B7BD /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitView.swift; sourceTree = "<group>"; };
 		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				5B1CCCA42A49D11500BD9330 /* UtiView.swift */,
 				9404FDA72A7839240000B7BD /* ItemView.swift */,
 				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
+				5BF0162B2A8D8AFE0012751E /* FoodRainGame.swift */,
+				5BF0162D2A8D8C5F0012751E /* FoodRainGameScene.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
 				EB98B6DB2A7D63F20004513A /* Opacity.swift in Sources */,
 				EB98B6D72A7D43560004513A /* Color.swift in Sources */,
+				5BF0162E2A8D8C5F0012751E /* FoodRainGameScene.swift in Sources */,
 				EB98B6E32A7D7EB20004513A /* Body.swift in Sources */,
 				EB98B6DD2A7D64200004513A /* Typography.swift in Sources */,
 				EB98B6D92A7D62E70004513A /* Spacing.swift in Sources */,
@@ -281,6 +288,7 @@
 				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
 				9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
+				5BF0162C2A8D8AFE0012751E /* FoodRainGame.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
 				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
@@ -427,7 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Uti/Preview Content\"";
-				DEVELOPMENT_TEAM = 9FWLTGWA8V;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Utinho;
@@ -458,7 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Uti/Preview Content\"";
-				DEVELOPMENT_TEAM = 9FWLTGWA8V;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Utinho;

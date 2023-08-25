@@ -12,7 +12,7 @@ struct ContentView: View {
     @StateObject private var timerManager: TimerManager = TimerManager()
     
     var body: some View {
-        
+        NavigationStack {
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
@@ -33,19 +33,22 @@ struct ContentView: View {
                 }
                 UtiView()
                     .environmentObject(utiStore)
-            
+                NavigationLink(destination: FoodRainGame()) {
+                    Text("minigame")
+                }
+            }
+            .onAppear {
+                print("called timermanag=P")
+                timerManager.setup(utiStore: utiStore)
+            }
+            .frame(maxHeight: .infinity, alignment: .top)
+            .padding(.all, 20)
+            .background(
+                Image("standard_background")
+                    .resizable()
+                    .ignoresSafeArea()
+            )
         }
-        .onAppear {
-            print("called timermanag=P")
-            timerManager.setup(utiStore: utiStore)
-        }
-        .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.all, 20)
-        .background(
-            Image("standard_background")
-                .resizable()
-                .ignoresSafeArea()
-        )
     }
 }
 

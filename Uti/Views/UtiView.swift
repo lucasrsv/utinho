@@ -16,63 +16,62 @@ struct UtiView: View {
     
     
     var body: some View {
-        VStack {
-            VStack {
-                Text(LocalizedStringKey(getLocalizable(state:utiStore.uti.state)))
-                    .bold()
-                    .foregroundColor(.darkRed)
-                    .padding(.horizontal, 8)
-            }
-            .padding(.horizontal, 4.0)
-            .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
-            .background(.white)
-            .cornerRadius(20.0)
-            VStack {
-                Image(changeImage(state: utiStore.uti.state))
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.accentColor)
-                    .offset(y: bouncing ? 16 : -16)
-                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
-                    .onAppear {
-                        withAnimation(nil) {
-                            self.bouncing.toggle()
+                VStack {
+                    VStack {
+                        Text(LocalizedStringKey(getLocalizable(state:utiStore.uti.state)))
+                            .bold()
+                            .foregroundColor(.darkRed)
+                            .padding(.horizontal, 8)
+                    }
+                    .padding(.horizontal, 4.0)
+                    .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
+                    .background(.white)
+                    .cornerRadius(20.0)
+                    VStack {
+                        Image(changeImage(state: utiStore.uti.state))
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.accentColor)
+                            .offset(y: bouncing ? 16 : -16)
+                            .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                            .onAppear {
+                                withAnimation(nil) {
+                                    self.bouncing.toggle()
+                                }
+                            }
+                        Ellipse()
+                            .foregroundColor(.strongRed)
+                            .blur(radius: 20)
+                            .frame(width: 150, height: 40)
+                            .scaleEffect(bouncing ? 0.7: 1.0)
+                            .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                    }
+                    Button("Kit de Sobrevivência Uterina") {
+                        showingSheet.toggle()
+                    }
+                    .frame(maxHeight: 100)
+                    .multilineTextAlignment(.center)
+                    .buttonStyle(CustomButtonStyle())
+                    .fontWeight(.medium)
+                    .sheet(isPresented: $showingSheet) {
+                        VStack{
+                            SurvivalKitView()
+                                .environmentObject(utiStore)
                         }
-                    }
-                Ellipse()
-                    .foregroundColor(.strongRed)
-                    .blur(radius: 20)
-                    .frame(width: 150, height: 40)
-                    .scaleEffect(bouncing ? 0.7: 1.0)
-                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
-            }
-            
-            Button("Kit de Sobrevivência Uterina") {
-                showingSheet.toggle()
-            }
-            .frame(maxHeight: 100)
-            .multilineTextAlignment(.center)
-            .buttonStyle(CustomButtonStyle())
-            .fontWeight(.medium)
-            .sheet(isPresented: $showingSheet) {
-                VStack{
-                    SurvivalKitView()
-                        .environmentObject(utiStore)
-                }
-                .edgesIgnoringSafeArea(.all)
-                .presentationCornerRadius(32)
-                .presentationBackground(.white)
-                .overlay {
-                    GeometryReader { geometry in
-                        Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
+                        .edgesIgnoringSafeArea(.all)
+                        .presentationCornerRadius(32)
+                        .presentationBackground(.white)
+                        .overlay {
+                            GeometryReader { geometry in
+                                Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
+                            }
+                        }
+                        .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
+                            sheetHeight = newHeight
+                        }
+                        .presentationDetents([.height(sheetHeight)])
                     }
                 }
-                .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
-                    sheetHeight = newHeight
-                }
-                .presentationDetents([.height(sheetHeight)])
-            }
-        }
     }
     
     func getLocalizable(state: UtiState) -> String {
