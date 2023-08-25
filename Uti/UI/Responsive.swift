@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class Responsive {
-    static func scale(s: Double) -> Double {
+    static func scale(s: CGFloat) -> CGFloat {
         s * UIScreen.main.bounds.width/390
     }
 }

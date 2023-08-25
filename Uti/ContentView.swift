@@ -11,9 +11,7 @@ struct ContentView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @StateObject private var timerManager: TimerManager = TimerManager()
     @State private var isPopupVisible = false
-    
     var body: some View {
-        
         ZStack{
             VStack {
                 VStack(alignment: .leading) {
@@ -32,21 +30,15 @@ struct ContentView: View {
                                 StateBar(uti: utiStore.uti, category: .leisure)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            
                         }
                     }
-                    .padding(.bottom, 12)
+                    .padding(.bottom, Responsive.scale(s: Spacing.small))
                 }
                 UtiView()
                     .environmentObject(utiStore)
-                
-            }
-            .onAppear {
-                print("called timermanag=P")
-                timerManager.setup(utiStore: utiStore)
             }
             .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.all, 20)
+            .padding(.all, Responsive.scale(s: Spacing.large))
             .background(
                 Image("standard_background")
                     .resizable()
@@ -56,7 +48,6 @@ struct ContentView: View {
             if isPopupVisible {
                 CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
             }
-            
         }
     }
 }
@@ -73,9 +64,3 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(getUtiStore())
     }
 }
-
-
-
-
-
-

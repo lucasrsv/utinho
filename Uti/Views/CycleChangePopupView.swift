@@ -4,7 +4,6 @@
 //
 //  Created by michellyes on 14/08/23.
 //
-
 import SwiftUI
 
 struct CycleChangePopupView: View {
@@ -15,14 +14,12 @@ struct CycleChangePopupView: View {
     @State var cornerRadius: CGFloat = 0
     @State private var showMoreInfo = false
     let uti: Uti
-    
     var body: some View {
-        
         GeometryReader { geo in
             ZStack {
                 Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
                 HStack(alignment: .center) {
-                    VStack(spacing: 16) {
+                    VStack(spacing: Responsive.scale(s: Spacing.medium)) {
                         VStack {
                             Text("Utinho está passando pela")
                                 .foregroundColor(.darkRed)
@@ -36,7 +33,7 @@ struct CycleChangePopupView: View {
                         
                         if showMoreInfo {
                             ScrollView{
-                                VStack(spacing: 16) {
+                                VStack(spacing: Responsive.scale(s: Spacing.medium)) {
                                     Text(Uti.getPhase(phase: uti.phase).previewDescription)
                                         .foregroundColor(Color.gray.opacity(0.8))
                                         .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
@@ -53,12 +50,11 @@ struct CycleChangePopupView: View {
                                 .foregroundColor(Color.gray.opacity(0.8))
                                 .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                 .multilineTextAlignment(.center)
-                            
                         }
                         VStack {
                             PopUpButton(buttonTitle: "Ok, entendi",
                                         buttonSize: geo.size.width > 428 ? ButtonSize.large : ButtonSize.small,
-                                        action: {
+                                        onButtonTap: {
                                 isPopupVisible = false
                             }
                             )
@@ -75,7 +71,6 @@ struct CycleChangePopupView: View {
                     .padding(.all, padding)
                     .background(.white)
                     .cornerRadius(cornerRadius)
-                    
                     .overlay {
                         GeometryReader { popupGeometry in
                             ZStack {
@@ -108,12 +103,11 @@ struct CycleChangePopupView: View {
             }
         }
     }
-    
 }
 
-//    struct CycleChangePopupView_Previews: PreviewProvider {
-//        static var previews: some View {
-//            CycleChangePopupView()
-//        }
-//    }
-//}
+    struct CycleChangePopupView_Previews: PreviewProvider {
+        static var previews: some View {
+            CycleChangePopupView(isPopupVisible: .constant(false), uti: Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: []))
+        }
+    }
+
