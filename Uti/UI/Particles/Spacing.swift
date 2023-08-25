@@ -7,12 +7,12 @@
 
 import Foundation
 
-extension Int {
-    static let xxsmall = 4
-    static let xsmall = 8
-    static let small = 12
-    static let medium = 16
-    static let large = 20
-    static let xlarge = 32
-    static let xxlarge = 40
+class Spacing {
+    static let xxsmall = CGFloat(4)
+    static let xsmall = CGFloat(8)
+    static let small = CGFloat(12)
+    static let medium = CGFloat(16)
+    static let large = CGFloat(20)
+    static let xlarge = CGFloat(32)
+    static let xxlarge = CGFloat(40)
 }

@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @StateObject private var timerManager: TimerManager = TimerManager()
-    
+    @State private var isPopupVisible = false
     var body: some View {
-        
+        ZStack{
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
@@ -21,6 +21,9 @@ struct ContentView: View {
                                 PhaseCycleCircle(uti: utiStore.uti)
                             }
                             .frame(maxWidth: .infinity, alignment: .center)
+                            .onTapGesture {
+                                isPopupVisible.toggle()
+                            }
                             VStack {
                                 StateBar(uti: utiStore.uti, category: .health)
                                 StateBar(uti: utiStore.uti, category: .nutrition)
@@ -29,23 +32,23 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
-                    .padding(.bottom, 12)
+                    .padding(.bottom, Responsive.scale(s: Spacing.small))
                 }
                 UtiView()
                     .environmentObject(utiStore)
+            }
+            .frame(maxHeight: .infinity, alignment: .top)
+            .padding(.all, Responsive.scale(s: Spacing.large))
+            .background(
+                Image("standard_background")
+                    .resizable()
+                    .ignoresSafeArea()
+            )
             
+            if isPopupVisible {
+                CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
+            }
         }
-        .onAppear {
-            print("called timermanag=P")
-            timerManager.setup(utiStore: utiStore)
-        }
-        .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.all, 20)
-        .background(
-            Image("standard_background")
-                .resizable()
-                .ignoresSafeArea()
-        )
     }
 }
 
