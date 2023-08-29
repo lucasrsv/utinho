@@ -39,7 +39,7 @@ struct StateBar: View {
         }
     }
     
-    func getCurrentValue() -> Int {
+    func getCurrentValue() -> Double {
         switch category {
         case .health:
             return uti.health

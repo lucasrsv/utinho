@@ -56,7 +56,11 @@ class UtiStore: ObservableObject {
     }
     
     func updateUtiPhase(elapsedTimeH: Int) { // 4 hours equals 1 day
-        uti.currentCycleDay = (uti.currentCycleDay < 28) ? uti.currentCycleDay + elapsedTimeH/4 : 1 + (elapsedTimeH/4 - 1)
+        uti.currentCycleDay = uti.currentCycleDay + elapsedTimeH/4
+        if (uti.currentCycleDay > 28) {
+            uti.currentCycleDay = uti.currentCycleDay % 28
+        }
+        
         if (uti.currentCycleDay <= 5) {
             uti.phase = .menstrual
         } else if (uti.currentCycleDay >= 6 && uti.currentCycleDay <= 11) {
@@ -68,7 +72,7 @@ class UtiStore: ObservableObject {
         }
     }
     
-    func updateUtiStatistics(hoursSpent: Int) {
+    func updateUtiStatistics(hoursSpent: Double) {
         uti.health = uti.health - (2 * hoursSpent)
         uti.leisure = uti.leisure - (3 * hoursSpent)
         uti.nutrition = uti.nutrition - (5 * hoursSpent)

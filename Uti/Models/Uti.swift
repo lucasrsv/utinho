@@ -13,11 +13,11 @@ struct Uti: Codable {
     var phase: Phase
     var state: UtiState
     var illness: Illness
-    var leisure: Int
-    var health: Int
-    var nutrition: Int
-    var energy: Int
-    var blood: Int
+    var leisure: Double
+    var health: Double
+    var nutrition: Double
+    var energy: Double
+    var blood: Double
     var items: [Item]
 
     enum CodingKeys: String, CodingKey {
