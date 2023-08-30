@@ -17,6 +17,7 @@
 		9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */; };
 		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
 		94B42A742A8AC6A70007CEB1 /* CycleChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */; };
+		94D0BE812A9FBC730012348C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D0BE802A9FBC730012348C /* OnboardingView.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EB6CCCB82A8171F700C072FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB6CCCBA2A8171F700C072FE /* Localizable.strings */; };
 		EB98B6D72A7D43560004513A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98B6D62A7D43560004513A /* Color.swift */; };
@@ -47,6 +48,7 @@
 		9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitView.swift; sourceTree = "<group>"; };
 		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
 		94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleChangePopupView.swift; sourceTree = "<group>"; };
+		94D0BE802A9FBC730012348C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EB6CCCB92A8171F700C072FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EB6CCCBB2A81721500C072FE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				9404FDA72A7839240000B7BD /* ItemView.swift */,
 				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
 				94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */,
+				94D0BE802A9FBC730012348C /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
 				9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */,
 				940078492A8EB4440052532A /* Responsive.swift in Sources */,
+				94D0BE812A9FBC730012348C /* OnboardingView.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
