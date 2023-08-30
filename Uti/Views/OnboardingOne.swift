@@ -1,5 +1,5 @@
 //
-//  OnboardingView.swift
+//  OnboardingOne.swift
 //  Uti
 //
 //  Created by michellyes on 30/08/23.
@@ -7,8 +7,25 @@
 
 import SwiftUI
 
-struct OnboardingView: View {
-   
+struct OnboardingOne: View {
+    
+    @State private var isButtonClicked = false
+    @State private var buttonTextIndex = 0 // Índice para controlar o texto atual
+    let onboardingTexts = [
+        "Primeiro texto aqui",
+        "Segundo texto aqui",
+        "Terceiro texto aqui"
+    ] // Lista de diferentes textos de onboarding
+    
+    var currentOnboardingText: String {
+        if buttonTextIndex >= onboardingTexts.count {
+            return "Texto após o botão ser clicado."
+        } else {
+            return onboardingTexts[buttonTextIndex]
+        }
+    }
+    
+    
     var body: some View {
         ZStack{
             VStack {
@@ -40,7 +57,7 @@ struct OnboardingView: View {
                                         .foregroundColor(.white)
                                         .font(.system(size: 14, weight: .semibold))
                                 }
-
+                                
                             }
                             .frame(maxWidth: .infinity, alignment: .center)
                             
@@ -55,7 +72,7 @@ struct OnboardingView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     HStack {
-                                            Image("Health Icon")
+                                        Image("Health Icon")
                                     }
                                     .frame(width: 64.0, height: 28.0)
                                 }
@@ -69,7 +86,7 @@ struct OnboardingView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     HStack {
-                                            Image("Food Icon")
+                                        Image("Food Icon")
                                     }
                                     .frame(width: 64.0, height: 28.0)
                                 }
@@ -83,7 +100,7 @@ struct OnboardingView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     HStack {
-                                            Image("Party Icon")
+                                        Image("Party Icon")
                                     }
                                     .frame(width: 64.0, height: 28.0)
                                 }
@@ -94,69 +111,53 @@ struct OnboardingView: View {
                     .padding(.bottom, Responsive.scale(s: Spacing.small))
                 }
                 VStack {
-                    VStack {
-                        Text("%#$%#%##$%#@#$%$#@#$%$#")
-                            .bold()
-                            .foregroundColor(.darkRed)
-                            .padding(.horizontal, 8)
+                    ZStack {
+                            VStack {
+                                Text(currentOnboardingText)
+                                    .bold()
+                                    .foregroundColor(.darkRed)
+                                    .padding(.horizontal, 8)
+                            }
+                            .padding(.horizontal, 4.0)
+                            .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
+                            .background(.white)
+                            .cornerRadius(20.0)
+                        
+                        OnboardingButton(onButtonTap: { buttonTextIndex += 1 } )
+                            .padding(.top, 100)
+                            .padding(.leading, 200)
                     }
-                    .padding(.horizontal, 4.0)
-                    .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
-                    .background(.white)
-                    .cornerRadius(20.0)
+                    
                     VStack {
                         Image("happy")
                             .resizable()
                             .scaledToFit()
                             .foregroundColor(.accentColor)
-                            
-                            }
-                        Ellipse()
-                            .foregroundColor(.strongRed)
-                            .blur(radius: 20)
-                            .frame(width: 150, height: 40)
-                            
+                        
                     }
-                    
-                    Button("Kit de Sobrevivência Uterina") {
-                       // showingSheet.toggle()
-                    }
-                    .frame(maxHeight: 100)
-                    .multilineTextAlignment(.center)
-                    .buttonStyle(CustomButtonStyle())
-                    .fontWeight(.medium)
-//                    .sheet(isPresented: $showingSheet) {
-//                        VStack{
-//                            SurvivalKitView()
-//                                .environmentObject(utiStore)
-//                        }
-//                        .edgesIgnoringSafeArea(.all)
-//                        .presentationCornerRadius(32)
-//                        .presentationBackground(.white)
-//                        .overlay {
-//                            GeometryReader { geometry in
-//                                Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
-//                            }
-//                        }
-//                        .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
-//                            sheetHeight = newHeight
-//                        }
-//                        .presentationDetents([.height(sheetHeight)])
-//                    }
+                    Ellipse()
+                        .foregroundColor(.strongRed)
+                        .blur(radius: 20)
+                        .frame(width: 150, height: 40)
                 }
+                
+                Button("Kit de Sobrevivência Uterina") {
+                    
+                }
+                .frame(maxHeight: 100)
+                .multilineTextAlignment(.center)
+                .buttonStyle(CustomButtonStyle())
+                .fontWeight(.medium)
             }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.all, Responsive.scale(s: Spacing.large))
-            .background(
-                Image("standard_background")
-                    .resizable()
-                    .ignoresSafeArea()
-            )
-            
-//            if isPopupVisible {
-//                CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
-//            }
         }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .padding(.all, Responsive.scale(s: Spacing.large))
+        .background(
+            Image("standard_background")
+                .resizable()
+                .ignoresSafeArea()
+        )
+    }
     
     struct CustomButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
@@ -172,10 +173,9 @@ struct OnboardingView: View {
         }
     }
 }
-
-
-//struct OnboardingView_Previews: PreviewProvider {
+//
+//struct OnboardingOne_Previews: PreviewProvider {
 //    static var previews: some View {
-//        OnboardingView(uti: <#Uti#>)
+//        OnboardingOne()
 //    }
 //}

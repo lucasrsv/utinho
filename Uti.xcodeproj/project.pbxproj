@@ -17,6 +17,8 @@
 		9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */; };
 		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
 		94B42A742A8AC6A70007CEB1 /* CycleChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */; };
+		94BB14752A9FD078009D30E7 /* OnboardingOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14742A9FD078009D30E7 /* OnboardingOne.swift */; };
+		94BB14772A9FDCEB009D30E7 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */; };
 		94D0BE812A9FBC730012348C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D0BE802A9FBC730012348C /* OnboardingView.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EB6CCCB82A8171F700C072FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB6CCCBA2A8171F700C072FE /* Localizable.strings */; };
@@ -48,6 +50,8 @@
 		9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitView.swift; sourceTree = "<group>"; };
 		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
 		94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleChangePopupView.swift; sourceTree = "<group>"; };
+		94BB14742A9FD078009D30E7 /* OnboardingOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOne.swift; sourceTree = "<group>"; };
+		94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
 		94D0BE802A9FBC730012348C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EB6CCCB92A8171F700C072FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */,
 				9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */,
 				940078462A8EA36E0052532A /* PopUpButton.swift */,
+				94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
 				94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */,
 				94D0BE802A9FBC730012348C /* OnboardingView.swift */,
+				94BB14742A9FD078009D30E7 /* OnboardingOne.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,11 +286,13 @@
 				EB98B6DB2A7D63F20004513A /* Opacity.swift in Sources */,
 				EB98B6D72A7D43560004513A /* Color.swift in Sources */,
 				EB98B6E32A7D7EB20004513A /* Body.swift in Sources */,
+				94BB14772A9FDCEB009D30E7 /* OnboardingButton.swift in Sources */,
 				EB98B6DD2A7D64200004513A /* Typography.swift in Sources */,
 				EB98B6D92A7D62E70004513A /* Spacing.swift in Sources */,
 				5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */,
 				9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
+				94BB14752A9FD078009D30E7 /* OnboardingOne.swift in Sources */,
 				5B2FFDC92A390993008F21E5 /* Image.swift in Sources */,
 				EBAEA62F2A3756B0004BF7E9 /* Uti.swift in Sources */,
 				5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */,

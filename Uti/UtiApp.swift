@@ -14,19 +14,23 @@ struct UtiApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(utiStore)
-                .task {
-                    do {
-                        if (isFirstTime) {
-                            await utiStore.save()
-                            isFirstTime = false
-                        }
-                        try await utiStore.load()
-                    } catch {
-                        fatalError(error.localizedDescription)
-                    }
-                }
+            OnboardingOne()
         }
+//        WindowGroup {
+//            ContentView()
+//                .environmentObject(utiStore)
+//                .task {
+//                    do {
+//                        if (isFirstTime) {
+//                            await utiStore.save()
+//                            isFirstTime = false
+//                        }
+//                        try await utiStore.load()
+//                    } catch {
+//                        fatalError(error.localizedDescription)
+//                    }
+//                }
+//        }
+        
     }
 }
