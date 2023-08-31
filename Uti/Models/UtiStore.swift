@@ -55,8 +55,8 @@ class UtiStore: ObservableObject {
         
     }
     
-    func updateUtiPhase(elapsedTimeH: Int) { // 4 hours equals 1 day
-        uti.currentCycleDay = uti.currentCycleDay + elapsedTimeH/4
+    func updateUtiPhase(elapsedDays: Int) { // 4 hours equals 1 day
+        uti.currentCycleDay = uti.currentCycleDay + elapsedDays
         if (uti.currentCycleDay > 28) {
             uti.currentCycleDay = uti.currentCycleDay % 28
         }
