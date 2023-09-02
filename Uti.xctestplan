@@ -1,0 +1,22 @@
+{
+  "configurations" : [
+    {
+      "id" : "8AC8C5FB-72FF-479E-B1E1-CDC7435C082B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Uti.xcodeproj",
+      "identifier" : "EBAEA6182A37540A004BF7E9",
+      "name" : "Uti"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

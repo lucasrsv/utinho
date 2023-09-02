@@ -55,6 +55,7 @@
 		EB98B6DA2A7D63F20004513A /* Opacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opacity.swift; sourceTree = "<group>"; };
 		EB98B6DC2A7D64200004513A /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		EB98B6E22A7D7EB20004513A /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		EBA1C8E32AA2534A00EB130D /* Uti.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Uti.xctestplan; sourceTree = "<group>"; };
 		EBAEA6192A37540A004BF7E9 /* Uti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiApp.swift; sourceTree = "<group>"; };
 		EBAEA61E2A37540A004BF7E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 		EBAEA6102A37540A004BF7E9 = {
 			isa = PBXGroup;
 			children = (
+				EBA1C8E32AA2534A00EB130D /* Uti.xctestplan */,
 				EBAEA61B2A37540A004BF7E9 /* Uti */,
 				EBAEA61A2A37540A004BF7E9 /* Products */,
 			);

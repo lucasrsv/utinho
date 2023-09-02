@@ -50,13 +50,16 @@ class TimerManager: ObservableObject {
     
     // TODO: This code could be simplified in just one function
     private func startStatisticsTimer() {
+        NSLog("UTINHOLOG: lastStatisticsTimerTickTimestamp \(lastStatisticsTimerTickTimestamp!)")
         var timeInterval: TimeInterval?
         let timeSpentSinceLastStatisticsTimerTick = Date().timeIntervalSince1970 - lastStatisticsTimerTickTimestamp!
         if (timeSpentSinceLastStatisticsTimerTick >= hourS) {
             let hoursSpentSinceLastLaunch = floor(timeSpentSinceLastStatisticsTimerTick/hourS)
             utiStore?.updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
             utiStore?.updateUtiState()
-            timeInterval = timeSpentSinceLastStatisticsTimerTick.truncatingRemainder(dividingBy: hourS)
+            lastStatisticsTimerTickTimestamp = lastStatisticsTimerTickTimestamp! + (hoursSpentSinceLastLaunch * hourS)
+//            timeInterval = timeSpentSinceLastStatisticsTimerTick.truncatingRemainder(dividingBy: hourS)
+            timeInterval = hourS - (Double(timeSpentSinceLastStatisticsTimerTick) - (hourS * hoursSpentSinceLastLaunch))
         } else {
             timeInterval = hourS - timeSpentSinceLastStatisticsTimerTick
         }
@@ -76,13 +79,17 @@ class TimerManager: ObservableObject {
     }
     
     private func startStateTimer() {
+        NSLog("UTINHOLOG: lastStateTimerTickTimestamp \(lastStateTimerTickTimestamp!)")
         var timeInterval: TimeInterval?
         let timeSpentSinceLastStateTimerTick = Date().timeIntervalSince1970 - lastStateTimerTickTimestamp!
         if (timeSpentSinceLastStateTimerTick >= dayS) {
             let daysSpentSinceLastLaunch = floor(timeSpentSinceLastStateTimerTick/dayS)
+            NSLog("UTINHOLOG: daysSpentSinceLastLaunch \(daysSpentSinceLastLaunch)")
             utiStore?.updateUtiPhase(elapsedDays: Int(daysSpentSinceLastLaunch))
             utiStore?.updateUtiState()
+            lastStateTimerTickTimestamp = lastStateTimerTickTimestamp! + (daysSpentSinceLastLaunch * dayS)
             timeInterval = dayS - (Double(timeSpentSinceLastStateTimerTick) - (dayS * daysSpentSinceLastLaunch))
+            NSLog("UTINHOLOG: updated lastStateTimerTickTimestamp \(lastStateTimerTickTimestamp!)")
         } else {
             timeInterval = dayS - timeSpentSinceLastStateTimerTick
         }
