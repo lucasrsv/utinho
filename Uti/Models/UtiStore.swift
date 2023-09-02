@@ -56,13 +56,13 @@ class UtiStore: ObservableObject {
     }
     
     func updateUtiPhase(elapsedDays: Int) { // 4 hours equals 1 day
-        NSLog("UTINHOLOG: uti.currentCycleDay 0 \(uti.currentCycleDay)")
-        uti.currentCycleDay = uti.currentCycleDay + elapsedDays
         NSLog("UTINHOLOG: uti.currentCycleDay \(uti.currentCycleDay)")
+        uti.currentCycleDay = uti.currentCycleDay + elapsedDays
+        NSLog("UTINHOLOG: uti.currentCycleDay updated \(uti.currentCycleDay)")
         NSLog("UTINHOLOG: elapsedDays \(elapsedDays)")
         if (uti.currentCycleDay > 28) {
             uti.currentCycleDay = uti.currentCycleDay % 28
-            NSLog("UTINHOLOG: uti.currentCycleDay again \(uti.currentCycleDay)")
+            NSLog("UTINHOLOG: uti.currentCycleDay module \(uti.currentCycleDay)")
         }
         
         if (uti.currentCycleDay <= 5) {
