@@ -12,44 +12,49 @@ struct ContentView: View {
     @StateObject private var timerManager: TimerManager = TimerManager()
     @State private var isPopupVisible = false
     var body: some View {
-        ZStack{
-            VStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        ZStack {
-                            VStack() {
-                                PhaseCycleCircle(uti: utiStore.uti)
+        NavigationView {
+            ZStack {
+                VStack {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            ZStack {
+                                VStack() {
+                                    PhaseCycleCircle(uti: utiStore.uti)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .onTapGesture {
+                                    isPopupVisible.toggle()
+                                }
+                                VStack {
+                                    StateBar(uti: utiStore.uti, category: .health)
+                                    StateBar(uti: utiStore.uti, category: .nutrition)
+                                    StateBar(uti: utiStore.uti, category: .leisure)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .onTapGesture {
-                                isPopupVisible.toggle()
-                            }
-                            VStack {
-                                StateBar(uti: utiStore.uti, category: .health)
-                                StateBar(uti: utiStore.uti, category: .nutrition)
-                                StateBar(uti: utiStore.uti, category: .leisure)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
+                        .padding(.bottom, Responsive.scale(s: Spacing.small))
                     }
-                    .padding(.bottom, Responsive.scale(s: Spacing.small))
+                    UtiView()
+                        .environmentObject(utiStore)
+                    NavigationLink(destination: MiniGameView()) {
+                        Text("button")
+                    }
                 }
-                UtiView()
-                    .environmentObject(utiStore)
-            }
-            .onAppear {
-                  timerManager.setup(utiStore: utiStore)
-              }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.all, Responsive.scale(s: Spacing.large))
-            .background(
-                Image("standard_background")
-                    .resizable()
-                    .ignoresSafeArea()
-            )
+                .onAppear {
+                      timerManager.setup(utiStore: utiStore)
+                  }
+                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.all, Responsive.scale(s: Spacing.large))
+                .background(
+                    Image("standard_background")
+                        .resizable()
+                        .ignoresSafeArea()
+                )
             
-            if isPopupVisible {
-                CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
+                if isPopupVisible {
+                    CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
+                }
             }
         }
     }

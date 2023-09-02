@@ -17,6 +17,8 @@
 		9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */; };
 		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
 		94B42A742A8AC6A70007CEB1 /* CycleChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */; };
+		EB08990E2AA38D55001A0799 /* MiniGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB08990D2AA38D55001A0799 /* MiniGameScene.swift */; };
+		EB0899102AA3973A001A0799 /* MiniGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB08990F2AA3973A001A0799 /* MiniGameView.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EB6CCCB82A8171F700C072FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB6CCCBA2A8171F700C072FE /* Localizable.strings */; };
 		EB98B6D72A7D43560004513A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98B6D62A7D43560004513A /* Color.swift */; };
@@ -47,6 +49,8 @@
 		9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitView.swift; sourceTree = "<group>"; };
 		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
 		94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleChangePopupView.swift; sourceTree = "<group>"; };
+		EB08990D2AA38D55001A0799 /* MiniGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameScene.swift; sourceTree = "<group>"; };
+		EB08990F2AA3973A001A0799 /* MiniGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameView.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EB6CCCB92A8171F700C072FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EB6CCCBB2A81721500C072FE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB08990C2AA38CB7001A0799 /* Minigames */ = {
+			isa = PBXGroup;
+			children = (
+				EB08990D2AA38D55001A0799 /* MiniGameScene.swift */,
+				EB08990F2AA3973A001A0799 /* MiniGameView.swift */,
+			);
+			path = Minigames;
+			sourceTree = "<group>";
+		};
 		EB98B6D42A7D42DE0004513A /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +189,7 @@
 		EBAEA62B2A37545F004BF7E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB08990C2AA38CB7001A0799 /* Minigames */,
 				EBAEA6382A38BA60004BF7E9 /* View.swift */,
 				5B1CCCA42A49D11500BD9330 /* UtiView.swift */,
 				9404FDA72A7839240000B7BD /* ItemView.swift */,
@@ -281,6 +295,7 @@
 				EB98B6E32A7D7EB20004513A /* Body.swift in Sources */,
 				EB98B6DD2A7D64200004513A /* Typography.swift in Sources */,
 				EB98B6D92A7D62E70004513A /* Spacing.swift in Sources */,
+				EB08990E2AA38D55001A0799 /* MiniGameScene.swift in Sources */,
 				5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */,
 				9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
@@ -297,6 +312,7 @@
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
 				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
+				EB0899102AA3973A001A0799 /* MiniGameView.swift in Sources */,
 				EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */,
 				940078472A8EA36E0052532A /* PopUpButton.swift in Sources */,
 			);
