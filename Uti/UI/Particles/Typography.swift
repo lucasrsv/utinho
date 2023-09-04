@@ -14,6 +14,7 @@ enum FontSize: CGFloat {
     case h3 = 18
     case h2 = 24
     case h1 = 28
+    case h0 = 44
 }
 
 enum FontWeight {

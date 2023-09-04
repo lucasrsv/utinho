@@ -14,7 +14,7 @@ struct UtiApp: App {
     
     var body: some Scene {
         WindowGroup {
-            OnboardingOne()
+            OnboardingView()
         }
 //        WindowGroup {
 //            ContentView()
