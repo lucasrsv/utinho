@@ -8,48 +8,58 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    
     @State private var isButtonClicked = false
     @State private var buttonTextIndex = 0
     @State private var cycleOpacity: Double = 0.0
     @State private var levelsOpacity: Double = 0.0
     @State private var kitOpacity: Double = 0.0
     @State private var helloOpacity: Double = 1.0
+    @State var showingSheet = false
+    @State private var sheetHeight: CGFloat = .zero
 
     let onboardingTexts = [
-        "Primeiro texto aqui",
-        "Segundo texto aqui",
-        "ter texto aqui",
-        "quart texto aqui",
-        "ultimo texto aqui"
+        "Que bom que você está aqui! Vem me conhecer melhor!",
+        "Obviamente eu sou um útero, e a partir de agora sua missão é cuidar de mim.",
+        "Aqui tudo vai girar em torno do meu ciclo menstrual, que possui 28 dias :)",
+        "Agora vou te mostrar tudo o que você vai precisar para cuidar de mim!",
+        "É aqui que você vai acompanhar meus níveis de saúde, nutrição e lazer...",
+        "Preste atenção neles para me manter saudável e feliz :)",
+        "Aqui você vai saber em que dia e fase do ciclo eu estou...",
+        "Isso vai ser importante, pois vai ter dias que não vou estar tão disposto...",
+        "Ah! Cada dia do meu ciclo dura 4 horas. Isso quer dizer que 1 dia para você são 6 dias para mim.",
+        "Esse é meu kit de sobrevivência... Clique para ver melhor! ",
+        "É com ele que você vai me alimentar, cuidar de mim e me divertir :)",
+        "Agora é com você!"
     ]
     
     var currentOnboardingText: String {
         if buttonTextIndex >= onboardingTexts.count {
-            return "tela inicial do jogo"
+            return "Agora é com você!"
         } else {
             return onboardingTexts[buttonTextIndex]
         }
     }
     
     var body: some View {
-        ZStack{
+        ZStack {
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
                         ZStack {
-                            
-                            VStack(alignment: .leading) {
-                                Text("Olá,")
-                                HStack {
-                                    Text("sou")
-                                    Text("Uti")
-                                        .fontWeight(FontWeight.bold.value)
+                            ZStack {
+                                VStack(alignment: .leading) {
+                                    Text("Olá,")
+                                    HStack {
+                                        Text("sou")
+                                        Text("Uti")
+                                            .fontWeight(FontWeight.bold.value)
+                                    }
                                 }
+                                .foregroundColor(.white)
+                                .font(.system(size: Responsive.scale(s: FontSize.h0.rawValue)))
+                                .opacity(helloOpacity)
                             }
-                            .foregroundColor(.white)
-                            .font(.system(size: Responsive.scale(s: FontSize.h0.rawValue)))
-                            .opacity(helloOpacity)
+                            .padding(.trailing, UIScreen.main.bounds.size.width * 0.5)
                             
                             // cycle day
                             VStack() {
@@ -140,6 +150,7 @@ struct OnboardingView: View {
                                     .bold()
                                     .foregroundColor(.darkRed)
                                     .padding(.horizontal, 8)
+                                    .multilineTextAlignment(.center)
                             }
                             .padding(.horizontal, 4.0)
                             .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
@@ -151,16 +162,18 @@ struct OnboardingView: View {
                                     withAnimation {
                                         // Ao clicar no botão, aumenta a opacidade gradualmente
                                         buttonTextIndex += 1
-                                        if(buttonTextIndex == 1) {
+                                        if(buttonTextIndex == 3) {
                                             helloOpacity = 0.0
                                             levelsOpacity = 0.16
                                             cycleOpacity = 0.16
                                             kitOpacity = 0.16
-                                        } else if (buttonTextIndex == 2) {
-                                            levelsOpacity = 1.0
-                                        } else if (buttonTextIndex == 3) {
-                                            cycleOpacity = 1.0
                                         } else if (buttonTextIndex == 4) {
+                                            levelsOpacity = 1.0
+                                        } else if (buttonTextIndex == 6) {
+                                            levelsOpacity = 0.16
+                                            cycleOpacity = 1.0
+                                        } else if (buttonTextIndex == 9) {
+                                            cycleOpacity = 0.16
                                             kitOpacity = 1.0
                                         }
                                         
@@ -186,13 +199,31 @@ struct OnboardingView: View {
                 
                 // survival kit
                 Button("Kit de Sobrevivência Uterina") {
-                    
+                    showingSheet.toggle()
                 }
                 .frame(maxHeight: 100)
                 .multilineTextAlignment(.center)
                 .buttonStyle(CustomButtonStyle())
                 .fontWeight(.medium)
                 .opacity(kitOpacity)
+//                .sheet(isPresented: $showingSheet) {
+//                    VStack{
+//                        SurvivalKitView()
+//                    }
+//                    .edgesIgnoringSafeArea(.all)
+//                    .presentationCornerRadius(32)
+//                    .presentationBackground(.white)
+//                    .overlay {
+//                        GeometryReader { geometry in
+//                            Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
+//                        }
+//                    }
+//                    .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
+//                        sheetHeight = newHeight
+//                    }
+//                    .presentationDetents([.height(sheetHeight)])
+//                }
+                
             }
         }
         .frame(maxHeight: .infinity, alignment: .top)
@@ -215,6 +246,13 @@ struct OnboardingView: View {
                 )
                 .foregroundColor(.white)
                 .accentColor(.white)
+        }
+    }
+    
+    struct SheetKitPreferenceKey: PreferenceKey {
+        static var defaultValue: CGFloat = .zero
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+            value = nextValue()
         }
     }
 }
