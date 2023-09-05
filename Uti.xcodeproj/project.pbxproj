@@ -16,6 +16,8 @@
 		9404FDA82A7839240000B7BD /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA72A7839240000B7BD /* ItemView.swift */; };
 		9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */; };
 		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
+		9470B36C2AA7C1A000A1FB5D /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470B36B2AA7C1A000A1FB5D /* NavigationManager.swift */; };
+		9470B36E2AA7C1CB00A1FB5D /* UtiRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470B36D2AA7C1CB00A1FB5D /* UtiRoute.swift */; };
 		94B42A742A8AC6A70007CEB1 /* CycleChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */; };
 		94BB14752A9FD078009D30E7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14742A9FD078009D30E7 /* OnboardingView.swift */; };
 		94BB14772A9FDCEB009D30E7 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */; };
@@ -48,6 +50,8 @@
 		9404FDA72A7839240000B7BD /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitView.swift; sourceTree = "<group>"; };
 		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
+		9470B36B2AA7C1A000A1FB5D /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		9470B36D2AA7C1CB00A1FB5D /* UtiRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiRoute.swift; sourceTree = "<group>"; };
 		94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleChangePopupView.swift; sourceTree = "<group>"; };
 		94BB14742A9FD078009D30E7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9470B36A2AA7C18800A1FB5D /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9470B36B2AA7C1A000A1FB5D /* NavigationManager.swift */,
+				9470B36D2AA7C1CB00A1FB5D /* UtiRoute.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		EB98B6D42A7D42DE0004513A /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +153,7 @@
 		EBAEA61B2A37540A004BF7E9 /* Uti */ = {
 			isa = PBXGroup;
 			children = (
+				9470B36A2AA7C18800A1FB5D /* Navigation */,
 				EB98B6D42A7D42DE0004513A /* UI */,
 				EBAEA62D2A375472004BF7E9 /* Models */,
 				EBAEA62C2A375466004BF7E9 /* ViewModels */,
@@ -280,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
+				9470B36E2AA7C1CB00A1FB5D /* UtiRoute.swift in Sources */,
 				EB98B6DB2A7D63F20004513A /* Opacity.swift in Sources */,
 				EB98B6D72A7D43560004513A /* Color.swift in Sources */,
 				EB98B6E32A7D7EB20004513A /* Body.swift in Sources */,
@@ -299,6 +314,7 @@
 				EBAEA6372A38BA59004BF7E9 /* ViewModel.swift in Sources */,
 				9404FDAA2A783AC30000B7BD /* SurvivalKitView.swift in Sources */,
 				940078492A8EB4440052532A /* Responsive.swift in Sources */,
+				9470B36C2AA7C1A000A1FB5D /* NavigationManager.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
