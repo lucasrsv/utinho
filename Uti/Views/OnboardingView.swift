@@ -29,7 +29,7 @@ struct OnboardingView: View {
         "É aqui que você vai acompanhar meus níveis de saúde, nutrição e lazer...",
         "Preste atenção neles para me manter saudável e feliz :)",
         "Aqui você vai saber em que dia e fase do ciclo eu estou...",
-        "Isso vai ser importante, pois vai ter dias que não vou estar tão disposto...",
+        "Isso vai ser importante, pois terão dias que não vou estar tão disposto...",
         "Ah! Cada dia do meu ciclo dura 4 horas. Isso quer dizer que 1 dia para você são 6 dias para mim.",
         "Esse é meu kit de sobrevivência...",
         "É com ele que você vai me alimentar, cuidar de mim e me divertir :)",
