@@ -11,6 +11,8 @@ struct ContentView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @StateObject private var timerManager: TimerManager = TimerManager()
     @State private var isPopupVisible = false
+   
+    
     var body: some View {
         ZStack{
             VStack {

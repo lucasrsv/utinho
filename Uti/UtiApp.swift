@@ -10,23 +10,36 @@ import SwiftUI
 @main
 struct UtiApp: App {
     @StateObject private var utiStore = UtiStore()
-    @AppStorage("IsFirstTime") var isFirstTime = true
+    @StateObject var navigationManager = NavigationManager()
+    @AppStorage("IsFirstTime") var isFirstTime: Bool?
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(utiStore)
-                .task {
-                    do {
-                        if (isFirstTime) {
-                            await utiStore.save()
-                            isFirstTime = false
+            switch navigationManager.currentRoute {
+            case .home:
+                ContentView()
+                    .environmentObject(utiStore)
+                    .environmentObject(navigationManager)
+                    .task {
+                        do {
+                            try await utiStore.load()
+                        } catch {
+                            fatalError(error.localizedDescription)
                         }
-                        try await utiStore.load()
-                    } catch {
-                        fatalError(error.localizedDescription)
                     }
-                }
+            case .onboarding:
+                OnboardingView()
+                    .environmentObject(utiStore)
+                    .environmentObject(navigationManager)
+                    .task {
+                        await utiStore.save()
+                    }
+            case .minigame1:
+                ContentView()
+            case .minigame2:
+                ContentView()
+                
+            }
         }
     }
 }
