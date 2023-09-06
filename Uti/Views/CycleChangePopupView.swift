@@ -35,19 +35,46 @@ struct CycleChangePopupView: View {
                             ScrollView{
                                 VStack(spacing: Responsive.scale(s: Spacing.medium)) {
                                     Text(Uti.getPhase(phase: uti.phase).previewDescription)
-                                        .foregroundColor(Color.gray.opacity(0.8))
+                                        .foregroundColor(Color.black.opacity(0.6))
                                         .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                         .multilineTextAlignment(.center)
-                                    
                                     Text(Uti.getPhase(phase: uti.phase).completeDescription)
                                         .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
-                                        .foregroundColor(.darkRed)
+                                        .foregroundColor(Color.black.opacity(0.6))
                                         .multilineTextAlignment(.center)
+                                    VStack(alignment: .leading) {
+                                        Text("REFERÊNCIAS")
+                                            .foregroundColor(Color.black.opacity(0.6))
+                                            .fontWeight(FontWeight.semibold.value)
+                                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                            .padding(.vertical, 8)
+                                        Text("Entenda as fases do ciclo menstrual | Drauzio Varella")
+                                            .foregroundColor(Color.black.opacity(0.6))
+                                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                        Link("Acesse aqui", destination: URL(string: "https://drauziovarella.uol.com.br/mulher/menstruacao/entenda-as-fases-do-ciclo-menstrual/")!)
+                                            .foregroundColor(Color.blue)
+                                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                            .padding(.bottom, 8)
+                                        Text("Hormônios FSH e LH")
+                                            .foregroundColor(Color.black.opacity(0.6))
+                                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                        Link("Acesse aqui", destination: URL(string: "https://www.gineco.com.br/saude-feminina/menstruacao/hormonio-fsh")!)
+                                            .foregroundColor(Color.blue)
+                                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                            .padding(.bottom, 8)
+                                        Text("Period irregularities to get checked out")
+                                            .foregroundColor(Color.black.opacity(0.6))
+                                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                        Link("Acesse aqui", destination: URL(string: "https://www.mayoclinic.org/healthy-lifestyle/womens-health/in-depth/menstrual-cycle/art-20047186")!)
+                                            .foregroundColor(Color.blue)
+                                            .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                            .padding(.bottom, 8)
+                                    }
                                 }
                             }
                         } else {
                             Text(Uti.getPhase(phase: uti.phase).previewDescription)
-                                .foregroundColor(Color.gray.opacity(0.8))
+                                .foregroundColor(Color.black.opacity(0.6))
                                 .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                 .multilineTextAlignment(.center)
                         }
@@ -65,6 +92,7 @@ struct CycleChangePopupView: View {
                                 .foregroundColor(.darkRed)
                                 .fontWeight(FontWeight.semibold.value)
                                 .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
+                                .padding(.top, 4)
                             }
                         }
                     }
@@ -105,9 +133,9 @@ struct CycleChangePopupView: View {
     }
 }
 
-    struct CycleChangePopupView_Previews: PreviewProvider {
-        static var previews: some View {
-            CycleChangePopupView(isPopupVisible: .constant(false), uti: Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: []))
-        }
+struct CycleChangePopupView_Previews: PreviewProvider {
+    static var previews: some View {
+        CycleChangePopupView(isPopupVisible: .constant(false), uti: Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: []))
     }
+}
 
