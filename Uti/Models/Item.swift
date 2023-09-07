@@ -31,19 +31,19 @@ enum ItemName: Codable {
     case games
     case book
     case spaDay
-    case poll
+    case gym
     case party
-    case wine
+    case dateNight
     case bike
-    case netflix
+    case movieNight
     case water
     case tea
     case cupNoodles
-    case avocado
+    case redMeat
     case chocolate
     case banana
     case sushi
-    case coffe
+    case soda
     case pill
     case condom
     case absorbentPanties
@@ -59,14 +59,14 @@ extension Item{
         switch category {
         case .leisure:
             return([
-                Item(name: .wine, type: .leisure, iconPath: "wine", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .dateNight, type: .leisure, iconPath: "wine", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
                 Item(name: .book, type: .leisure, iconPath: "book", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .party, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
-                Item(name: .games, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .spaDay, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 5, .pms: 10]),
-                Item(name: .poll, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
-                Item(name: .party, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
-                Item(name: .games, type: .leisure, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
+                Item(name: .party, type: .leisure, iconPath: "game", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .games, type: .leisure, iconPath: "gym", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .spaDay, type: .leisure, iconPath: "party", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 5, .pms: 10]),
+                Item(name: .gym, type: .leisure, iconPath: "spaDay", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .party, type: .leisure, iconPath: "movie", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: -5, .pms: 5]),
+                Item(name: .games, type: .leisure, iconPath: "bike", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
             ])
         case .health:
             return([
@@ -86,10 +86,10 @@ extension Item{
                 Item(name: .chocolate, type: .nutrition, iconPath: "chocolate", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
                 Item(name: .banana, type: .nutrition, iconPath: "banana", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
                 Item(name: .sushi, type: .nutrition, iconPath: "sushi", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .coffe, type: .nutrition, iconPath: "coffee", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .soda, type: .nutrition, iconPath: "coffee", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
                 Item(name: .tea, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 10]),
                 Item(name: .cupNoodles, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .avocado, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
+                Item(name: .redMeat, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
             ])
         }
     }
