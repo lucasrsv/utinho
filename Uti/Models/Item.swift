@@ -44,14 +44,15 @@ enum ItemName: Codable {
     case banana
     case sushi
     case soda
-    case pill
     case condom
-    case absorbentPanties
+    case medicineColic
     case collector
     case absorbent
+    case pill
+    case absorbentPanties
     case contraceptive
     case warmCompress
-    case medicineColic
+    
 }
 
 extension Item{
@@ -86,10 +87,10 @@ extension Item{
                 Item(name: .chocolate, type: .nutrition, iconPath: "chocolate", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
                 Item(name: .banana, type: .nutrition, iconPath: "banana", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
                 Item(name: .sushi, type: .nutrition, iconPath: "sushi", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .soda, type: .nutrition, iconPath: "coffee", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .tea, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 10]),
-                Item(name: .cupNoodles, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
-                Item(name: .redMeat, type: .nutrition, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
+                Item(name: .soda, type: .nutrition, iconPath: "soda", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .tea, type: .nutrition, iconPath: "tea", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 10]),
+                Item(name: .cupNoodles, type: .nutrition, iconPath: "cupNoodles", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5]),
+                Item(name: .redMeat, type: .nutrition, iconPath: "redMeat", amount: 100, price: 10, effect: [.fertile : 10, .folicular: 10, .luteal: 10, .menstrual: 10, .pms: 5])
             ])
         }
     }
