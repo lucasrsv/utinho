@@ -73,12 +73,12 @@ extension Item{
             return([
                 Item(name: .medicineColic, type: .health, iconPath: "medicineColic", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
                 Item(name: .condom, type: .health, iconPath: "condom", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .absorbentPanties, type: .health, iconPath: "absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .absorbentPanties, type: .health, iconPath: "absorbentPanty", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
                 Item(name: .collector, type: .health, iconPath: "collector", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .absorbent, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .contraceptive, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .warmCompress, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
-                Item(name: .pill, type: .health, iconPath: "invisibleFrame", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10])
+                Item(name: .absorbent, type: .health, iconPath: "absorbent", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .contraceptive, type: .health, iconPath: "contraceptive", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .warmCompress, type: .health, iconPath: "warmCompress", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10]),
+                Item(name: .pill, type: .health, iconPath: "dayAfterPill", amount: 100, price: 10, effect: [.fertile : 10, .folicular : 10, .luteal : 10, .menstrual : 10, .pms : 10])
                 
             ])
         case .nutrition:
