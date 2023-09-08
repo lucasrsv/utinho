@@ -13,6 +13,15 @@ struct UtiApp: App {
     @StateObject var navigationManager = NavigationManager()
     @AppStorage("IsFirstTime") var isFirstTime: Bool?
     
+    init() {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                NotificationManager.shared.scheduleDailyNotification()
+            }
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             switch navigationManager.currentRoute {

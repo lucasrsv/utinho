@@ -21,6 +21,7 @@ struct OnboardingView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @EnvironmentObject private var navigationManager: NavigationManager
     
+    
     let onboardingTexts = [
         "Que bom que você está aqui! Vem me conhecer melhor!",
         "Obviamente eu sou um útero, e a partir de agora sua missão é cuidar de mim.",
