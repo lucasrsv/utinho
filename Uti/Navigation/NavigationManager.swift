@@ -13,12 +13,17 @@ class NavigationManager: ObservableObject {
     @Published var routeHistory: [UtiRoute] = []
     @AppStorage("IsFirstTime") var isFirstTime: Bool?
     
-    static var shared = NavigationManager()
+    private let notificationManager : NotificationManager
+    
+    init (notificationManager : NotificationManager) {
+        self.notificationManager = notificationManager
+    }
     
     init() {
         if (isFirstTime == nil) {
             isFirstTime = false
             currentRoute = .onboarding
+            notificationManager.requestNotificationPermission()
         }
     }
 
@@ -32,4 +37,6 @@ class NavigationManager: ObservableObject {
             currentRoute = previousRoute
         }
     }
+    
+    
 }

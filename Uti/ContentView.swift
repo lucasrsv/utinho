@@ -40,15 +40,15 @@ struct ContentView: View {
                 UtiView()
                     .environmentObject(utiStore)
                 
-                Button("Request Permission") {
-                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                        if success {
-                            print("All set!")
-                        } else if let error = error {
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
+//                Button("Request Permission") {
+//                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+//                        if success {
+//                            print("All set!")
+//                        } else if let error = error {
+//                            print(error.localizedDescription)
+//                        }
+//                    }
+//                }
                 
                 Button("Schedule Notification") {
                     let content = UNMutableNotificationContent()

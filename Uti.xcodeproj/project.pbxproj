@@ -18,10 +18,10 @@
 		9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */; };
 		9470B36C2AA7C1A000A1FB5D /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470B36B2AA7C1A000A1FB5D /* NavigationManager.swift */; };
 		9470B36E2AA7C1CB00A1FB5D /* UtiRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470B36D2AA7C1CB00A1FB5D /* UtiRoute.swift */; };
-		9470B3712AA9123300A1FB5D /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470B3702AA9123300A1FB5D /* NotificationHandler.swift */; };
 		94B42A742A8AC6A70007CEB1 /* CycleChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */; };
 		94BB14752A9FD078009D30E7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14742A9FD078009D30E7 /* OnboardingView.swift */; };
 		94BB14772A9FDCEB009D30E7 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */; };
+		94EF14E22AAB59E200B56BA7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF14E12AAB59E200B56BA7 /* NotificationManager.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EB6CCCB82A8171F700C072FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB6CCCBA2A8171F700C072FE /* Localizable.strings */; };
 		EB98B6D72A7D43560004513A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98B6D62A7D43560004513A /* Color.swift */; };
@@ -53,10 +53,10 @@
 		9404FDAF2A7844200000B7BD /* SurvivalKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalKitButton.swift; sourceTree = "<group>"; };
 		9470B36B2AA7C1A000A1FB5D /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		9470B36D2AA7C1CB00A1FB5D /* UtiRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiRoute.swift; sourceTree = "<group>"; };
-		9470B3702AA9123300A1FB5D /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleChangePopupView.swift; sourceTree = "<group>"; };
 		94BB14742A9FD078009D30E7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
+		94EF14E12AAB59E200B56BA7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EB6CCCB92A8171F700C072FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EB6CCCBB2A81721500C072FE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -99,12 +99,12 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		9470B36F2AA9120A00A1FB5D /* Handlers */ = {
+		94EF14E02AAB59C000B56BA7 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				9470B3702AA9123300A1FB5D /* NotificationHandler.swift */,
+				94EF14E12AAB59E200B56BA7 /* NotificationManager.swift */,
 			);
-			path = Handlers;
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		EB98B6D42A7D42DE0004513A /* UI */ = {
@@ -165,7 +165,7 @@
 		EBAEA61B2A37540A004BF7E9 /* Uti */ = {
 			isa = PBXGroup;
 			children = (
-				9470B36F2AA9120A00A1FB5D /* Handlers */,
+				94EF14E02AAB59C000B56BA7 /* Notifications */,
 				9470B36A2AA7C18800A1FB5D /* Navigation */,
 				EB98B6D42A7D42DE0004513A /* UI */,
 				EBAEA62D2A375472004BF7E9 /* Models */,
@@ -307,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
-				9470B3712AA9123300A1FB5D /* NotificationHandler.swift in Sources */,
 				9470B36E2AA7C1CB00A1FB5D /* UtiRoute.swift in Sources */,
 				EB98B6DB2A7D63F20004513A /* Opacity.swift in Sources */,
 				EB98B6D72A7D43560004513A /* Color.swift in Sources */,
@@ -334,6 +333,7 @@
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
 				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
 				EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */,
+				94EF14E22AAB59E200B56BA7 /* NotificationManager.swift in Sources */,
 				940078472A8EA36E0052532A /* PopUpButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
