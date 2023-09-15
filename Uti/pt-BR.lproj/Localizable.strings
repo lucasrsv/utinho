@@ -1,11 +1,12 @@
 /* 
-  Localizable.strings
-  Uti
-
-  Created by lrsv on 07/08/23.
+ Localizable.strings
+ Uti
  
-*/
+ Created by lrsv on 07/08/23.
+ 
+ */
 
+// Dialogues
 "dialogue_homelySad_1" = "Melhor ficar em casa...";
 "dialogue_homelySad_2" = "Tô muito afim de sair não  =/";
 "dialogue_homelySad_3" = "Vou ficar em casa e me cuidar!";
@@ -18,7 +19,7 @@
 "dialogue_hungry_1" = "O que me faria feliz agora seria um bom prato de comida!";
 "dialogue_hungry_2" = "Tô na minha porque tô com fome.";
 "dialogue_hungry_3" = "Muita fome!";
-"dialogue_hungry_4" = "Eu tô com tanta fome que poderia ser um estômago! ";
+"dialogue_hungry_4" = "Eu tô com tanta fome que poderia ser um estômago!";
 "dialogue_hungry_5" = "Já tá na hora do lanche?";
 "dialogue_hungry_6" = "Garfo e faca são os equipamentos perfeitos pra o meu esporte favorito.";
 "dialogue_hungry_7" = "Sabe que horas são? É hora de comer!";
@@ -61,3 +62,50 @@
 "dialogue_pissedHappy_3" = "Sem paciência pra pessoas chatas, eu vou é ser feliz.";
 "dialogue_pissedHappy_4" = "Não testa minha paciência que meu pavio é curto.";
 "dialogue_pissedHappy_5" = "Nada melhor pra fazer senão ser feliz.";
+
+// Popup
+"popup_title" = "Utinho está passando pela";
+"reference_title" = "REFERÊNCIAS";
+"reference_access" = "Acesse aqui";
+"confirmation_popup_button" = "Ok, entendi";
+"moreInfo_popup_button" = "saiba mais";
+"menstrual_popup_previewDescription" = "É o primeiro dia da menstruação e também o primeiro dia do ciclo menstrual, nesse momento o Utinho começa a liberar todo o ambiente interno preparado para a fertilização, isso acontece pois o ovulo não foi fecundado. É normal surgirem algumas cólicas então tenha cuidado com ele.";
+"menstrual_popup_completeDescription" = "Durante esse período, o revestimento do útero (endométrio) que se preparou no ciclo anterior é eliminado em forma de sangramento. Isso acontece por que os níveis de estrogênio e progesterona estão baixos, o que desencadeia a descamação do endométrio. Além disso, é nessa fase que os níveis de FSH e LH estão aumentados, estimulando o desenvolvimento dos folículos ovarianos. Nesse momento como o corpo começa a liberar o revestimento uterino, algumas pessoas podem sentir cólicas abdominais, fadiga, dores de cabeça e sensibilidade nos seios.";
+"folicular_popup_previewDescription" = "Momento Body Builder! O Utinho está se preparando para o maior evento de todos (a ovulação). É nesse momento que muitos recursos se reunem para a preparação desse evento.";
+"folicular_popup_completeDescription" = "Após a menstruação o útero começa a se preparar para a ovulação. É nesse momento em que o estrogênio chega a seu nível máximo. Durante esta fase, um dos folículos ovarianos começa a amadurecer e se preparar para a ovulação. À medida que o folículo cresce os níveis de estrogênio aumentam gradualmente, esse aumento dos níveis de estrogênio faz com que o revestimento uterino comece a se engrossar novamente. Nesse momento os níveis de FSH e LH começam a diminuir após atingirem seu pico.";
+"fertile_popup_previewDescription" = "Alerta! Agora o Utinho está todo saidinho. Após a liberação do óvulo, o corpo está prontíssimo para a fertilização então é normal se ele quiser festejar muito por aí.";
+"fertile_popup_completeDescription" = "A ovulação é marcada pelo amadurecimento do folículo, esse amadurecimento é o responsável pelo rompimento e liberação de um óvulo maduro, isso acontece pois há um aumento acentuado nos níveis de estrogênio, e ao atingindo seu pico, desencadeia um aumento rápido do LH (pico de LH). Esse pico de LH é o causador da liberação do óvulo maduro do ovário, que agora está pronto para ser fertilizado. Essa fase geralmente ocorre cerca de 14 dias antes do próximo período. Como nessa fase o corpo se prepara para fertilização, é comum sentir um aumento na libido e uma maior sensação de energia. Além de poder haver uma sensação de confiança e maior interesse em interações sociais.";
+"luteal_popup_previewDescription" = "Agora, o Utinho está preparando um ambiente aconchegante, caso haja uma visita especial (fertilização). Se isso não acontecer, o Utinho estará pronto para desmontar tudo e jogar fora (menstruação).";
+"luteal_popup_completeDescription" = "A fase lútea é crucial tanto para a preparação do útero para a gravidez quanto para a regulamentação do início de um novo ciclo caso a fecundação não ocorra, ela ocorre na segunda metade do ciclo menstrual, logo após a ovulação. Durante essa fase, o folículo ovariano que liberou o óvulo na ovulação se transforma em uma estrutura chamada corpo lúteo. O corpo lúteo é responsável por produzir o hormônio progesterona, que desempenha um papel crucial na preparação do útero para uma possível gravidez. Com o aumento dos níveis de progesterona os níveis de LH e FSH diminuírem significativamente devido aos seus efeitos supressores, isso acontece pois nessa fase o cérebro dá um feedback inibidor para que não aja mais ovulação.";
+"pms_popup_previewDescription" = "Agora quem tem que tomar cuidado é você! Com a menstruação chegando, se prepare para inchaços, estresses, irritações e alguns foras.";
+"pms_popup_completeDescription" = "Após a ovulação, se o óvulo não for fertilizado, o corpo começa a reabsorver o corpo lúteo. Isso faz com que os níveis de progesterona e estrogênio comecem a diminuir rapidamente, o que sinaliza para o revestimento uterino começar a se desprender. Esse é o momento em que o o corpo passa pelo momento pré-menstrual. Essa queda nos níveis hormonais pode levar a uma série de sintomas físicos, emocionais e comportamentais que são característicos da TPM. Algum dos sintomas mais comuns são: inchaço, seios sensíveis e retenção de líquidos. A fadiga, mudança de humor, irritabilidade e ansiedade também são comuns.";
+
+// Cycle Phases
+"cycleTitle_menstural" = "FASE MENSTRUAL";
+"cycleTitle_folicular" = "FASE FOLICULAR";
+"cycleTitle_fertile" = "FASE FÉRTIL";
+"cycleTitle_luteal" = "FASE LÚTEA";
+"cycleTitle_pms" = "TPM";
+
+// Onboarding
+"onboarding_explanation0" = "Que bom que você está aqui! Vem me conhecer melhor!";
+"onboarding_explanation1" = "Obviamente eu sou um útero, e a partir de agora sua missão é cuidar de mim.";
+"onboarding_explanation2" = "Aqui tudo vai girar em torno do meu ciclo menstrual, que possui 28 dias :)";
+"onboarding_explanation3" = "Agora vou te mostrar tudo o que você vai precisar para cuidar de mim!";
+"onboarding_explanation4" = "É aqui que você vai acompanhar meus níveis de saúde, nutrição e lazer...";
+"onboarding_explanation5" = "Preste atenção neles para me manter saudável e feliz :)";
+"onboarding_explanation6" = "Aqui você vai saber em que dia e fase do ciclo eu estou...";
+"onboarding_explanation7" = "Isso vai ser importante, pois terão dias que não vou estar tão disposto...";
+"onboarding_explanation8" = "Ah! Cada dia do meu ciclo dura 4 horas. Isso quer dizer que 1 dia para você são 6 dias para mim.";
+"onboarding_explanation9" = "Esse é meu kit de sobrevivência...";
+"onboarding_explanation10" = "É com ele que você vai me alimentar, cuidar de mim e me divertir :)";
+"onboarding_explanation11" = "Agora é com você!";
+"onboarding_firstHello0" = "Olá,";
+"onboarding_firstHello1" = "sou";
+"onboarding_firstHello2" = "Uti";
+"survivalKit_title" = "Kit de Sobrevivência Uterina";
+
+// Survival Kit
+"health_button_title" = "Saúde";
+"leisure_button_title" = "Lazer";
+"nutrition_button_title" = "Nutrição";

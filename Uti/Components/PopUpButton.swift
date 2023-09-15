@@ -25,7 +25,7 @@ struct PopUpButton: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(.darkRed)
-                Text(buttonTitle)
+                Text(LocalizedStringKey(buttonTitle))
                     .foregroundColor(.white)
                     .font(.system(size: buttonSize == .large ? Responsive.scale(s: FontSize.h1.rawValue) : Responsive.scale(s: FontSize.body.rawValue)))
                     .fontWeight(FontWeight.bold.value)

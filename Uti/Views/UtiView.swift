@@ -47,7 +47,7 @@ struct UtiView: View {
                     .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
             }
             
-            Button("Kit de Sobrevivência Uterina") {
+            Button("survivalKit_title") {
                 showingSheet.toggle()
             }
             .frame(maxHeight: 100)

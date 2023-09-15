@@ -32,7 +32,7 @@ struct PhaseCycleCircle: View {
                     .foregroundColor(.white)
                     .font(.system(size: 14, weight: .semibold))
             }
-            Text(phaseText())
+            Text(LocalizedStringKey(phaseText()))
                 .foregroundColor(.white)
                 .font(.system(size: 14, weight: .semibold))
         }
@@ -41,15 +41,15 @@ struct PhaseCycleCircle: View {
     func phaseText() -> String {
         switch (uti.phase) {
         case .menstrual:
-            return "FASE MENSTRUAL"
+            return "cycleTitle_menstural"
         case .fertile:
-            return "FASE FÉRTIL"
+            return "cycleTitle_fertile"
         case .folicular:
-            return "FASE FOLICULAR"
+            return "cycleTitle_folicular"
         case .luteal:
-            return "FASE LÚTEA"
+            return "cycleTitle_luteal"
         case .pms:
-            return "TPM"
+            return "cycleTitle_pms"
         }
     }
     

@@ -22,23 +22,23 @@ struct OnboardingView: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     
     let onboardingTexts = [
-        "Que bom que você está aqui! Vem me conhecer melhor!",
-        "Obviamente eu sou um útero, e a partir de agora sua missão é cuidar de mim.",
-        "Aqui tudo vai girar em torno do meu ciclo menstrual, que possui 28 dias :)",
-        "Agora vou te mostrar tudo o que você vai precisar para cuidar de mim!",
-        "É aqui que você vai acompanhar meus níveis de saúde, nutrição e lazer...",
-        "Preste atenção neles para me manter saudável e feliz :)",
-        "Aqui você vai saber em que dia e fase do ciclo eu estou...",
-        "Isso vai ser importante, pois terão dias que não vou estar tão disposto...",
-        "Ah! Cada dia do meu ciclo dura 4 horas. Isso quer dizer que 1 dia para você são 6 dias para mim.",
-        "Esse é meu kit de sobrevivência...",
-        "É com ele que você vai me alimentar, cuidar de mim e me divertir :)",
-        "Agora é com você!"
+        "onboarding_explanation0",
+        "onboarding_explanation1",
+        "onboarding_explanation2",
+        "onboarding_explanation3",
+        "onboarding_explanation4",
+        "onboarding_explanation5",
+        "onboarding_explanation6",
+        "onboarding_explanation7",
+        "onboarding_explanation8",
+        "onboarding_explanation9",
+        "onboarding_explanation10",
+        "onboarding_explanation11"
     ]
     
     var currentOnboardingText: String {
         if buttonTextIndex >= onboardingTexts.count {
-            return "Agora é com você!"
+            return "onboarding_explanation11"
         } else {
             return onboardingTexts[buttonTextIndex]
         }
@@ -54,10 +54,10 @@ struct OnboardingView: View {
                             ZStack {
                                 ZStack {
                                     VStack(alignment: .leading) {
-                                        Text("Olá,")
+                                        Text("onboarding_firstHello0")
                                         HStack {
-                                            Text("sou")
-                                            Text("Uti")
+                                            Text("onboarding_firstHello1")
+                                            Text("onboarding_firstHello2")
                                                 .fontWeight(FontWeight.bold.value)
                                         }
                                     }
@@ -201,8 +201,7 @@ struct OnboardingView: View {
                             .frame(width: 150, height: 40)
                     }
                     
-                    // survival kit
-                    Button("Kit de Sobrevivência Uterina") {
+                    Button("survivalKit_title") {
                         showingSheet.toggle()
                     }
                     .frame(maxHeight: 100)
