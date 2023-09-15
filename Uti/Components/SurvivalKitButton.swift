@@ -53,11 +53,11 @@ struct SurvivalKitButton: View {
     func getTitle() -> Text {
         switch category {
         case .leisure:
-            return Text("Lazer")
+            return Text("leisure_button_title")
         case .health:
-            return Text("Saúde")
+            return Text("health_button_title")
         case .nutrition:
-            return Text("Nutrição")
+            return Text("nutrition_button_title")
         }
     }
     
