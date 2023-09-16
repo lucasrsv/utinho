@@ -21,10 +21,10 @@ struct CycleChangePopupView: View {
                 HStack(alignment: .center) {
                     VStack(spacing: Responsive.scale(s: Spacing.medium)) {
                         VStack {
-                            Text("Utinho está passando pela")
+                            Text("popup_title")
                                 .foregroundColor(.darkRed)
                                 .font(.system(size: Responsive.scale(s: FontSize.h3.rawValue)))
-                            Text(Uti.phaseText(phase: uti.phase))
+                            Text(LocalizedStringKey(Uti.phaseText(phase: uti.phase)))
                                 .foregroundColor(.darkRed)
                                 .font(.system(size: Responsive.scale(s: FontSize.h3.rawValue)))
                                 .fontWeight(FontWeight.bold.value)
@@ -34,16 +34,16 @@ struct CycleChangePopupView: View {
                         if showMoreInfo {
                             ScrollView{
                                 VStack(spacing: Responsive.scale(s: Spacing.medium)) {
-                                    Text(Uti.getPhase(phase: uti.phase).previewDescription)
+                                    Text(LocalizedStringKey(Uti.getPhase(phase: uti.phase).previewDescription))
                                         .foregroundColor(Color.black.opacity(0.6))
                                         .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                         .multilineTextAlignment(.center)
-                                    Text(Uti.getPhase(phase: uti.phase).completeDescription)
+                                    Text(LocalizedStringKey(Uti.getPhase(phase: uti.phase).completeDescription))
                                         .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                         .foregroundColor(Color.black.opacity(0.6))
                                         .multilineTextAlignment(.center)
                                     VStack(alignment: .leading) {
-                                        Text("REFERÊNCIAS")
+                                        Text(LocalizedStringKey("reference_title"))
                                             .foregroundColor(Color.black.opacity(0.6))
                                             .fontWeight(FontWeight.semibold.value)
                                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
@@ -51,21 +51,21 @@ struct CycleChangePopupView: View {
                                         Text("Entenda as fases do ciclo menstrual | Drauzio Varella")
                                             .foregroundColor(Color.black.opacity(0.6))
                                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
-                                        Link("Acesse aqui", destination: URL(string: "https://drauziovarella.uol.com.br/mulher/menstruacao/entenda-as-fases-do-ciclo-menstrual/")!)
+                                        Link(LocalizedStringKey("reference_access"), destination: URL(string: "https://drauziovarella.uol.com.br/mulher/menstruacao/entenda-as-fases-do-ciclo-menstrual/")!)
                                             .foregroundColor(Color.blue)
                                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                             .padding(.bottom, 8)
                                         Text("Hormônios FSH e LH")
                                             .foregroundColor(Color.black.opacity(0.6))
                                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
-                                        Link("Acesse aqui", destination: URL(string: "https://www.gineco.com.br/saude-feminina/menstruacao/hormonio-fsh")!)
+                                        Link(LocalizedStringKey("reference_access"), destination: URL(string: "https://www.gineco.com.br/saude-feminina/menstruacao/hormonio-fsh")!)
                                             .foregroundColor(Color.blue)
                                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                             .padding(.bottom, 8)
                                         Text("Period irregularities to get checked out")
                                             .foregroundColor(Color.black.opacity(0.6))
                                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
-                                        Link("Acesse aqui", destination: URL(string: "https://www.mayoclinic.org/healthy-lifestyle/womens-health/in-depth/menstrual-cycle/art-20047186")!)
+                                        Link(LocalizedStringKey("reference_access"), destination: URL(string: "https://www.mayoclinic.org/healthy-lifestyle/womens-health/in-depth/menstrual-cycle/art-20047186")!)
                                             .foregroundColor(Color.blue)
                                             .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                             .padding(.bottom, 8)
@@ -73,20 +73,20 @@ struct CycleChangePopupView: View {
                                 }
                             }
                         } else {
-                            Text(Uti.getPhase(phase: uti.phase).previewDescription)
+                            Text(LocalizedStringKey(Uti.getPhase(phase: uti.phase).previewDescription))
                                 .foregroundColor(Color.black.opacity(0.6))
                                 .font(.system(size: Responsive.scale(s: FontSize.body.rawValue)))
                                 .multilineTextAlignment(.center)
                         }
                         VStack {
-                            PopUpButton(buttonTitle: "Ok, entendi",
+                            PopUpButton(buttonTitle:"confirmation_popup_button",
                                         buttonSize: geo.size.width > 428 ? ButtonSize.large : ButtonSize.small,
                                         onButtonTap: {
                                 isPopupVisible = false
                             }
                             )
                             if !showMoreInfo {
-                                Button("saiba mais") {
+                                Button(LocalizedStringKey("moreInfo_popup_button")) {
                                     showMoreInfo.toggle()
                                 }
                                 .foregroundColor(.darkRed)
