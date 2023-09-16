@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @StateObject private var timerManager: TimerManager = TimerManager()
     @State private var isPopupVisible = false
-   
+    
     
     var body: some View {
         ZStack{
@@ -38,10 +39,11 @@ struct ContentView: View {
                 }
                 UtiView()
                     .environmentObject(utiStore)
+           
             }
             .onAppear {
-                  timerManager.setup(utiStore: utiStore)
-              }
+                timerManager.setup(utiStore: utiStore)
+            }
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.all, Responsive.scale(s: Spacing.large))
             .background(
@@ -55,6 +57,7 @@ struct ContentView: View {
             }
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

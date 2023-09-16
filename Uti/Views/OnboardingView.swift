@@ -21,6 +21,7 @@ struct OnboardingView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @EnvironmentObject private var navigationManager: NavigationManager
     
+    
     let onboardingTexts = [
         "onboarding_explanation0",
         "onboarding_explanation1",

@@ -12,6 +12,7 @@ struct UtiApp: App {
     @StateObject private var utiStore = UtiStore()
     @StateObject var navigationManager = NavigationManager()
     @AppStorage("IsFirstTime") var isFirstTime: Bool?
+    @State var notificationManager: NotificationManager?
     
     var body: some Scene {
         WindowGroup {
@@ -26,6 +27,9 @@ struct UtiApp: App {
                         } catch {
                             fatalError(error.localizedDescription)
                         }
+                    }
+                    .onAppear {
+                        notificationManager = NotificationManager(uti: utiStore.uti)
                     }
             case .onboarding:
                 OnboardingView()

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct Uti: Codable {
     var currentCycleDay: Int
@@ -20,6 +21,11 @@ struct Uti: Codable {
     var blood: Double
     var items: [Item]
 
+    var phasePublisher: AnyPublisher<Phase, Never> {
+        return Just(phase)
+            .eraseToAnyPublisher()
+    }
+    
     enum CodingKeys: String, CodingKey {
         case currentCycleDay = "current_cycle_day"
         case phase, state, leisure, health, nutrition, blood, items, illness, energy
