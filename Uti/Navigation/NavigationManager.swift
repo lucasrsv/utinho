@@ -13,13 +13,10 @@ class NavigationManager: ObservableObject {
     @Published var routeHistory: [UtiRoute] = []
     @AppStorage("IsFirstTime") var isFirstTime: Bool?
     
-    private let notificationManager = NotificationManager.shared
-    
     init() {
         if (isFirstTime == nil) {
             isFirstTime = false
             currentRoute = .onboarding
-            requestNotificationPermission()
         }
     }
     
@@ -33,16 +30,4 @@ class NavigationManager: ObservableObject {
             currentRoute = previousRoute
         }
     }
-    
-    func requestNotificationPermission() {
-        notificationManager.requestNotificationPermission { success, error in
-            if success {
-                self.notificationManager.scheduleDailyNotification()
-            } else if let error = error {
-                print("Erro ao solicitar permissão de notificação: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    
 }

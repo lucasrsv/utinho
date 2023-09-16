@@ -7,20 +7,37 @@
 
 import SwiftUI
 import UserNotifications
+import Combine
 
 class NotificationManager {
     
-    static let shared = NotificationManager()
-    var uti: Uti
+    private var cancellables = Set<AnyCancellable>()
+    private var uti: Uti
     
-    init() {
-        uti = Uti(currentCycleDay: 1, phase: .menstrual, state: .homelyHappy, illness: .no, leisure: 50, health: 60, nutrition: 55, energy: 100, blood: 100, items: [])
+    init(uti: Uti) {
+        self.uti = uti
+        
+        requestNotificationPermission { granted in
+            if granted {
+                self.scheduleDailyNotification()
+                self.uti.phasePublisher
+                    .sink { newPhase in
+                        self.sendPhaseNotification(newPhase: newPhase)
+                    }
+                    .store(in: &self.cancellables)
+            }
+        }
     }
     
-    func requestNotificationPermission(completion: @escaping (Bool, Error?) -> Void) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            DispatchQueue.main.async {
-                completion(success, error)
+    func requestNotificationPermission(completion: @escaping (Bool) -> Void) {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                //TODO: Handle this error
+                print(error)
+                completion(false)
+            } else {
+                completion(granted)
             }
         }
     }
@@ -34,8 +51,9 @@ class NotificationManager {
         content.sound = UNNotificationSound.default
         
         var dateComponents = DateComponents()
-        dateComponents.hour = 16
-        dateComponents.minute = 17
+        dateComponents.hour = 15
+        dateComponents.minute = 10
+
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         let request = UNNotificationRequest(identifier: "dailyNotification", content: content, trigger: trigger)
@@ -49,12 +67,12 @@ class NotificationManager {
         }
     }
     
-    func sendPhaseNotification() {
+    func sendPhaseNotification(newPhase: Phase) {
         let center = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
         content.title = "Utinho Update"
-        content.body = "O Utinho está agora na fase \(Uti.phaseText(phase: self.uti.phase))!"
+        content.body = "O Utinho está agora na fase \(newPhase)!"
         content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -69,5 +87,5 @@ class NotificationManager {
             }
         }
     }
-
+    
 }

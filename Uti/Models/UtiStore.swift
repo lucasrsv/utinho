@@ -9,9 +9,6 @@ import Foundation
 import SwiftUI
 
 class UtiStore: ObservableObject {
-    
-    let notificationManager = NotificationManager()
-    
     @Published var uti: Uti = Uti(currentCycleDay: 1, phase: .folicular, state: .homelyHappy, illness: .no, leisure: 50, health: 60, nutrition: 55, energy: 100, blood: 100, items: []) {
         didSet {
             Task {
@@ -68,8 +65,6 @@ class UtiStore: ObservableObject {
             NSLog("UTINHOLOG: uti.currentCycleDay module \(uti.currentCycleDay)")
         }
         
-        let currentPhase = uti.phase
-        
         if (uti.currentCycleDay <= 5) {
             uti.phase = .menstrual
         } else if (uti.currentCycleDay >= 6 && uti.currentCycleDay <= 11) {
@@ -78,10 +73,6 @@ class UtiStore: ObservableObject {
             uti.phase = .fertile
         } else {
             uti.phase = .luteal
-        }
-        
-        if uti.phase != currentPhase{
-            notificationManager.sendPhaseNotification()
         }
     }
     

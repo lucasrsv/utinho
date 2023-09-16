@@ -12,15 +12,7 @@ struct UtiApp: App {
     @StateObject private var utiStore = UtiStore()
     @StateObject var navigationManager = NavigationManager()
     @AppStorage("IsFirstTime") var isFirstTime: Bool?
-    
-    init() {
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized {
-                NotificationManager.shared.scheduleDailyNotification()
-            }
-        }
-    }
+    @State var notificationManager: NotificationManager?
     
     var body: some Scene {
         WindowGroup {
@@ -35,6 +27,9 @@ struct UtiApp: App {
                         } catch {
                             fatalError(error.localizedDescription)
                         }
+                    }
+                    .onAppear {
+                        notificationManager = NotificationManager(uti: utiStore.uti)
                     }
             case .onboarding:
                 OnboardingView()
