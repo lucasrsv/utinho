@@ -109,3 +109,20 @@
 "health_button_title" = "Saúde";
 "leisure_button_title" = "Lazer";
 "nutrition_button_title" = "Nutrição";
+
+// Notifications
+"notification_title1" = "Estou com saudades e com fome!";
+"notification_title2" = "Cadê você?";
+"notification_title3" = "Olha a hora!";
+"notification_title4" = "Eita que demora...";
+"notification_title5" = "Preciso me divertir!";
+"notification_title6" = "Dá uma olhada nas minhas estatísticas?";
+"notification_title7" = "Que tédio...";
+
+"notification_body1" = "Você me abandonou um dia inteirinho 😭 Isso não se faz!";
+"notification_body2" = "Vem me ver que preciso de cuidado!";
+"notification_body3" = "Tá na hora de cuidar de mim, não acha?";
+"notification_body4" = "Estou cansado de ser mal cuidado!";
+"notification_body5" = "Me leva para um minigame agora!";
+"notification_body6" = "Você sabe que precisa mante-las em dia, né?";
+"notification_body7" = "Você mal me vê, não quero ficar sozinho!";

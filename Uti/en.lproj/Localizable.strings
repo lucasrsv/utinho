@@ -109,3 +109,21 @@
 "health_button_title" = "Health";
 "leisure_button_title" = "Leisure";
 "nutrition_button_title" = "Nutrition";
+
+// Notifications
+"notification_title1" = "I miss you and I'm hungry!";
+"notification_title2" = "Where are you?";
+"notification_title3" = "Check the hour!";
+"notification_title4" = "What a long time...";
+"notification_title5" = "I need to have fun!";
+"notification_title6" = "Take a look at my stats?";
+"notification_title7" = "How boring...";
+
+"notification_body1" = "You left me for a whole day 😭 That's not good!";
+"notification_body2" = "Come and see me, I need attention!";
+"notification_body3" = "It's time to take care of myself, don't you think?";
+"notification_body4" = "I'm tired of being taken care of badly!";
+"notification_body5" = "Take me to a minigame now!";
+"notification_body6" = "You know you need to keep them up to date, right?";
+"notification_body7" = "You barely see me, I don't want to be alone!";
+
