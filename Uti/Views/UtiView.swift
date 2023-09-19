@@ -13,7 +13,7 @@ struct UtiView: View {
     @State private var bouncing = true
     @State var showingSheet = false
     @State private var sheetHeight: CGFloat = .zero
-    
+    @State private var utiPosition: [CGPoint] = []
     
     var body: some View {
         VStack {
@@ -28,17 +28,20 @@ struct UtiView: View {
             .background(.white)
             .cornerRadius(20.0)
             VStack {
-                Image(changeImage(state: utiStore.uti.state))
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.accentColor)
-                    .offset(y: bouncing ? 16 : -16)
-                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
-                    .onAppear {
-                        withAnimation(nil) {
-                            self.bouncing.toggle()
+                GeometryReader { uti in
+                    Image(changeImage(state: utiStore.uti.state))
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.accentColor)
+                        .offset(y: bouncing ? 16 : -16)
+                        .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                        .onAppear {
+                            utiPosition = [CGPoint(x: uti.frame(in: .global).minX, y: uti.frame(in: .global).minY), CGPoint(x: uti.frame(in: .global).maxX, y: uti.frame(in: .global).maxY)]
+                            withAnimation(nil) {
+                                self.bouncing.toggle()
+                            }
                         }
-                    }
+                }
                 Ellipse()
                     .foregroundColor(.strongRed)
                     .blur(radius: 20)
@@ -55,22 +58,20 @@ struct UtiView: View {
             .buttonStyle(CustomButtonStyle())
             .fontWeight(.medium)
             .sheet(isPresented: $showingSheet) {
-                VStack{
-                    SurvivalKitView()
-                        .environmentObject(utiStore)
-                }
-                .edgesIgnoringSafeArea(.all)
-                .presentationCornerRadius(32)
-                .presentationBackground(.white)
-                .overlay {
-                    GeometryReader { geometry in
-                        Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
+                SurvivalKitView(utiPosition: utiPosition)
+                    .environmentObject(utiStore)
+                    .edgesIgnoringSafeArea(.all)
+                    .presentationCornerRadius(32)
+                    .presentationBackground(.white)
+                    .overlay {
+                        GeometryReader { geometry in
+                            Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
+                        }
                     }
-                }
-                .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
-                    sheetHeight = newHeight
-                }
-                .presentationDetents([.height(sheetHeight)])
+                    .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
+                        sheetHeight = newHeight
+                    }
+                    .presentationDetents([.height(sheetHeight)])
             }
         }
     }
