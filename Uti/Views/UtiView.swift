@@ -57,22 +57,22 @@ struct UtiView: View {
             .multilineTextAlignment(.center)
             .buttonStyle(CustomButtonStyle())
             .fontWeight(.medium)
-            .sheet(isPresented: $showingSheet) {
-                SurvivalKitView(utiPosition: utiPosition)
-                    .environmentObject(utiStore)
-                    .edgesIgnoringSafeArea(.all)
-                    .presentationCornerRadius(32)
-                    .presentationBackground(.white)
-                    .overlay {
-                        GeometryReader { geometry in
-                            Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
-                        }
+            
+            SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet)
+                .opacity(showingSheet ? 1 : 0)
+                .environmentObject(utiStore)
+                .edgesIgnoringSafeArea(.all)
+                .presentationCornerRadius(32)
+                .presentationBackground(.white)
+                .overlay {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: SheetKitPreferenceKey.self, value: geometry.size.height)
                     }
-                    .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
-                        sheetHeight = newHeight
-                    }
-                    .presentationDetents([.height(sheetHeight)])
-            }
+                }
+                .onPreferenceChange(SheetKitPreferenceKey.self) { newHeight in
+                    sheetHeight = newHeight
+                }
+                .presentationDetents([.height(sheetHeight)])
         }
     }
     
