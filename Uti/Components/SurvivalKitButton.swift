@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 struct SurvivalKitButton: View {
     
     let category: Category
@@ -17,10 +18,8 @@ struct SurvivalKitButton: View {
                 currentCategory = category
             }, label: {
                 ZStack {
-                    // button border
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(currentCategory == category ? .clear : .darkRed, lineWidth: 2)
-                    // button background
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(currentCategory == category ? .darkRed : .white)
                     
@@ -61,5 +60,13 @@ struct SurvivalKitButton: View {
         }
     }
     
+}
+
+struct SurvivalKitButton_Previews: PreviewProvider {
+    @State static var currentCategory = Category.health
+    
+    static var previews: some View {
+        SurvivalKitButton(category: .leisure, currentCategory: $currentCategory)
+    }
 }
 

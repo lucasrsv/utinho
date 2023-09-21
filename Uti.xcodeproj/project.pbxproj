@@ -23,6 +23,8 @@
 		94BB14772A9FDCEB009D30E7 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */; };
 		94EF14E22AAB59E200B56BA7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF14E12AAB59E200B56BA7 /* NotificationManager.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
+		EB5E2A502ABB928E00931446 /* GlobalFrameReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E2A4F2ABB928E00931446 /* GlobalFrameReader.swift */; };
+		EB5E2A522ABBC56100931446 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E2A512ABBC56100931446 /* RoundedCorner.swift */; };
 		EB6CCCB82A8171F700C072FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB6CCCBA2A8171F700C072FE /* Localizable.strings */; };
 		EB98B6D72A7D43560004513A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98B6D62A7D43560004513A /* Color.swift */; };
 		EB98B6D92A7D62E70004513A /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98B6D82A7D62E70004513A /* Spacing.swift */; };
@@ -58,6 +60,8 @@
 		94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
 		94EF14E12AAB59E200B56BA7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		EB5E2A4F2ABB928E00931446 /* GlobalFrameReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFrameReader.swift; sourceTree = "<group>"; };
+		EB5E2A512ABBC56100931446 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		EB6CCCB92A8171F700C072FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EB6CCCBB2A81721500C072FE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EB98B6D62A7D43560004513A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				EB98B6DE2A7D7E390004513A /* Atoms */,
 				EB98B6D52A7D43430004513A /* Particles */,
 				940078482A8EB4440052532A /* Responsive.swift */,
+				EB5E2A512ABBC56100931446 /* RoundedCorner.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
 				94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */,
 				94BB14742A9FD078009D30E7 /* OnboardingView.swift */,
+				EB5E2A4F2ABB928E00931446 /* GlobalFrameReader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAEA6312A375806004BF7E9 /* Item.swift in Sources */,
+				EB5E2A502ABB928E00931446 /* GlobalFrameReader.swift in Sources */,
 				9470B36E2AA7C1CB00A1FB5D /* UtiRoute.swift in Sources */,
 				EB98B6DB2A7D63F20004513A /* Opacity.swift in Sources */,
 				EB98B6D72A7D43560004513A /* Color.swift in Sources */,
@@ -331,6 +338,7 @@
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
+				EB5E2A522ABBC56100931446 /* RoundedCorner.swift in Sources */,
 				EBAEA6392A38BA60004BF7E9 /* View.swift in Sources */,
 				EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */,
 				94EF14E22AAB59E200B56BA7 /* NotificationManager.swift in Sources */,

@@ -11,7 +11,16 @@ import UIKit
 struct ItemView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @State private var isSelected = false
+    @State private var selectedItemOffset: CGSize = .zero
+    @State private var utiPosition: [CGPoint]
+    @State private var globalFrame: CGRect = .zero
+    
     let item: Item
+    
+    init(utiPosition: [CGPoint], item: Item) {
+        self.utiPosition = utiPosition
+        self.item = item
+    }
     
     var body: some View {
         ZStack {
@@ -21,14 +30,31 @@ struct ItemView: View {
             Image(item.iconPath)
                 .frame(width: 28, height: 28)
                 .foregroundColor(.darkRed)
-                .onTapGesture {
-                    utiStore.giveUtiItem(item: item)
-                    isSelected.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
-                        isSelected = false
-                    }
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                }
+                .offset(selectedItemOffset)
+                .zIndex(100)
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            isSelected = true
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+             
+                            selectedItemOffset = value.translation
+                        }
+                        .onEnded { value in
+                            isSelected = false
+                            let localTouchPoint = value.location
+                            let globalTouchPoint = CGPoint(x: localTouchPoint.x + globalFrame.origin.x, y: localTouchPoint.y + globalFrame.origin.y)
+                            
+                            print("Local Touch Point (onEnded): \(localTouchPoint)")
+                            print("Global Touch Point (onEnded): \(globalTouchPoint)")
+                            print("Uti Postion: \(self.utiPosition)")
+                            
+                            if (globalTouchPoint.x >= utiPosition[0].x && globalTouchPoint.x <= utiPosition[1].x && globalTouchPoint.y >= utiPosition[0].y && globalTouchPoint.y <= utiPosition[1].y){
+                                utiStore.giveUtiItem(item: item)
+                            }
+                            selectedItemOffset = .zero
+                        }
+                )
             ZStack(alignment: .bottomTrailing) {
                 RoundedRectangle(cornerRadius: 1)
                     .frame(width: 79, height:83)
@@ -53,5 +79,18 @@ struct ItemView: View {
                 }
             }
         }
+        .overlay(GlobalFrameReader(content: EmptyView(), globalFrame: $globalFrame))
+    }
+}
+
+struct ItemView_Previews: PreviewProvider {
+    static func getUtiStore() -> UtiStore {
+        let utiStore: UtiStore = UtiStore()
+        utiStore.uti = Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: [])
+        return utiStore
+    }
+    static var previews: some View {
+        ItemView(utiPosition: [], item: Item.getItems(category: .health)[0])
+            .environmentObject(getUtiStore())
     }
 }
