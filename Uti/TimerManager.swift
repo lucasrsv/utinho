@@ -11,7 +11,6 @@ import SwiftUI
 class TimerManager: ObservableObject {
     @AppStorage("LastStaticsTimerTickTimestamp") private var lastStatisticsTimerTickTimestamp: TimeInterval?
     @AppStorage("LastStateTimerTickTimestamp") private var lastStateTimerTickTimestamp: TimeInterval?
-
     private var utiStore: UtiStore?
     private var statisticsTimer: Timer?
     private var stateTimer: Timer?
@@ -58,7 +57,6 @@ class TimerManager: ObservableObject {
             utiStore?.updateUtiStatistics(hoursSpent: hoursSpentSinceLastLaunch)
             utiStore?.updateUtiState()
             lastStatisticsTimerTickTimestamp = lastStatisticsTimerTickTimestamp! + (hoursSpentSinceLastLaunch * hourS)
-//            timeInterval = timeSpentSinceLastStatisticsTimerTick.truncatingRemainder(dividingBy: hourS)
             timeInterval = hourS - (Double(timeSpentSinceLastStatisticsTimerTick) - (hourS * hoursSpentSinceLastLaunch))
         } else {
             timeInterval = hourS - timeSpentSinceLastStatisticsTimerTick

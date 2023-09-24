@@ -10,9 +10,10 @@ import SwiftUI
 @main
 struct UtiApp: App {
     @StateObject private var utiStore = UtiStore()
-    @StateObject var navigationManager = NavigationManager()
-    @AppStorage("IsFirstTime") var isFirstTime: Bool?
-    @State var notificationManager: NotificationManager?
+    @StateObject private var navigationManager = NavigationManager()
+    @StateObject private var timerManager: TimerManager = TimerManager()
+    @AppStorage("IsFirstTime") private var isFirstTime: Bool?
+    @State private var notificationManager: NotificationManager?
     
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,7 @@ struct UtiApp: App {
                     .task {
                         do {
                             try await utiStore.load()
+                            timerManager.setup(utiStore: utiStore)
                         } catch {
                             fatalError(error.localizedDescription)
                         }

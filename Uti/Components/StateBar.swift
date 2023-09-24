@@ -20,7 +20,7 @@ struct StateBar: View {
             
             RoundedRectangle(cornerRadius: 8, style: .continuous)
                 .frame(width: (CGFloat(getCurrentValue())/100) * 64.0, height: 28.0)
-                .foregroundColor(getCurrentValue() < 40 ? .blue : .lightBlue)
+                .foregroundColor(getForegroundColor())
             
             HStack {
                 defineIcon(category: category)
@@ -39,6 +39,16 @@ struct StateBar: View {
         }
     }
     
+    func getForegroundColor() -> Color {
+        switch category {
+        case .leisure:
+            return .lightBlue
+        case .health:
+            return .primaryOrange
+        case .nutrition:
+            return .primaryYellow
+        }
+    }
     func getCurrentValue() -> Double {
         switch category {
         case .health:
@@ -51,8 +61,8 @@ struct StateBar: View {
     }
 }
 
-    
-    
+
+
 //struct StateBar_Previews: PreviewProvider {
 //    static var previews: some View {
 //        StateBar(uti: Uti(currentCycleDay: 1, phase: .fertile, state: .bodybuilder, illness: .no, leisure: 100, health: 30, nutrition: 100, energy: 100, blood: 100, items: []), category: .health)

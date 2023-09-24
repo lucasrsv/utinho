@@ -19,4 +19,6 @@ extension Color {
     public static let primaryBlue = Color("blue")
     public static let lightBlue = Color("lightBlue")
     public static let beige = Color("beige")
+    public static let primaryYellow = Color("yellow")
+    public static let primaryOrange = Color("orange")
 }

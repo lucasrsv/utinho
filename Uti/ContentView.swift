@@ -10,7 +10,6 @@ import UserNotifications
 
 struct ContentView: View {
     @EnvironmentObject private var utiStore: UtiStore
-    @StateObject private var timerManager: TimerManager = TimerManager()
     @State private var isPopupVisible = false
     @State private var bouncing = true
     @State var showingSheet = false
@@ -22,21 +21,19 @@ struct ContentView: View {
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        ZStack {
-                            VStack() {
-                                PhaseCycleCircle(uti: utiStore.uti)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .center)
+                        VStack {
+                            StateBar(uti: utiStore.uti, category: .health)
+                            StateBar(uti: utiStore.uti, category: .nutrition)
+                            StateBar(uti: utiStore.uti, category: .leisure)
+                        }
+                        Spacer()
+                        PhaseCycleCircle(uti: utiStore.uti)
                             .onTapGesture {
                                 isPopupVisible.toggle()
                             }
-                            VStack {
-                                StateBar(uti: utiStore.uti, category: .health)
-                                StateBar(uti: utiStore.uti, category: .nutrition)
-                                StateBar(uti: utiStore.uti, category: .leisure)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
+                        Spacer()
+                        CycleClockViewControllerRepresentable()
+                            .frame(width: 64, height: 64)
                     }
                     .padding(.bottom, Responsive.scale(s: Spacing.small))
                 }
@@ -82,21 +79,22 @@ struct ContentView: View {
                     .multilineTextAlignment(.center)
                     .buttonStyle(CustomButtonStyle())
                     .fontWeight(.medium)
-                    
                 }
                 
-            }
-            .onAppear {
-                timerManager.setup(utiStore: utiStore)
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.all, Responsive.scale(s: Spacing.large))
             .background(
-                Image("standard_background")
-                    .resizable()
-                    .ignoresSafeArea()
+                LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: Color(red: 0.27, green: 0.06, blue: 0.09), location: 0.00),
+                        Gradient.Stop(color: Color(red: 0.75, green: 0.24, blue: 0.24), location: 0.57),
+                        Gradient.Stop(color: Color(red: 0.5, green: 0.14, blue: 0.14), location: 1.00),
+                    ],
+                    startPoint: UnitPoint(x: 0.83, y: -0.14),
+                    endPoint: UnitPoint(x: 0.52, y: 1.01)
+                )
             )
-            
             
             if (utiPosition.count > 0) {
                 VStack {
@@ -107,10 +105,7 @@ struct ContentView: View {
                         .opacity(showingSheet ? 1 : 0)
                 }
             }
-            
-            
-            
-            
+        
             if isPopupVisible {
                 CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
             }
