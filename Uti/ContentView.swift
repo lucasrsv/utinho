@@ -12,9 +12,10 @@ struct ContentView: View {
     @EnvironmentObject private var utiStore: UtiStore
     @State private var isPopupVisible = false
     @State private var bouncing = true
-    @State var showingSheet = false
+    @State private var showingSheet = false
     @State private var sheetHeight: CGFloat = .zero
     @State private var utiPosition: [CGPoint] = []
+    @State private var utiText = ""
     
     var body: some View {
         ZStack {
@@ -39,10 +40,13 @@ struct ContentView: View {
                 }
                 VStack {
                     VStack {
-                        Text(LocalizedStringKey(getLocalizable(state:utiStore.uti.state)))
+                        Text(LocalizedStringKey(utiText))
                             .bold()
                             .foregroundColor(.darkRed)
                             .padding(.horizontal, 8)
+                            .onAppear {
+                                utiText = getLocalizable(state: utiStore.uti.state)
+                            }
                     }
                     .padding(.horizontal, 4.0)
                     .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
@@ -96,13 +100,13 @@ struct ContentView: View {
                 )
             )
             
-            if (utiPosition.count > 0) {
+            if (utiPosition.count > 0 && showingSheet == true) {
                 VStack {
                     Spacer()
                     SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet)
                         .environmentObject(utiStore)
                         .ignoresSafeArea()
-                        .opacity(showingSheet ? 1 : 0)
+                        .id(showingSheet)
                 }
             }
         
@@ -111,7 +115,6 @@ struct ContentView: View {
             }
         }
     }
-    
 }
 
 func getLocalizable(state: UtiState) -> String {
