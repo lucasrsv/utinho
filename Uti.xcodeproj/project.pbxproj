@@ -21,6 +21,7 @@
 		94B42A742A8AC6A70007CEB1 /* CycleChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */; };
 		94BB14752A9FD078009D30E7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14742A9FD078009D30E7 /* OnboardingView.swift */; };
 		94BB14772A9FDCEB009D30E7 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */; };
+		94DEFB2D2AC3784700420383 /* ItemsFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DEFB2C2AC3784700420383 /* ItemsFeedbackView.swift */; };
 		94EF14E22AAB59E200B56BA7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF14E12AAB59E200B56BA7 /* NotificationManager.swift */; };
 		EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3AA1382A3F408900110B11 /* TimerManager.swift */; };
 		EB5455402ABF243A009FC2D4 /* CycleClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB54553F2ABF243A009FC2D4 /* CycleClockViewController.swift */; };
@@ -60,6 +61,7 @@
 		94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleChangePopupView.swift; sourceTree = "<group>"; };
 		94BB14742A9FD078009D30E7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		94BB14762A9FDCEB009D30E7 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
+		94DEFB2C2AC3784700420383 /* ItemsFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsFeedbackView.swift; sourceTree = "<group>"; };
 		94EF14E12AAB59E200B56BA7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		EB3AA1382A3F408900110B11 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		EB54553F2ABF243A009FC2D4 /* CycleClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleClockViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */,
 				94BB14742A9FD078009D30E7 /* OnboardingView.swift */,
 				EB5E2A4F2ABB928E00931446 /* GlobalFrameReader.swift */,
+				94DEFB2C2AC3784700420383 /* ItemsFeedbackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				940078492A8EB4440052532A /* Responsive.swift in Sources */,
 				9470B36C2AA7C1A000A1FB5D /* NavigationManager.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
+				94DEFB2D2AC3784700420383 /* ItemsFeedbackView.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
 				EB5E2A522ABBC56100931446 /* RoundedCorner.swift in Sources */,

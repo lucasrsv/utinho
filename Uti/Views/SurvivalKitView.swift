@@ -14,6 +14,7 @@ struct SurvivalKitView: View {
     @State private var utiPosition: [CGPoint]
     @State private var sheetHeight: CGFloat = .zero
     @Binding var showingSheet: Bool
+    @State private var isAnimationActive = false
     
     init(utiPosition: [CGPoint], showingSheet: Binding<Bool>) {
         self.utiPosition = utiPosition
@@ -55,13 +56,14 @@ struct SurvivalKitView: View {
                 VStack {
                     HStack(spacing: 12) {
                         ForEach(0..<min(4, filteredItems.count)) { index in
-                            ItemView(utiPosition: utiPosition, item: filteredItems[index])
+                            ItemView(utiPosition: utiPosition, item: filteredItems[index], isAnimationActive: $isAnimationActive)
                                 .environmentObject(utiStore)
                         }
                     }
                     HStack(spacing: 12) {
                         ForEach(4..<min(9, filteredItems.count)) { index in
-                            ItemView(utiPosition: utiPosition, item: filteredItems[index])
+                            ItemView(utiPosition: utiPosition, item: filteredItems[index], isAnimationActive: $isAnimationActive)
+
                                 .environmentObject(utiStore)
                         }
                     }

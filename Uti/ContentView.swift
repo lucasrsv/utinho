@@ -113,6 +113,7 @@ struct ContentView: View {
             if isPopupVisible {
                 CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
             }
+    
         }
     }
 }
@@ -175,6 +176,7 @@ struct SheetKitPreferenceKey: PreferenceKey {
         value = nextValue()
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static func getUtiStore() -> UtiStore {
