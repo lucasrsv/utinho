@@ -15,7 +15,42 @@ struct ContentView: View {
     @State private var showingSheet = false
     @State private var sheetHeight: CGFloat = .zero
     @State private var utiPosition: [CGPoint] = []
+    @State private var utiHeight: CGFloat = 0
+    @State private var utiWidth: CGFloat = 0
     @State private var utiText = ""
+    @State private var isExploding = false
+    @State private var icons: [Icon] = []
+    var iconsOffset: [(Int, Int)] = []
+    
+    private mutating func setIconAnimation() {
+        for i in 0 ... 9 {
+            var x = Int.random(in: 20..<100)
+            var y = Int.random(in: 20..<100)
+            iconsOffset.append((x, y))
+        }
+    }
+    
+    func generateRandomIcons() -> [Icon] {
+        let iconNames = ["star.fill", "heart.fill", "circle.fill", "triangle.fill"]
+        var newIcons: [Icon] = []
+        for _ in 0..<10 {
+            let iconName = iconNames.randomElement() ?? "star.fill"
+            let color = Color.random
+            let offset = CGSize(width: CGFloat.random(in: -100...100), height: CGFloat.random(in: -100...100))
+            let delay = Double.random(in: 0...0.5)
+            
+            
+            // Atribua true para shouldDisappear ao gerar ícones
+            newIcons.append(Icon(name: iconName, color: color, offset: offset, delay: delay, opacity: 0, shouldDisappear: true))
+        }
+        
+        return newIcons
+    }
+    
+    init() {
+        generateRandomIcons()
+        setIconAnimation()
+    }
     
     var body: some View {
         ZStack {
@@ -52,32 +87,52 @@ struct ContentView: View {
                     .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
                     .background(.white)
                     .cornerRadius(20.0)
-                    VStack {
-                        GeometryReader { uti in
-                            Image(changeImage(state: utiStore.uti.state))
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.accentColor)
-                                .offset(y: bouncing ? 16 : -16)
-                                .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
-                                .onAppear {
-                                    utiPosition.append(CGPoint(x: uti.frame(in: .global).minX, y: uti.frame(in: .global).minY))
-                                    utiPosition.append(CGPoint(x: uti.frame(in: .global).maxX, y: uti.frame(in: .global).maxY))
-                                    withAnimation(nil) {
-                                        self.bouncing.toggle()
+                    ZStack {
+                        VStack {
+                            GeometryReader { uti in
+                                Image(changeImage(state: utiStore.uti.state))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.accentColor)
+                                    .offset(y: bouncing ? 16 : -16)
+                                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                                    .onAppear {
+                                        utiPosition.append(CGPoint(x: uti.frame(in: .global).minX, y: uti.frame(in: .global).minY))
+                                        utiPosition.append(CGPoint(x: uti.frame(in: .global).maxX, y: uti.frame(in: .global).maxY))
+                                        utiHeight = uti.frame(in: .global).height
+                                        utiWidth = uti.frame(in: .global).width
+                                        withAnimation(nil) {
+                                            self.bouncing.toggle()
+                                        }
                                     }
-                                }
+                            }
+                            Ellipse()
+                                .foregroundColor(.strongRed)
+                                .blur(radius: 20)
+                                .frame(width: 150, height: 40)
+                                .scaleEffect(bouncing ? 0.7: 1.0)
+                                .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
                         }
-                        Ellipse()
-                            .foregroundColor(.strongRed)
-                            .blur(radius: 20)
-                            .frame(width: 150, height: 40)
-                            .scaleEffect(bouncing ? 0.7: 1.0)
-                            .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                        
+                        ForEach(icons) { icon in
+                            Image(systemName: icon.name)
+                                .foregroundColor(icon.color)
+                                .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight))
+                                .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
+                                .opacity(isExploding ? 1 : 0)
+                                .animation(
+                                    isExploding ?
+                                    Animation.easeInOut(duration: 0.8)
+                                        .delay(icon.delay)
+                                    : nil
+                                )
+                        }
+                        
                     }
                     
                     Button("survivalKit_title") {
                         showingSheet.toggle()
+
                     }
                     .frame(maxHeight: 100)
                     .multilineTextAlignment(.center)
@@ -103,17 +158,19 @@ struct ContentView: View {
             if (utiPosition.count > 0 && showingSheet == true) {
                 VStack {
                     Spacer()
-                    SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet)
+                    SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet, isExploding: $isExploding)
                         .environmentObject(utiStore)
                         .ignoresSafeArea()
                         .id(showingSheet)
                 }
             }
-        
+            
             if isPopupVisible {
                 CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
             }
-    
+        }
+        .onAppear {
+            icons = generateRandomIcons()
         }
     }
 }

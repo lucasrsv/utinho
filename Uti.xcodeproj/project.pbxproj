@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CCCA42A49D11500BD9330 /* UtiView.swift */; };
 		5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC32A390889008F21E5 /* StateBar.swift */; };
 		5B2FFDC92A390993008F21E5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC82A390993008F21E5 /* Image.swift */; };
 		5BA8EBC72A6DB27200B5B6FA /* PhaseCycleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */; };
@@ -47,7 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B1CCCA42A49D11500BD9330 /* UtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiView.swift; sourceTree = "<group>"; };
 		5B2FFDC32A390889008F21E5 /* StateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBar.swift; sourceTree = "<group>"; };
 		5B2FFDC82A390993008F21E5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		5BA8EBC62A6DB27200B5B6FA /* PhaseCycleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseCycleCircle.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				EBAEA6382A38BA60004BF7E9 /* View.swift */,
-				5B1CCCA42A49D11500BD9330 /* UtiView.swift */,
 				9404FDA72A7839240000B7BD /* ItemView.swift */,
 				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
 				94B42A732A8AC6A70007CEB1 /* CycleChangePopupView.swift */,
@@ -331,7 +328,6 @@
 				94BB14772A9FDCEB009D30E7 /* OnboardingButton.swift in Sources */,
 				EB98B6DD2A7D64200004513A /* Typography.swift in Sources */,
 				EB98B6D92A7D62E70004513A /* Spacing.swift in Sources */,
-				5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */,
 				9404FDB02A7844200000B7BD /* SurvivalKitButton.swift in Sources */,
 				EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */,
 				94BB14752A9FD078009D30E7 /* OnboardingView.swift in Sources */,

@@ -16,15 +16,16 @@ struct ItemView: View {
     @State private var globalFrame: CGRect = .zero
     @Binding var isAnimationActive: Bool
     @State private var icons: [Icon] = []
-    @State private var isExploding = false
+    @Binding private var isExploding: Bool
     @State private var shouldDisappear = false
     
     let item: Item
     
-    init(utiPosition: [CGPoint], item: Item, isAnimationActive: Binding<Bool>) {
+    init(utiPosition: [CGPoint], item: Item, isAnimationActive: Binding<Bool>, isExploding: Binding<Bool>) {
         self.utiPosition = utiPosition
         self.item = item
         self._isAnimationActive = isAnimationActive
+        self._isExploding = isExploding
     }
     
     var body: some View {
@@ -54,29 +55,16 @@ struct ItemView: View {
                             print("Global Touch Point (onEnded): \(globalTouchPoint)")
                             print("Uti Postion: \(self.utiPosition)")
                             
-                            if (globalTouchPoint.x >= utiPosition[0].x && globalTouchPoint.x <= utiPosition[1].x && globalTouchPoint.y >= utiPosition[0].y && globalTouchPoint.y <= utiPosition[1].y){
+                            if (globalTouchPoint.x >= utiPosition[0].x && globalTouchPoint.x <= utiPosition[1].x && globalTouchPoint.y >= utiPosition[0].y && globalTouchPoint.y <= utiPosition[1].y) {
                                 utiStore.giveUtiItem(item: item)
-                            }
-                            selectedItemOffset = .zero
-                            
-                            isAnimationActive = true
-                            
-                            if isAnimationActive {
                                 withAnimation {
                                     isExploding = true
-                                    shouldDisappear = true // Ativar o desaparecimento
-                                }
-                                
-                                // Após 1 segundo, redefina os ícones e desabilite o desaparecimento
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                    withAnimation {
-                                        icons = generateRandomIcons()
-                                        shouldDisappear = false
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                                         isExploding = false
                                     }
                                 }
                             }
-                            
+                            selectedItemOffset = .zero
                         }
                 )
             ZStack(alignment: .bottomTrailing) {
@@ -105,24 +93,6 @@ struct ItemView: View {
         }
         .overlay(GlobalFrameReader(content: EmptyView(), globalFrame: $globalFrame))
     }
-    
-    func generateRandomIcons() -> [Icon] {
-        let iconNames = ["star.fill", "heart.fill", "circle.fill", "triangle.fill"]
-        var newIcons: [Icon] = []
-        
-        for _ in 0..<10 {
-            let iconName = iconNames.randomElement() ?? "star.fill"
-            let color = Color.random
-            let offset = CGSize(width: CGFloat.random(in: -100...100), height: CGFloat.random(in: -100...100))
-            let delay = Double.random(in: 0...0.5)
-            
-            // Atribua true para shouldDisappear ao gerar ícones
-            newIcons.append(Icon(name: iconName, color: color, offset: offset, delay: delay, shouldDisappear: true))
-        }
-        
-        return newIcons
-    }
-    
 }
 
 struct Icon: Identifiable {
@@ -131,6 +101,7 @@ struct Icon: Identifiable {
     let color: Color
     let offset: CGSize
     let delay: Double
+    let opacity: Double
     var shouldDisappear: Bool // Adicione a propriedade shouldDisappear
 }
 

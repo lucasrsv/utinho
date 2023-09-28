@@ -14,12 +14,14 @@ struct SurvivalKitView: View {
     @State private var utiPosition: [CGPoint]
     @State private var sheetHeight: CGFloat = .zero
     @Binding var showingSheet: Bool
+    @Binding var isExploding: Bool
     @State private var isAnimationActive = false
     
-    init(utiPosition: [CGPoint], showingSheet: Binding<Bool>) {
+    init(utiPosition: [CGPoint], showingSheet: Binding<Bool>, isExploding: Binding<Bool>) {
         self.utiPosition = utiPosition
         self._showingSheet = showingSheet
         self._filteredItems = State(initialValue: Item.getItems(category: .health))
+        self._isExploding = isExploding
     }
     
     var body: some View {
@@ -56,13 +58,13 @@ struct SurvivalKitView: View {
                 VStack {
                     HStack(spacing: 12) {
                         ForEach(0..<min(4, filteredItems.count)) { index in
-                            ItemView(utiPosition: utiPosition, item: filteredItems[index], isAnimationActive: $isAnimationActive)
+                            ItemView(utiPosition: utiPosition, item: filteredItems[index], isAnimationActive: $isAnimationActive, isExploding: $isExploding)
                                 .environmentObject(utiStore)
                         }
                     }
                     HStack(spacing: 12) {
                         ForEach(4..<min(9, filteredItems.count)) { index in
-                            ItemView(utiPosition: utiPosition, item: filteredItems[index], isAnimationActive: $isAnimationActive)
+                            ItemView(utiPosition: utiPosition, item: filteredItems[index], isAnimationActive: $isAnimationActive, isExploding: $isExploding)
 
                                 .environmentObject(utiStore)
                         }
@@ -89,6 +91,7 @@ struct SurvivalKitView: View {
 
 struct SurvivalKitView_Previews: PreviewProvider {
     @State static var showingSheet = true
+    @State static var isExploding = false
     static func getUtiStore() -> UtiStore {
         let utiStore: UtiStore = UtiStore()
         utiStore.uti = Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: [])
@@ -96,7 +99,7 @@ struct SurvivalKitView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        SurvivalKitView(utiPosition: [], showingSheet: $showingSheet)
+        SurvivalKitView(utiPosition: [], showingSheet: $showingSheet, isExploding: $isExploding)
             .environmentObject(getUtiStore())
     }
 }
