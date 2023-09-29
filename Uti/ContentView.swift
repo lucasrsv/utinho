@@ -31,7 +31,7 @@ struct ContentView: View {
     }
     
     func generateRandomIcons() -> [Icon] {
-        let iconNames = ["star.fill", "heart.fill", "circle.fill", "triangle.fill"]
+        let iconNames = ["cross.fill", "cross.fill", "cross.fill", "cross.fill"]
         var newIcons: [Icon] = []
         for _ in 0..<10 {
             let iconName = iconNames.randomElement() ?? "star.fill"
@@ -113,26 +113,37 @@ struct ContentView: View {
                                 .scaleEffect(bouncing ? 0.7: 1.0)
                                 .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
                         }
-                        
-                        ForEach(icons) { icon in
-                            Image(systemName: icon.name)
-                                .foregroundColor(icon.color)
-                                .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight))
-                                .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
+                        ZStack{
+                            ForEach(icons) { icon in
+                                Image(systemName: icon.name)
+                                    .foregroundColor(icon.color)
+                                    .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight))
+                                    .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
+                                    .opacity(isExploding ? 1 : 0)
+                                    .animation(
+                                        isExploding ?
+                                        Animation.easeInOut(duration: 0.8)
+                                            .delay(icon.delay)
+                                        : nil
+                                    )
+                            }
+                            
+                            Text("+10")
+                                .font(.largeTitle)
+                                .foregroundColor(.white)
+                                .scaleEffect(isExploding ? 2.0 : 0)
                                 .opacity(isExploding ? 1 : 0)
                                 .animation(
                                     isExploding ?
-                                    Animation.easeInOut(duration: 0.8)
-                                        .delay(icon.delay)
+                                    Animation.easeOut(duration: 0.8)
                                     : nil
                                 )
                         }
-                        
                     }
                     
                     Button("survivalKit_title") {
                         showingSheet.toggle()
-
+                        
                     }
                     .frame(maxHeight: 100)
                     .multilineTextAlignment(.center)
