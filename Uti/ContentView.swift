@@ -7,9 +7,11 @@
 
 import SwiftUI
 import UserNotifications
+import AVFoundation
 
 struct ContentView: View {
     @EnvironmentObject private var utiStore: UtiStore
+    @StateObject private var audioManager = AudioManager()
     @State private var isPopupVisible = false
     @State private var bouncing = true
     @State private var showingSheet = false
@@ -76,14 +78,27 @@ struct ContentView: View {
                             .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
                     }
                     
-                    Button("survivalKit_title") {
-                        showingSheet.toggle()
+                    HStack {
+                        Button("survivalKit_title") {
+                            showingSheet.toggle()
+                        }
+                        .frame(maxHeight: 100)
+                        .multilineTextAlignment(.center)
+                        .buttonStyle(CustomButtonStyle())
+                        .fontWeight(.medium)
+                        
+                        Sound()
+                            .environmentObject(audioManager)
+//                       
                     }
                     .frame(maxHeight: 100)
                     .multilineTextAlignment(.center)
                     .buttonStyle(CustomButtonStyle())
                     .fontWeight(.medium)
-                }
+                        
+                        
+                    }
+                   
                 
             }
             .frame(maxHeight: .infinity, alignment: .top)

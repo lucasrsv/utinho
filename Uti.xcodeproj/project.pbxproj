@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		598044382AC3532700905C14 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598044372AC3532700905C14 /* Sound.swift */; };
+		5980443A2AC356E700905C14 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 598044392AC356E700905C14 /* music.mp3 */; };
 		5B1CCCA52A49D11500BD9330 /* UtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CCCA42A49D11500BD9330 /* UtiView.swift */; };
 		5B2FFDC42A390889008F21E5 /* StateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC32A390889008F21E5 /* StateBar.swift */; };
 		5B2FFDC92A390993008F21E5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FFDC82A390993008F21E5 /* Image.swift */; };
@@ -36,7 +38,6 @@
 		EBAEA61D2A37540A004BF7E9 /* UtiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */; };
 		EBAEA61F2A37540A004BF7E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA61E2A37540A004BF7E9 /* ContentView.swift */; };
 		EBAEA6212A37540B004BF7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBAEA6202A37540B004BF7E9 /* Assets.xcassets */; };
-		EBAEA6242A37540B004BF7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBAEA6232A37540B004BF7E9 /* Preview Assets.xcassets */; };
 		EBAEA62F2A3756B0004BF7E9 /* Uti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA62E2A3756B0004BF7E9 /* Uti.swift */; };
 		EBAEA6312A375806004BF7E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA6302A375806004BF7E9 /* Item.swift */; };
 		EBAEA6352A38B531004BF7E9 /* UtiStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEA6342A38B531004BF7E9 /* UtiStore.swift */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		598044372AC3532700905C14 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		598044392AC356E700905C14 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		5B1CCCA42A49D11500BD9330 /* UtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiView.swift; sourceTree = "<group>"; };
 		5B2FFDC32A390889008F21E5 /* StateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBar.swift; sourceTree = "<group>"; };
 		5B2FFDC82A390993008F21E5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -78,7 +81,6 @@
 		EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiApp.swift; sourceTree = "<group>"; };
 		EBAEA61E2A37540A004BF7E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EBAEA6202A37540B004BF7E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EBAEA6232A37540B004BF7E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EBAEA62E2A3756B0004BF7E9 /* Uti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uti.swift; sourceTree = "<group>"; };
 		EBAEA6302A375806004BF7E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EBAEA6342A38B531004BF7E9 /* UtiStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiStore.swift; sourceTree = "<group>"; };
@@ -98,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		598044362AC350DE00905C14 /* SoundTrackManeger */ = {
+			isa = PBXGroup;
+			children = (
+				5980443F2AC3592F00905C14 /* music */,
+				598044372AC3532700905C14 /* Sound.swift */,
+			);
+			path = SoundTrackManeger;
+			sourceTree = "<group>";
+		};
+		5980443F2AC3592F00905C14 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				598044392AC356E700905C14 /* music.mp3 */,
+			);
+			name = music;
+			sourceTree = "<group>";
+		};
 		9470B36A2AA7C18800A1FB5D /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +193,7 @@
 		EBAEA61B2A37540A004BF7E9 /* Uti */ = {
 			isa = PBXGroup;
 			children = (
+				598044362AC350DE00905C14 /* SoundTrackManeger */,
 				94EF14E02AAB59C000B56BA7 /* Notifications */,
 				9470B36A2AA7C18800A1FB5D /* Navigation */,
 				EB98B6D42A7D42DE0004513A /* UI */,
@@ -186,17 +206,8 @@
 				EBAEA61C2A37540A004BF7E9 /* UtiApp.swift */,
 				EBAEA6202A37540B004BF7E9 /* Assets.xcassets */,
 				EB6CCCBA2A8171F700C072FE /* Localizable.strings */,
-				EBAEA6222A37540B004BF7E9 /* Preview Content */,
 			);
 			path = Uti;
-			sourceTree = "<group>";
-		};
-		EBAEA6222A37540B004BF7E9 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				EBAEA6232A37540B004BF7E9 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		EBAEA62A2A375441004BF7E9 /* Components */ = {
@@ -305,9 +316,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBAEA6242A37540B004BF7E9 /* Preview Assets.xcassets in Resources */,
 				EB6CCCB82A8171F700C072FE /* Localizable.strings in Resources */,
 				EBAEA6212A37540B004BF7E9 /* Assets.xcassets in Resources */,
+				5980443A2AC356E700905C14 /* music.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +355,7 @@
 				940078492A8EB4440052532A /* Responsive.swift in Sources */,
 				9470B36C2AA7C1A000A1FB5D /* NavigationManager.swift in Sources */,
 				EBAEA63B2A38BA68004BF7E9 /* Component.swift in Sources */,
+				598044382AC3532700905C14 /* Sound.swift in Sources */,
 				EB3AA1392A3F408900110B11 /* TimerManager.swift in Sources */,
 				9404FDA82A7839240000B7BD /* ItemView.swift in Sources */,
 				EB5E2A522ABBC56100931446 /* RoundedCorner.swift in Sources */,
