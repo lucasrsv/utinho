@@ -365,6 +365,7 @@ class UtiStore: ObservableObject {
             case .folicular:
                 uti.health = uti.health - 5
                 uti.energy = uti.energy + 5
+                itemValue = "+5"
             case .fertile:
                 uti.health = uti.health - 5
                 uti.energy = uti.energy + 20
@@ -372,6 +373,7 @@ class UtiStore: ObservableObject {
             case .luteal:
                 uti.health = uti.health - 5
                 uti.energy = uti.energy + 5
+                itemValue = "+5"
             case .pms:
                 uti.health = uti.health - 10
                 uti.energy = uti.energy - 10

@@ -130,8 +130,8 @@ struct ContentView: View {
                             Text(itemValue)
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .shadow(color: .black, radius: 2)
+                                .foregroundColor(Color.white)
+                                .shadow(color: Color.darkRed, radius: 2)
                                 .scaleEffect(isExploding ? 1.0 : 0)
                                 .opacity(isExploding ? 1 : 0)
                                 .animation(
