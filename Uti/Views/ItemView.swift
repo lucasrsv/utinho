@@ -18,14 +18,16 @@ struct ItemView: View {
     @State private var icons: [Icon] = []
     @Binding private var isExploding: Bool
     @State private var shouldDisappear = false
+    @Binding var itemValue: String
     
     let item: Item
     
-    init(utiPosition: [CGPoint], item: Item, isAnimationActive: Binding<Bool>, isExploding: Binding<Bool>) {
+    init(utiPosition: [CGPoint], item: Item, isAnimationActive: Binding<Bool>, isExploding: Binding<Bool>, itemValue: Binding<String>) {
         self.utiPosition = utiPosition
         self.item = item
         self._isAnimationActive = isAnimationActive
         self._isExploding = isExploding
+        self._itemValue = itemValue
     }
     
     var body: some View {
@@ -42,7 +44,7 @@ struct ItemView: View {
                     DragGesture()
                         .onChanged { value in
                             isSelected = true
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                           // UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                             
                             selectedItemOffset = value.translation
                         }
@@ -56,7 +58,7 @@ struct ItemView: View {
                             print("Uti Postion: \(self.utiPosition)")
                             
                             if (globalTouchPoint.x >= utiPosition[0].x && globalTouchPoint.x <= utiPosition[1].x && globalTouchPoint.y >= utiPosition[0].y && globalTouchPoint.y <= utiPosition[1].y) {
-                                utiStore.giveUtiItem(item: item)
+                                itemValue = "\(utiStore.giveUtiItem(item: item))"
                                 withAnimation {
                                     isExploding = true
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
@@ -107,10 +109,8 @@ struct Icon: Identifiable {
 
 extension Color {
     static var random: Color {
-        let red = Double.random(in: 0...1)
-        let green = Double.random(in: 0...1)
-        let blue = Double.random(in: 0...1)
-        return Color(red: red, green: green, blue: blue)
+        let colors = [Color.primaryOrange, Color.primaryYellow, Color.lightBlue, .white]
+        return colors.randomElement() ?? .white
     }
 }
 

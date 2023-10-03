@@ -20,30 +20,29 @@ struct ContentView: View {
     @State private var utiText = ""
     @State private var isExploding = false
     @State private var icons: [Icon] = []
+    @State private var itemValue: String = ""
     var iconsOffset: [(Int, Int)] = []
     
     private mutating func setIconAnimation() {
         for i in 0 ... 9 {
-            var x = Int.random(in: 20..<100)
-            var y = Int.random(in: 20..<100)
+            var x = Int.random(in: 20..<40)
+            var y = Int.random(in: 20..<40)
             iconsOffset.append((x, y))
         }
     }
     
     func generateRandomIcons() -> [Icon] {
-        let iconNames = ["cross.fill", "cross.fill", "cross.fill", "cross.fill"]
+        let iconNames = ["sparkle", "sparkles", "sparkle", "sparkles"]
         var newIcons: [Icon] = []
-        for _ in 0..<10 {
-            let iconName = iconNames.randomElement() ?? "star.fill"
+        for _ in 0..<24 {
+            let iconName = iconNames.randomElement() ?? "circle.fill"
             let color = Color.random
             let offset = CGSize(width: CGFloat.random(in: -100...100), height: CGFloat.random(in: -100...100))
             let delay = Double.random(in: 0...0.5)
             
-            
             // Atribua true para shouldDisappear ao gerar ícones
             newIcons.append(Icon(name: iconName, color: color, offset: offset, delay: delay, opacity: 0, shouldDisappear: true))
         }
-        
         return newIcons
     }
     
@@ -113,31 +112,34 @@ struct ContentView: View {
                                 .scaleEffect(bouncing ? 0.7: 1.0)
                                 .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
                         }
-                        ZStack{
-                            ForEach(icons) { icon in
-                                Image(systemName: icon.name)
-                                    .foregroundColor(icon.color)
-                                    .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight))
-                                    .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
-                                    .opacity(isExploding ? 1 : 0)
-                                    .animation(
-                                        isExploding ?
-                                        Animation.easeInOut(duration: 0.8)
-                                            .delay(icon.delay)
-                                        : nil
-                                    )
-                            }
-                            
-                            Text("+10")
-                                .font(.largeTitle)
-                                .foregroundColor(.white)
-                                .scaleEffect(isExploding ? 2.0 : 0)
+                        ForEach(icons) { icon in
+                            Image(systemName: icon.name)
+                                .foregroundColor(icon.color)
+                                .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight/1.25))
+                                .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
                                 .opacity(isExploding ? 1 : 0)
                                 .animation(
                                     isExploding ?
-                                    Animation.easeOut(duration: 0.8)
+                                    Animation.easeInOut(duration: 0.8)
+                                        .delay(icon.delay)
                                     : nil
                                 )
+                        }
+                        
+                        if utiPosition.count > 0 {
+                            Text(itemValue)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .shadow(color: .black, radius: 2)
+                                .scaleEffect(isExploding ? 1.0 : 0)
+                                .opacity(isExploding ? 1 : 0)
+                                .animation(
+                                    isExploding ?
+                                    Animation.easeInOut(duration: 0.8)
+                                    : nil
+                                )
+                                .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight/1.25))
                         }
                     }
                     
@@ -169,7 +171,7 @@ struct ContentView: View {
             if (utiPosition.count > 0 && showingSheet == true) {
                 VStack {
                     Spacer()
-                    SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet, isExploding: $isExploding)
+                    SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet, isExploding: $isExploding, itemValue: $itemValue)
                         .environmentObject(utiStore)
                         .ignoresSafeArea()
                         .id(showingSheet)
