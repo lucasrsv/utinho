@@ -57,12 +57,14 @@ struct ItemView: View {
                             print("Global Touch Point (onEnded): \(globalTouchPoint)")
                             print("Uti Postion: \(self.utiPosition)")
                             
-                            if (globalTouchPoint.x >= utiPosition[0].x && globalTouchPoint.x <= utiPosition[1].x && globalTouchPoint.y >= utiPosition[0].y && globalTouchPoint.y <= utiPosition[1].y) {
+                            if (globalTouchPoint.x >= utiPosition[0].x && globalTouchPoint.x <= utiPosition[1].x && globalTouchPoint.y >= utiPosition[0].y && globalTouchPoint.y <= utiPosition[1].y){
                                 itemValue = "\(utiStore.giveUtiItem(item: item))"
                                 withAnimation {
-                                    isExploding = true
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                                        isExploding = false
+                                    if (itemValue != "") {
+                                        isExploding = true
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                            isExploding = false
+                                        }
                                     }
                                 }
                             }

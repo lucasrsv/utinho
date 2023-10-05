@@ -21,10 +21,15 @@ struct ContentView: View {
     @State private var isExploding = false
     @State private var icons: [Icon] = []
     @State private var itemValue: String = ""
-    var iconsOffset: [(Int, Int)] = []
     
-    private mutating func setIconAnimation() {
-        for i in 0 ... 9 {
+    @State private var explosionXPosition: Double = 0
+    @State private var explosionYPosition: Double = 0
+    
+    @State var iconsOffset: [(Int, Int)] = []
+    
+    private  func setIconAnimation() {
+        iconsOffset = []
+        for _ in 0 ... 9 {
             var x = Int.random(in: 20..<40)
             var y = Int.random(in: 20..<40)
             iconsOffset.append((x, y))
@@ -43,12 +48,15 @@ struct ContentView: View {
             // Atribua true para shouldDisappear ao gerar ícones
             newIcons.append(Icon(name: iconName, color: color, offset: offset, delay: delay, opacity: 0, shouldDisappear: true))
         }
+        explosionXPosition = Double.random(in: 40..<UIScreen.main.bounds.width - 40)
+        explosionYPosition = Double.random(in: 1..<2)
         return newIcons
     }
     
     init() {
         generateRandomIcons()
         setIconAnimation()
+        
     }
     
     var body: some View {
@@ -104,6 +112,12 @@ struct ContentView: View {
                                             self.bouncing.toggle()
                                         }
                                     }
+                                    .onChange(of: isExploding) { newValue in
+                                        if (newValue == false) {
+                                            icons = generateRandomIcons()
+                                            setIconAnimation()
+                                        }
+                                    }
                             }
                             Ellipse()
                                 .foregroundColor(.strongRed)
@@ -115,7 +129,7 @@ struct ContentView: View {
                         ForEach(icons) { icon in
                             Image(systemName: icon.name)
                                 .foregroundColor(icon.color)
-                                .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight/1.25))
+                                .position(CGPoint(x: explosionXPosition, y: utiPosition[0].y - utiHeight/explosionYPosition))
                                 .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
                                 .opacity(isExploding ? 1 : 0)
                                 .animation(
@@ -139,7 +153,7 @@ struct ContentView: View {
                                     Animation.easeInOut(duration: 0.8)
                                     : nil
                                 )
-                                .position(CGPoint(x: utiPosition[0].x + utiWidth/1.45, y: utiPosition[0].y - utiHeight/1.25))
+                                .position(CGPoint(x: explosionXPosition, y: utiPosition[0].y - utiHeight/explosionYPosition))
                         }
                     }
                     
