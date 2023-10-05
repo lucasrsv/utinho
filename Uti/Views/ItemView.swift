@@ -14,12 +14,20 @@ struct ItemView: View {
     @State private var selectedItemOffset: CGSize = .zero
     @State private var utiPosition: [CGPoint]
     @State private var globalFrame: CGRect = .zero
+    @Binding var isAnimationActive: Bool
+    @State private var icons: [Icon] = []
+    @Binding private var isExploding: Bool
+    @State private var shouldDisappear = false
+    @Binding var itemValue: String
     
     let item: Item
     
-    init(utiPosition: [CGPoint], item: Item) {
+    init(utiPosition: [CGPoint], item: Item, isAnimationActive: Binding<Bool>, isExploding: Binding<Bool>, itemValue: Binding<String>) {
         self.utiPosition = utiPosition
         self.item = item
+        self._isAnimationActive = isAnimationActive
+        self._isExploding = isExploding
+        self._itemValue = itemValue
     }
     
     var body: some View {
@@ -36,8 +44,8 @@ struct ItemView: View {
                     DragGesture()
                         .onChanged { value in
                             isSelected = true
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-             
+                           // UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            
                             selectedItemOffset = value.translation
                         }
                         .onEnded { value in
@@ -50,7 +58,15 @@ struct ItemView: View {
                             print("Uti Postion: \(self.utiPosition)")
                             
                             if (globalTouchPoint.x >= utiPosition[0].x && globalTouchPoint.x <= utiPosition[1].x && globalTouchPoint.y >= utiPosition[0].y && globalTouchPoint.y <= utiPosition[1].y){
-                                utiStore.giveUtiItem(item: item)
+                                itemValue = "\(utiStore.giveUtiItem(item: item))"
+                                withAnimation {
+                                    if (itemValue != "") {
+                                        isExploding = true
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                            isExploding = false
+                                        }
+                                    }
+                                }
                             }
                             selectedItemOffset = .zero
                         }
@@ -83,14 +99,31 @@ struct ItemView: View {
     }
 }
 
-struct ItemView_Previews: PreviewProvider {
-    static func getUtiStore() -> UtiStore {
-        let utiStore: UtiStore = UtiStore()
-        utiStore.uti = Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: [])
-        return utiStore
-    }
-    static var previews: some View {
-        ItemView(utiPosition: [], item: Item.getItems(category: .health)[0])
-            .environmentObject(getUtiStore())
+struct Icon: Identifiable {
+    let id = UUID()
+    let name: String
+    let color: Color
+    let offset: CGSize
+    let delay: Double
+    let opacity: Double
+    var shouldDisappear: Bool // Adicione a propriedade shouldDisappear
+}
+
+extension Color {
+    static var random: Color {
+        let colors = [Color.primaryOrange, Color.primaryYellow, Color.lightBlue, .white]
+        return colors.randomElement() ?? .white
     }
 }
+
+//struct ItemView_Previews: PreviewProvider {
+//    static func getUtiStore() -> UtiStore {
+//        let utiStore: UtiStore = UtiStore()
+//        utiStore.uti = Uti(currentCycleDay: 2, phase: .luteal, state: .sleepy, illness: .no, leisure: 50, health: 50, nutrition: 70, energy: 100, blood: 100, items: [])
+//        return utiStore
+//    }
+//    static var previews: some View {
+//        ItemView(utiPosition: [], item: Item.getItems(category: .health)[0])
+//            .environmentObject(getUtiStore())
+//    }
+//}

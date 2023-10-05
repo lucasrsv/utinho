@@ -116,220 +116,210 @@ class UtiStore: ObservableObject {
         }
     }
     
-    func giveUtiItem(item: Item) {
+    func giveUtiItem(item: Item) -> String {
+        var itemValue = ""
+        
         switch (item.name) {
             // MARK: HEALTH
         case .contraceptive:
-            if (uti.currentCycleDay == 1) {
-                uti.health = uti.health + 20
-            } else {
-                uti.health = uti.health - 10
-            }
+            uti.health = uti.health
         case .pill:
             // TODO: add health at the first time its being used in the month
             uti.health = uti.health
         case .condom:
             // TODO: add leisure if the user go to the party
             uti.health = uti.health + 10
+            itemValue = "+10"
         case .medicineColic:
             if (uti.phase == .menstrual) {
                 uti.health = uti.health + 10
+                itemValue = "+10"
             }
         case .warmCompress:
             if (uti.phase == .menstrual) {
                 uti.health = uti.health + 10
+                itemValue = "+10"
             }
         case .absorbent:
             if (uti.phase == .menstrual) {
                 uti.health = uti.health + 10
+                itemValue = "+10"
             }
         case .collector:
             if (uti.phase == .menstrual) {
                 uti.health = uti.health + 10
+                itemValue = "+10"
             }
         case .absorbentPanties:
             if (uti.phase == .menstrual) {
                 uti.health = uti.health + 10
+                itemValue = "+10"
             }
+            
             // MARK: NUTRITION
-        case .water: // reviewed
-            if (uti.phase == .menstrual) {
-                uti.health = uti.health + 10
-            }
-        case .tea: // reviewed
-            if (uti.phase == .menstrual) {
-                uti.health = uti.health + 10
-            }
-        case .chocolate: // reviewed
+        case .water:
+            uti.health = uti.health + 10
+            uti.nutrition = uti.nutrition + 10
+            itemValue = "+20"
+        case .tea:
+            uti.health = uti.health + 10
+            uti.nutrition = uti.nutrition + 9
+            uti.leisure = uti.leisure + 3
+            itemValue = "+22"
+        case .chocolate:
             switch (uti.phase) {
             case .menstrual:
                 uti.leisure = uti.leisure + 10
                 uti.nutrition = uti.nutrition + 5
+                itemValue = "+15"
             case .folicular:
                 uti.leisure = uti.leisure + 10
                 uti.nutrition = uti.nutrition + 5
+                itemValue = "+15"
             case .fertile:
                 uti.leisure = uti.leisure + 10
                 uti.nutrition = uti.nutrition + 5
+                itemValue = "+15"
             case .luteal:
                 uti.leisure = uti.leisure + 10
                 uti.nutrition = uti.nutrition + 5
+                itemValue = "+15"
             case .pms:
                 uti.leisure = uti.leisure + 10
                 uti.nutrition = uti.nutrition + 5
+                itemValue = "+15"
             }
         case .soda: // reviewed
             switch (uti.phase) {
             case .menstrual:
                 uti.health = uti.health - 20
                 uti.nutrition = uti.nutrition - 15
-                uti.energy = uti.energy + 10
+                uti.leisure = uti.leisure + 10
+                itemValue = "-25"
             case .folicular:
                 uti.health = uti.health - 10
                 uti.nutrition = uti.nutrition - 10
-                uti.energy = uti.energy + 10
+                uti.leisure = uti.leisure + 5
+                itemValue = "-15"
             case .fertile:
                 uti.health = uti.health - 10
                 uti.nutrition = uti.nutrition - 10
-                uti.energy = uti.energy + 10
+                uti.leisure = uti.leisure + 5
+                itemValue = "-15"
             case .luteal:
                 uti.health = uti.health - 10
                 uti.nutrition = uti.nutrition - 10
-                uti.energy = uti.energy + 10
+                uti.leisure = uti.leisure + 5
+                itemValue = "-15"
             case .pms:
                 uti.health = uti.health - 20
                 uti.nutrition = uti.nutrition - 15
-                uti.energy = uti.energy + 10
+                uti.leisure = uti.leisure + 10
+                itemValue = "-25"
             }
         case .cupNoodles: // reviewed
             uti.health = uti.health - 10
-            uti.nutrition = uti.nutrition + 5
+            uti.nutrition = uti.nutrition + 2
+            uti.leisure = uti.leisure + 5
+            itemValue = "-10"
         case .banana: // reviewed
             uti.health = uti.health + 5
             uti.nutrition = uti.nutrition + 10
+            itemValue = "+15"
         case .redMeat: // reviewed
             switch (uti.phase) {
             case .menstrual:
-                uti.health = uti.health - 10
+                uti.health = uti.health - 15
                 uti.nutrition = uti.nutrition + 5
-                uti.energy = uti.energy + 5
+                uti.leisure = uti.leisure + 5
+                itemValue = "-5"
             case .folicular:
+                uti.health = uti.health + 3
                 uti.nutrition = uti.nutrition + 5
-                uti.energy = uti.energy + 5
+                uti.leisure = uti.leisure + 5
+                itemValue = "+13"
             case .fertile:
+                uti.health = uti.health + 3
                 uti.nutrition = uti.nutrition + 5
-                uti.energy = uti.energy + 5
+                uti.leisure = uti.leisure + 5
+                itemValue = "+13"
             case .luteal:
+                uti.health = uti.health + 2
                 uti.nutrition = uti.nutrition + 5
-                uti.energy = uti.energy + 5
+                uti.leisure = uti.leisure + 5
+                itemValue = "+12"
             case .pms:
-                uti.health = uti.health - 10
+                uti.health = uti.health - 15
                 uti.nutrition = uti.nutrition + 5
                 uti.energy = uti.energy + 5
+                itemValue = "-5"
             }
         case .sushi: // reviewed
             uti.health = uti.health + 5
             uti.nutrition = uti.nutrition + 10
             uti.leisure = uti.leisure + 15
+            itemValue = "+30"
             
             // MARK: LEISURE
         case .spaDay:
-            switch (uti.phase) {
-            case .menstrual:
-                uti.leisure = uti.leisure + 15
-            case .folicular:
+            if (uti.phase == .menstrual || uti.phase == .pms) {
+                uti.leisure = uti.leisure + 12
+                itemValue = "+12"
+            } else {
                 uti.leisure = uti.leisure + 10
-            case .fertile:
-                uti.leisure = uti.leisure + 10
-            case .luteal:
-                uti.leisure = uti.leisure + 10
-            case .pms:
-                uti.leisure = uti.leisure + 15
+                itemValue = "+10"
             }
         case .book:
-            switch (uti.phase) {
-            case .menstrual:
-                uti.leisure = uti.leisure + 10
-            case .folicular:
-                uti.leisure = uti.leisure + 5
-            case .fertile:
-                uti.leisure = uti.leisure + 10
-            case .luteal:
-                uti.leisure = uti.leisure + 10
-            case .pms:
-                uti.leisure = uti.leisure + 10
-            }
+            uti.leisure = uti.leisure + 10
+            itemValue = "+10"
         case .games:
-            switch (uti.phase) {
-            case .menstrual:
-                uti.leisure = uti.leisure + 5
-            case .folicular:
-                uti.leisure = uti.leisure + 10
-            case .fertile:
-                uti.leisure = uti.leisure + 5
-            case .luteal:
-                uti.leisure = uti.leisure + 10
-            case .pms:
-                uti.leisure = uti.leisure + 5
-            }
+            uti.leisure = uti.leisure + 6
+            itemValue = "+6"
         case .movieNight:
-            switch (uti.phase) {
-            case .menstrual:
-                uti.leisure = uti.leisure + 5
-            case .folicular:
-                uti.leisure = uti.leisure + 10
-            case .fertile:
-                uti.leisure = uti.leisure + 5
-            case .luteal:
-                uti.leisure = uti.leisure + 10
-            case .pms:
-                uti.leisure = uti.leisure + 5
-            }
-        case .gym: // reviewed
-            switch (uti.phase) {
-            case .menstrual:
+            uti.leisure = uti.leisure + 9
+            itemValue = "+9"
+        case .gym:
+            if (uti.phase == .menstrual || uti.phase == .pms) {
                 uti.health = uti.health - 10
-                uti.energy = uti.energy - 10
-            case .folicular:
-                uti.health = uti.health + 5
-                uti.energy = uti.energy + 5
-            case .fertile:
-                uti.health = uti.health + 5
-                uti.energy = uti.energy + 5
-            case .luteal:
-                uti.health = uti.health + 5
-                uti.energy = uti.energy + 5
-            case .pms:
-                uti.health = uti.health - 10
-                uti.energy = uti.energy - 10
+                uti.leisure = uti.leisure + 7
+                itemValue = "-3"
+            } else {
+                uti.health = uti.health + 10
+                uti.leisure = uti.leisure + 8
+                itemValue = "+18"
             }
         case .party:
-            switch (uti.phase) {
-            case .menstrual:
+            if (uti.phase == .menstrual || uti.phase == .pms) {
                 uti.health = uti.health - 10
-                uti.energy = uti.energy - 10
-            case .folicular:
-                uti.health = uti.health - 5
-                uti.energy = uti.energy + 5
-            case .fertile:
-                uti.health = uti.health - 5
-                uti.energy = uti.energy + 20
-            case .luteal:
-                uti.health = uti.health - 5
-                uti.energy = uti.energy + 5
-            case .pms:
-                uti.health = uti.health - 10
-                uti.energy = uti.energy - 10
+                uti.leisure = uti.leisure + 10
+                itemValue = "-10"
+            } else {
+                uti.leisure = uti.leisure + 10
+                itemValue = "+10"
             }
         case .dateNight:
             if (uti.phase == .fertile) {
-                uti.health = uti.health + 15
+                uti.leisure = uti.leisure + 20
+                itemValue = "+20"
+            } else if (uti.phase == .menstrual || uti.phase == .pms) {
+                uti.health = uti.health - 5
+                uti.leisure = uti.leisure + 10
+                itemValue = "+5"
+            } else {
+                uti.leisure = uti.leisure + 10
+                itemValue = "+10"
             }
         case .bike:
-            if (uti.phase == .pms) {
-                uti.health = uti.health + 10
+            if (uti.phase == .menstrual || uti.phase == .pms) {
+                uti.health = uti.health + 6
+                uti.leisure = uti.leisure + 5
+                itemValue = "+11"
+            } else {
+                uti.health = uti.health + 8
+                uti.leisure = uti.leisure + 5
+                itemValue = "+13"
             }
-       
+            
         }
         
         // TODO: this shouldn't be needed
@@ -356,5 +346,7 @@ class UtiStore: ObservableObject {
         } else if (uti.nutrition < 0) {
             uti.nutrition = 0
         }
+        
+        return itemValue
     }
 }
