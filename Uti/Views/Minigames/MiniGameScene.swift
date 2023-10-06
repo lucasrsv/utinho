@@ -19,10 +19,21 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
     let utiCategoryBitMask: UInt32 = 0x1 << 0
     let boxCategoryBitMask: UInt32 = 0x1 << 1
     let groundCategoryBitMask: UInt32 = 0x1 << 2
+    var cameraNode = SKCameraNode()
+    var cameraMovePointPerSecond: CGFloat = 450.0
+    var leftBarrier: SKSpriteNode!
+    var rightBarrier: SKSpriteNode!
     
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
         applyContinuousForceToBoxes()
+       // moveBG()
+        
+        camera?.position.y = uti.position.y
+        
+        // Ajustar a posição das barreiras laterais para acompanhar a câmera
+        leftBarrier.position.y = cameraNode.position.y
+        rightBarrier.position.y = cameraNode.position.y
     }
     
     override func didMove(to view: SKView) {
@@ -36,22 +47,6 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
         borders.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         addChild(borders)
         
-        let groundPath = CGMutablePath()
-        groundPath.move(to: CGPoint(x: -size.width/2, y: -size.height*0.05))
-        groundPath.addLine(to: CGPoint(x: size.width/2, y: -size.height*0.05))
-        groundPath.addLine(to: CGPoint(x: size.width/2, y: size.height*0.05))
-        groundPath.addLine(to: CGPoint(x: -size.width/2, y: size.height*0.05))
-        groundPath.closeSubpath()
-        
-        let ground = SKShapeNode(path: groundPath)
-        ground.physicsBody = SKPhysicsBody(edgeChainFrom: ground.path!)
-        ground.physicsBody?.isDynamic = false
-        ground.physicsBody?.affectedByGravity = false
-        ground.physicsBody?.categoryBitMask = groundCategoryBitMask
-        ground.physicsBody?.collisionBitMask = utiCategoryBitMask
-        ground.position = CGPoint(x: size.width / 2, y: ground.frame.height / 2)
-        ground.fillColor = SKColor(.paleRed)
-        ground.lineWidth = 0
         
         uti = SKSpriteNode(imageNamed: "happy")
         uti.size = CGSize(width: uti.size.width/5, height: uti.size.height/5)
@@ -63,23 +58,33 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
         uti.physicsBody?.categoryBitMask = utiCategoryBitMask
         uti.physicsBody?.contactTestBitMask = boxCategoryBitMask
         uti.physicsBody?.collisionBitMask = groundCategoryBitMask
-        
-        let background = SKSpriteNode(imageNamed: "blood_background.png")
-        background.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        addChild(background)
-        
-        scene?.addChild(ground)
+    
+        setupNodes()
+        setupGround()
         scene?.addChild(uti)
         
         let createBoxAction = SKAction.run { [weak self] in
             self?.createRandomBox()
         }
-        let waitAction = SKAction.wait(forDuration: 1.5) // Adjust the duration as needed
+        let waitAction = SKAction.wait(forDuration: 1) // Adjust the duration as needed
         let createAndWaitSequence = SKAction.sequence([createBoxAction, waitAction])
         let repeatForeverAction = SKAction.repeatForever(createAndWaitSequence)
         run(repeatForeverAction)
         
+        leftBarrier = SKSpriteNode(color: .white, size: CGSize(width: 20, height: size.height))
+        leftBarrier.position = CGPoint(x: 0, y: 0)
+        leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
+        leftBarrier.physicsBody?.isDynamic = false
+        leftBarrier.physicsBody?.categoryBitMask = groundCategoryBitMask
+        addChild(leftBarrier)
         
+        // Barreira lateral direita
+        rightBarrier = SKSpriteNode(color: .white, size: CGSize(width: 20, height: size.height))
+        rightBarrier.position = CGPoint(x: size.width, y: 0)
+        rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
+        rightBarrier.physicsBody?.isDynamic = false
+        rightBarrier.physicsBody?.categoryBitMask = groundCategoryBitMask
+        addChild(rightBarrier)
     }
     
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -95,37 +100,73 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setupNodes() {
+        createBG()
+        setupCamera()
+    }
+    
+    func createBG() {
+        for i in 0...2 {
+            let bg = SKSpriteNode(imageNamed: "blood_background.png")
+            bg.zPosition = -1.0
+            bg.name = "BG"
+            bg.position = CGPoint(x: frame.width/2.0, y: CGFloat(i)*bg.frame.height + frame.height/2.0)
+            addChild(bg)
+        }
+    }
+    
+    func setupGround() {
+        let groundPath = CGMutablePath()
+        groundPath.move(to: CGPoint(x: -size.width/2, y: -size.height*0.005))
+        groundPath.addLine(to: CGPoint(x: size.width/2, y: -size.height*0.005))
+        groundPath.addLine(to: CGPoint(x: size.width/2, y: size.height*0.005))
+        groundPath.addLine(to: CGPoint(x: -size.width/2, y: size.height*0.005))
+        groundPath.closeSubpath()
+        
+        let ground = SKShapeNode(path: groundPath)
+        ground.physicsBody = SKPhysicsBody(edgeChainFrom: ground.path!)
+        ground.physicsBody?.isDynamic = true
+        ground.physicsBody?.affectedByGravity = false
+        ground.physicsBody?.categoryBitMask = groundCategoryBitMask
+        ground.physicsBody?.collisionBitMask = utiCategoryBitMask
+        ground.position = CGPoint(x: size.width / 2, y: ground.frame.height / 2)
+        ground.fillColor = SKColor(.yellow)
+        ground.lineWidth = 0
+        
+        scene?.addChild(ground)
+    }
+
     func createRandomBox() {
         // Load the blood image
         let bloodImage = SKSpriteNode(imageNamed: "platform.png")
-
+        
         // Set the size of the blood image
         bloodImage.size = CGSize(width: 80, height: 24)
-
+        
         // Generate a random X position for the blood image
         let randomX = CGFloat.random(in: 0..<size.width)
-
+        
         // Position the blood image at the calculated random X position and at the top of the screen
         bloodImage.position = CGPoint(x: randomX, y: size.height)
-
+        
         // Add a physics body to the blood image
         bloodImage.physicsBody = SKPhysicsBody(rectangleOf: bloodImage.size)
         bloodImage.physicsBody?.isDynamic = true
         bloodImage.physicsBody?.affectedByGravity = false
         bloodImage.physicsBody?.categoryBitMask = boxCategoryBitMask
         bloodImage.physicsBody?.collisionBitMask = 0
-
+        
         // Add the blood image as a child of the scene
         addChild(bloodImage)
         boxes.append(bloodImage)    }
     
     func applyContinuousForceToBoxes() {
         for box in boxes {
-            let force = CGVector(dx: 0, dy: -6.0)
+            let force = CGVector(dx: 0, dy: -14.0)
             box.physicsBody?.applyForce(force)
         }
     }
-
+    
     func startApplyingForceToBoxes() {
         let applyForceAction = SKAction.run { [weak self] in
             self?.applyContinuousForceToBoxes()
@@ -137,7 +178,7 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func jumpUti() {
-        let jumpImpulse = CGVector(dx: 0, dy: 600.0)
+        let jumpImpulse = CGVector(dx: 0, dy: 400.0)
         uti.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         uti.physicsBody?.applyImpulse(jumpImpulse)
         
@@ -151,6 +192,12 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
         } else if contactMask == (utiCategoryBitMask | groundCategoryBitMask)  {
             print("aa")
         }
+    }
+    
+    func setupCamera() {
+        addChild(cameraNode)
+        camera = cameraNode
+        cameraNode.position = CGPoint(x: frame.midX, y: frame.midY)
     }
     
 }
