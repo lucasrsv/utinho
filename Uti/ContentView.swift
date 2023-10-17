@@ -157,16 +157,22 @@ struct ContentView: View {
                         }
                     }
                     
-                    Button("survivalKit_title") {
-                        showingSheet.toggle()
-                        
+                    HStack(spacing: 8) {
+                        Button("survivalKit_title") {
+                            showingSheet.toggle()
+                            
+                        }
+                        .frame(maxHeight: 100)
+                        .multilineTextAlignment(.center)
+                        .buttonStyle(CustomButtonStyle())
+                        .fontWeight(.medium)
+                        NavigationLink(destination: MiniGameView()) {
+                            Image(systemName: "gamecontroller.fill")
+                                .fontWeight(.medium)
+                        }
+                        .buttonStyle(CustomButtonStyle())
                     }
-                    .frame(maxHeight: 100)
-                    .multilineTextAlignment(.center)
-                    .buttonStyle(CustomButtonStyle())
-                    .fontWeight(.medium)
                 }
-                
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.all, Responsive.scale(s: Spacing.large))
