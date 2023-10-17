@@ -138,7 +138,7 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
             let bg = SKSpriteNode(texture: bgTexture)
             bg.zPosition = -1.0
             bg.name = "BG"
-            bg.size = bgTexture.size()
+            bg.size = CGSize(width: size.width*1.3, height: size.height*1.3)
             addChild(bg)
         }
         
@@ -155,8 +155,10 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
             bgNode.position = CGPoint(x: frame.midX, y: cameraTopY - CGFloat(index) * bgTexture.size().height)
         }
     }
+    
     func setupGround() {
-        let ground = SKSpriteNode(color: UIColor(Color.darkRed), size: CGSize(width: size.width, height: size.height*0.05))
+        let ground = SKSpriteNode(imageNamed: "ground_minigame.png")
+        ground.size = CGSize(width: UIScreen.main.bounds.width, height: 80)
         ground.position = CGPoint(x: size.width / 2, y: 0)
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
         ground.physicsBody?.isDynamic = false
@@ -170,10 +172,10 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
     
     func createRandomBox() {
         // Load the blood image
-        let bloodImage = SKSpriteNode(imageNamed: "platform.png")
+        let bloodImage = SKSpriteNode(imageNamed: "absorvente.png")
         
         // Set the size of the blood image
-        bloodImage.size = CGSize(width: 80, height: 24)
+        bloodImage.size = CGSize(width: 80, height: 49)
         
         // Generate a random X position for the blood image
         let randomX = CGFloat.random(in: 0..<size.width)
@@ -242,7 +244,7 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
             self?.leaveGame()
         }
         alertController.addAction(restartAction)
-        alertController.addAction(leaveAction)
+//        alertController.addAction(leaveAction)
         
         // Present the game over popup
         if let viewController = view?.window?.rootViewController {
@@ -251,6 +253,8 @@ class MiniGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func resetGame() {
+        gameOver = false
+        didJump = false
         // Reset any game state variables, remove remaining boxes, reset uti's position, etc.
         for box in boxes {
             box.removeFromParent()
