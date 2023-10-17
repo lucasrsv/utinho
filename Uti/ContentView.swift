@@ -60,150 +60,152 @@ struct ContentView: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        VStack {
-                            StateBar(uti: utiStore.uti, category: .health)
-                            StateBar(uti: utiStore.uti, category: .nutrition)
-                            StateBar(uti: utiStore.uti, category: .leisure)
-                        }
-                        Spacer()
-                        PhaseCycleCircle(uti: utiStore.uti)
-                            .onTapGesture {
-                                isPopupVisible.toggle()
-                            }
-                        Spacer()
-                        CycleClockViewControllerRepresentable()
-                            .frame(width: 64, height: 64)
-                    }
-                    .padding(.bottom, Responsive.scale(s: Spacing.small))
-                }
+        NavigationView {
+            ZStack {
                 VStack {
-                    VStack {
-                        Text(LocalizedStringKey(utiText))
-                            .bold()
-                            .foregroundColor(.darkRed)
-                            .padding(.horizontal, 8)
-                            .onAppear {
-                                utiText = getLocalizable(state: utiStore.uti.state)
+                    VStack(alignment: .leading) {
+                        HStack {
+                            VStack {
+                                StateBar(uti: utiStore.uti, category: .health)
+                                StateBar(uti: utiStore.uti, category: .nutrition)
+                                StateBar(uti: utiStore.uti, category: .leisure)
                             }
-                    }
-                    .padding(.horizontal, 4.0)
-                    .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
-                    .background(.white)
-                    .cornerRadius(20.0)
-                    ZStack {
-                        VStack {
-                            GeometryReader { uti in
-                                Image(changeImage(state: utiStore.uti.state))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .foregroundColor(.accentColor)
-                                    .offset(y: bouncing ? 16 : -16)
-                                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
-                                    .onAppear {
-                                        utiPosition.append(CGPoint(x: uti.frame(in: .global).minX, y: uti.frame(in: .global).minY))
-                                        utiPosition.append(CGPoint(x: uti.frame(in: .global).maxX, y: uti.frame(in: .global).maxY))
-                                        utiHeight = uti.frame(in: .global).height
-                                        utiWidth = uti.frame(in: .global).width
-                                        withAnimation(nil) {
-                                            self.bouncing.toggle()
-                                        }
-                                    }
-                                    .onChange(of: isExploding) { newValue in
-                                        if (newValue == false) {
-                                            icons = generateRandomIcons()
-                                            setIconAnimation()
-                                        }
-                                    }
-                            }
-                            Ellipse()
-                                .foregroundColor(.strongRed)
-                                .blur(radius: 20)
-                                .frame(width: 150, height: 40)
-                                .scaleEffect(bouncing ? 0.7: 1.0)
-                                .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                            Spacer()
+                            PhaseCycleCircle(uti: utiStore.uti)
+                                .onTapGesture {
+                                    isPopupVisible.toggle()
+                                }
+                            Spacer()
+                            CycleClockViewControllerRepresentable()
+                                .frame(width: 64, height: 64)
                         }
-                        ForEach(icons) { icon in
-                            Image(systemName: icon.name)
-                                .foregroundColor(icon.color)
-                                .position(CGPoint(x: explosionXPosition, y: utiPosition[0].y - utiHeight/explosionYPosition))
-                                .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
-                                .opacity(isExploding ? 1 : 0)
-                                .animation(
-                                    isExploding ?
-                                    Animation.easeInOut(duration: 0.8)
-                                        .delay(icon.delay)
-                                    : nil
-                                )
+                        .padding(.bottom, Responsive.scale(s: Spacing.small))
+                    }
+                    VStack {
+                        VStack {
+                            Text(LocalizedStringKey(utiText))
+                                .bold()
+                                .foregroundColor(.darkRed)
+                                .padding(.horizontal, 8)
+                                .onAppear {
+                                    utiText = getLocalizable(state: utiStore.uti.state)
+                                }
+                        }
+                        .padding(.horizontal, 4.0)
+                        .frame(minWidth: 330, idealWidth: 330, maxWidth: 330, minHeight: 80, idealHeight: 80, maxHeight: 100, alignment: .center)
+                        .background(.white)
+                        .cornerRadius(20.0)
+                        ZStack {
+                            VStack {
+                                GeometryReader { uti in
+                                    Image(changeImage(state: utiStore.uti.state))
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(.accentColor)
+                                        .offset(y: bouncing ? 16 : -16)
+                                        .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                                        .onAppear {
+                                            utiPosition.append(CGPoint(x: uti.frame(in: .global).minX, y: uti.frame(in: .global).minY))
+                                            utiPosition.append(CGPoint(x: uti.frame(in: .global).maxX, y: uti.frame(in: .global).maxY))
+                                            utiHeight = uti.frame(in: .global).height
+                                            utiWidth = uti.frame(in: .global).width
+                                            withAnimation(nil) {
+                                                self.bouncing.toggle()
+                                            }
+                                        }
+                                        .onChange(of: isExploding) { newValue in
+                                            if (newValue == false) {
+                                                icons = generateRandomIcons()
+                                                setIconAnimation()
+                                            }
+                                        }
+                                }
+                                Ellipse()
+                                    .foregroundColor(.strongRed)
+                                    .blur(radius: 20)
+                                    .frame(width: 150, height: 40)
+                                    .scaleEffect(bouncing ? 0.7: 1.0)
+                                    .animation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: bouncing)
+                            }
+                            ForEach(icons) { icon in
+                                Image(systemName: icon.name)
+                                    .foregroundColor(icon.color)
+                                    .position(CGPoint(x: explosionXPosition, y: utiPosition[0].y - utiHeight/explosionYPosition))
+                                    .offset(isExploding ? icon.offset : CGSize(width: 0, height: 0))
+                                    .opacity(isExploding ? 1 : 0)
+                                    .animation(
+                                        isExploding ?
+                                        Animation.easeInOut(duration: 0.8)
+                                            .delay(icon.delay)
+                                        : nil
+                                    )
+                            }
+                            
+                            if utiPosition.count > 0 {
+                                Text(itemValue)
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.white)
+                                    .shadow(color: Color.darkRed, radius: 2)
+                                    .scaleEffect(isExploding ? 1.0 : 0)
+                                    .opacity(isExploding ? 1 : 0)
+                                    .animation(
+                                        isExploding ?
+                                        Animation.easeInOut(duration: 0.8)
+                                        : nil
+                                    )
+                                    .position(CGPoint(x: explosionXPosition, y: utiPosition[0].y - utiHeight/explosionYPosition))
+                            }
                         }
                         
-                        if utiPosition.count > 0 {
-                            Text(itemValue)
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.white)
-                                .shadow(color: Color.darkRed, radius: 2)
-                                .scaleEffect(isExploding ? 1.0 : 0)
-                                .opacity(isExploding ? 1 : 0)
-                                .animation(
-                                    isExploding ?
-                                    Animation.easeInOut(duration: 0.8)
-                                    : nil
-                                )
-                                .position(CGPoint(x: explosionXPosition, y: utiPosition[0].y - utiHeight/explosionYPosition))
+                        HStack(spacing: 8) {
+                            Button("survivalKit_title") {
+                                showingSheet.toggle()
+                                
+                            }
+                            .frame(maxHeight: 100)
+                            .multilineTextAlignment(.center)
+                            .buttonStyle(CustomButtonStyle())
+                            .fontWeight(.medium)
+                            NavigationLink(destination: MiniGameView()) {
+                                Image(systemName: "gamecontroller.fill")
+                                    .fontWeight(.medium)
+                            }
+                            .buttonStyle(CustomButtonStyle())
                         }
-                    }
-                    
-                    HStack(spacing: 8) {
-                        Button("survivalKit_title") {
-                            showingSheet.toggle()
-                            
-                        }
-                        .frame(maxHeight: 100)
-                        .multilineTextAlignment(.center)
-                        .buttonStyle(CustomButtonStyle())
-                        .fontWeight(.medium)
-                        NavigationLink(destination: MiniGameView()) {
-                            Image(systemName: "gamecontroller.fill")
-                                .fontWeight(.medium)
-                        }
-                        .buttonStyle(CustomButtonStyle())
                     }
                 }
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.all, Responsive.scale(s: Spacing.large))
-            .background(
-                LinearGradient(
-                    stops: [
-                        Gradient.Stop(color: Color(red: 0.27, green: 0.06, blue: 0.09), location: 0.00),
-                        Gradient.Stop(color: Color(red: 0.75, green: 0.24, blue: 0.24), location: 0.57),
-                        Gradient.Stop(color: Color(red: 0.5, green: 0.14, blue: 0.14), location: 1.00),
-                    ],
-                    startPoint: UnitPoint(x: 0.83, y: -0.14),
-                    endPoint: UnitPoint(x: 0.52, y: 1.01)
+                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.all, Responsive.scale(s: Spacing.large))
+                .background(
+                    LinearGradient(
+                        stops: [
+                            Gradient.Stop(color: Color(red: 0.27, green: 0.06, blue: 0.09), location: 0.00),
+                            Gradient.Stop(color: Color(red: 0.75, green: 0.24, blue: 0.24), location: 0.57),
+                            Gradient.Stop(color: Color(red: 0.5, green: 0.14, blue: 0.14), location: 1.00),
+                        ],
+                        startPoint: UnitPoint(x: 0.83, y: -0.14),
+                        endPoint: UnitPoint(x: 0.52, y: 1.01)
+                    )
                 )
-            )
-            
-            if (utiPosition.count > 0 && showingSheet == true) {
-                VStack {
-                    Spacer()
-                    SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet, isExploding: $isExploding, itemValue: $itemValue)
-                        .environmentObject(utiStore)
-                        .ignoresSafeArea()
-                        .id(showingSheet)
+                
+                if (utiPosition.count > 0 && showingSheet == true) {
+                    VStack {
+                        Spacer()
+                        SurvivalKitView(utiPosition: utiPosition, showingSheet: $showingSheet, isExploding: $isExploding, itemValue: $itemValue)
+                            .environmentObject(utiStore)
+                            .ignoresSafeArea()
+                            .id(showingSheet)
+                    }
+                }
+                
+                if isPopupVisible {
+                    CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
                 }
             }
-            
-            if isPopupVisible {
-                CycleChangePopupView(isPopupVisible: $isPopupVisible, uti: utiStore.uti)
+            .onAppear {
+                icons = generateRandomIcons()
             }
-        }
-        .onAppear {
-            icons = generateRandomIcons()
         }
     }
 }

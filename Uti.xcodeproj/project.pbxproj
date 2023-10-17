@@ -119,6 +119,15 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		EB85FF9E2ADF2370001295BA /* Minigames */ = {
+			isa = PBXGroup;
+			children = (
+				EB85FF9A2ADF1F26001295BA /* MinigameView.swift */,
+				EB85FF9C2ADF1F31001295BA /* MinigameScene.swift */,
+			);
+			path = Minigames;
+			sourceTree = "<group>";
+		};
 		EB98B6D42A7D42DE0004513A /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +230,7 @@
 		EBAEA62B2A37545F004BF7E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB85FF9E2ADF2370001295BA /* Minigames */,
 				EBAEA6382A38BA60004BF7E9 /* View.swift */,
 				9404FDA72A7839240000B7BD /* ItemView.swift */,
 				9404FDA92A783AC30000B7BD /* SurvivalKitView.swift */,
@@ -228,8 +238,6 @@
 				94BB14742A9FD078009D30E7 /* OnboardingView.swift */,
 				EB5E2A4F2ABB928E00931446 /* GlobalFrameReader.swift */,
 				94DEFB2C2AC3784700420383 /* ItemsFeedbackView.swift */,
-				EB85FF9A2ADF1F26001295BA /* MinigameView.swift */,
-				EB85FF9C2ADF1F31001295BA /* MinigameScene.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
